@@ -1,0 +1,1 @@
+document继承自HTMLDocument,HTMLDocument.prototype继承自Document.prototype

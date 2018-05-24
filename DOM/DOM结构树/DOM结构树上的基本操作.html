@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM结构树上的基本操作</title>
+</head>
+
+<body>
+
+    <div id="d1">
+        <span></span>
+    </div>
+    <span></span>
+
+    <script>
+        //getElementById定义在Document.prototype上，即Element节点上的不能使用
+        var d1 = document.getElementById('d1');
+        //Element节点上的不能使用
+        // d1.getElementById
+        //getElementsByTagName定义在Document.prototype和Element.prototype上,即document和元素对象都能使用
+        var s1 = d1.getElementsByTagName('span')[0];
+        var body = document.body;
+        var head = document.head;
+    </script>
+</body>
+
+</html>

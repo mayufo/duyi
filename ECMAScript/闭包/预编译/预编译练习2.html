@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预编译练习2</title>
+</head>
+
+<body>
+    <script>
+        function test(a, b) {
+            console.log(a);
+            c = 0;
+            var c;
+            a = 3;
+            b = 2;
+            console.log(b);
+            //这里的e未经声明就赋值时属于window,但过程是执行过程中的,不能把e=5放到打印后面会报错 e is not defined
+            // e = 5;
+            // console.log(e);
+            function b() {}
+
+            function d() {}
+            console.log(b);
+        }
+
+        test(1);
+    </script>
+</body>
+
+</html>

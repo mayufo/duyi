@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原始值数字和对象数字等</title>
+</head>
+
+<body>
+    <script>
+        //创建一个数字对象
+        var num = new Number(123);
+        num.name = "mm";
+        //数字对象可以做数字运算返回的是一个原始值数字
+        var resn = "123" * 2;
+
+        console.log(typeof (resn) + ":" + resn); //number:246
+
+        //创建一个字符串对象
+        var str = new String("aaa");
+        str.name = "strName";
+        //进行字符串连接后返回的也是一个原始值字符串
+        var ress = str + "bbb";
+        console.log(typeof (ress) + ":" + ress); //string:aaabbb
+
+        //创建一个布尔对象
+        var bol = new Boolean('bool');
+        bol.name = "bolName";
+    </script>
+</body>
+
+</html>

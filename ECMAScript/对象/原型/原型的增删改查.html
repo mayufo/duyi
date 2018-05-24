@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型的增删改查</title>
+</head>
+
+<body>
+    <script>
+        Car.prototype.name = 'BWM';
+        Car.prototype.height = 2000;
+
+        function Car(color) {
+            this.color = color;
+        }
+
+        var car = new Car('white');
+
+        console.log(car.name);
+        car.name = 'benchi';                //这个name属于car对象自己,并没有修改原型
+        console.log(car.name);
+        console.log(Car.prototype.name);
+        console.log(car);
+        console.log(car.height);
+        delete car.height;                  //这个相当于删除自己的height,自己属性没有height也返回true
+        console.log(car.height);
+        //给原型增加属性必须在构造函数的原型上增加
+        Car.prototype.weight = 1000;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>遍历元素节点树</title>
+</head>
+
+<body>
+    <div>
+        123
+        <!-- this is comment  -->
+        <strong></strong>
+        <span></span>
+        <em></em>
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        console.log(div.parentElement);     //body
+        console.log(div.children);          //[strong,span]
+        console.log(div.childElementCount); //2 
+        console.log(div.children.length);   //2
+        console.log(div.firstElementChild); 
+        console.log(div.lastElementChild);
+        var span = document.getElementsByTagName('span')[0];
+        console.log(span.nextElementSibling);
+        console.log(span.previousElementSibling);
+    </script>
+</body>
+
+</html>

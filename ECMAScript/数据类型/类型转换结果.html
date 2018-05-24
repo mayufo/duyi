@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类型转换结果</title>
+</head>
+
+<body>
+    <script>
+        //----------Number-----------
+        console.log(Number(undefined));     //NaN
+        console.log(Number(null));          //0
+        console.log(Number(''));            //0
+        console.log(Number(false));         //0
+        
+        //----------Boolean-----------
+
+        console.log(Boolean(undefined));    //false
+        console.log(Boolean(null));         //false
+        console.log(Boolean(NaN));          //false
+        console.log(Boolean(''));           //false
+        console.log(Boolean(false));           //false
+        console.log(Boolean());           //false
+    </script>
+</body>
+
+</html>

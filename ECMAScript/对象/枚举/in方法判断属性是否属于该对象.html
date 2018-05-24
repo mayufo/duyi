@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>in方法判断属性是否属于该对象</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = {
+            name: 'cherry',
+            sex: 'male',
+            age: 20
+        }
+
+        //这里name必须加''或"",不加的话会把name看做一个变量,报错name is not defined
+        //in不会判断属性是否是属于原型上的
+        if ("name" in obj) {
+            console.log(123);
+        }
+    </script>
+</body>
+
+</html>

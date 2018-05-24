@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象创建</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = {
+            name: '对象字面量'
+        }
+
+        //Object也是一个函数，是系统提供的一个构造函数
+        var obj2 = new Object();
+        obj2.name = "通过构造函数创建对象";
+
+        function Car(name) {
+            // this.name = '自定义对象';
+            this.name = name;
+            this.health = 100;
+            this.color = '';
+            this.setColor = function (color) {
+                    this.color = color;
+                },
+                // this.run = function () {
+                //     console.log('run');
+                // }();
+                this.run = function () {
+                    this.health--;
+                }
+        }
+
+        //Car()函数也执行了
+        var car = new Car('自定义车');
+    </script>
+</body>
+
+</html>

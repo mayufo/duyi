@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数成为函数表达式后</title>
+</head>
+
+<body>
+    <script>
+        //f成为了一个函数表达式，函数名就消失，如果不用typeof会报错，但typeof是唯一一个不经过声明就使用不报错的函数，是undefined,所以结果是1undefined
+        var x = 1;
+        if (function f() {}) {
+            x += typeof(f);
+        }
+
+        console.log(x);
+    </script>
+</body>
+
+</html>

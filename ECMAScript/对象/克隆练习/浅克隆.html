@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>克隆</title>
+</head>
+
+<body>
+
+    <script>
+        var obj1 = {
+            name: 'cherry',
+            sex: 'male',
+            age: 20,
+            card: ['card1', 'card2']
+        }
+
+        var obj2 = {};
+        // for (var prop in obj1) {
+        //     obj2[prop] = obj1[prop];
+        // }
+
+        // console.log(obj2);
+
+        function clone(origin, target) {
+            var target = target || {};
+            for (var prop in origin) {
+                target[prop] = origin[prop];
+            }
+
+            return target;
+        }
+
+        clone(obj1, obj2);
+        obj1.card.push('card3');
+        //这里card是数组引用类型,push添加值的时候是引用,修改一个另一个也改变
+        console.log(obj1.card);
+        console.log(obj2.card)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包练习</title>
+</head>
+
+<body>
+    <script>
+        function a() {
+            var num = 100;
+
+            function b() {
+                num++;
+                console.log(num);
+            }
+            return b;
+        }
+
+        var demo = a();
+        demo();
+        demo();
+    </script>
+</body>
+
+</html>

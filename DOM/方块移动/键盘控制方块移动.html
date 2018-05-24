@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>键盘控制方块移动</title>
+</head>
+
+<body>
+    <button style="width:100px;height: 100px;background:linear-gradient(to left,#999,#000,#432,#fcc);color:#fff;text-align: center;line-height: 100px;position:fixed;top:50%;right:0">加速</button>
+
+    <script>
+        var initBlock = (function () {
+            var div = document.createElement('div');
+            var btn = document.getElementsByTagName('button')[0];
+
+            return function () {
+                document.body.appendChild(div);
+                div.style.width = "200px";
+                div.style.height = "200px";
+                div.style.backgroundColor = "#f40";
+                div.style.position = "absolute";
+                div.style.left = "0px";
+                div.style.top = "0px";
+                var speed = 5;
+
+                btn.onclick = function () {
+                    speed++;
+                }
+
+                document.onkeydown = function (e) {
+                    console.log(e.which);
+                    switch (e.which) {
+                        case 38:
+                            div.style.top = parseInt(div.style.top) - speed + "px";
+                            break;
+                        case 40:
+                            div.style.top = parseInt(div.style.top) + speed + "px";
+                            break;
+                        case 37:
+                            div.style.left = parseInt(div.style.left) - speed + "px";
+                            break;
+                        case 39:
+                            div.style.left = parseInt(div.style.left) + speed + "px";
+                            break;
+                    }
+                }
+            }
+        }());
+
+        initBlock();
+    </script>
+</body>
+
+</html>

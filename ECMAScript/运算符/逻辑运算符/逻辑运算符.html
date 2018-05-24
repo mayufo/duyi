@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>逻辑运算符</title>
+</head>
+
+<body>
+    <div>
+        点击
+    </div>
+    <script>
+        //比较运算符，结果为boolean,true或false,字符串比较的是ascii码
+        // document.write(3 && 0 && 6);
+
+        //短路语句
+        2 > 1 && document.write('如果2>1则执行这条语句');
+        // 拿到数据 data, data && 执行语句
+        var div = document.getElementsByTagName('div')[0];
+        div.onclick = function (event) {
+            //IE浏览器是window.event
+            //非IE浏览器是event
+            var e = event || window.event;
+            console.log(e);
+        }
+
+        var aaa = (window.foo || (window.foo = 'bar')); //先执行后面括号里面的，前面 window.foo-->'bar'
+        console.log(aaa);
+
+        var a = 1;
+        var bbb = a && (a = 3);
+        console.log(bbb);
+
+        // var bbb = a + 5 + (a = 3);       //这里先执行a + 5再执行a = 3再相加
+        // console.log(bbb);
+    </script>
+</body>
+
+</html>

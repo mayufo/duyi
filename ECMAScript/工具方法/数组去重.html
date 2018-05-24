@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重</title>
+</head>
+
+<body>
+    <script>
+        function unique(target) {
+            var arr = [];
+            var isb = true;
+            for (var i = 0; i < target.length; i++) {
+                isb = true;
+                for (var j = i + 1; j < target.length; j++) {
+                    if (target[i] === target[j]) {
+                        isb = false;
+                    }
+                }
+                if (isb) {
+                    arr.push(target[i]);
+                }
+            }
+
+            return arr;
+        }
+
+        // Array.prototype.unique = function () {
+        //     var arr = [];
+        //     var isb = true;
+        //     for (var i = 0; i < this.length; i++) {
+        //         isb = true;
+        //         for (var j = i + 1; j < this.length; j++) {
+        //             if (this[i] === this[j]) {
+        //                 isb = false;
+        //                 break;
+        //             }
+        //         }
+        //         if (isb) {
+        //             arr.push(this[i]);
+        //         }
+        //     }
+
+        //     this.length = 0;
+        //     for (var i = 0; i < arr.length; i++) {
+        //         this[i] = arr[i];
+        //     }
+        //     return this;
+        // }
+
+
+        Array.prototype.unique = function () {
+            var temp = {},
+                arr = [],
+                len = this.length;
+            //这里不能用for in this,this会自动添加其他方法，for in会遍历出来
+            // for (var prop in this) {
+            //     if (obj[this[prop]] == undefined) {
+            //         obj[this[prop]] = "abc";
+            //         arr.push(this[prop]);
+            //     }
+            // }
+            for (var i = 0; i < len; i++) {
+                if (!temp[this[i]]) {
+                    temp[this[i]] = "abc";  //这里给一个不为假的值
+                    arr.push(this[i]);
+                }
+                // temp[this[i]] = this[i];
+            }
+            // this.length = 0;
+            // for (var prop in obj) {
+            //     this.push(prop);
+            // }
+            // return obj;
+            return arr;
+        }
+    </script>
+</body>
+
+</html>

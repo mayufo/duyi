@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>划过颜色变浅</title>
+    <style>
+        ul {
+            width: 400px;
+            height: 400px;
+            list-style: none;
+        }
+
+        li {
+            box-sizing: border-box;
+            width: 40px;
+            height: 40px;
+            float: left;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+        <li img-data="0"></li>
+    </ul>
+
+    <script>
+        var ul = document.getElementsByTagName('ul')[0];
+
+        ul.onmouseover = function (e) {
+            var event = e || window.event;
+            var target = event.target || evnet.srcElement;
+
+            target.style.backgroundColor = "rgb(0,255," + target.getAttribute('img-data') + ")";
+            target.setAttribute('img-data', parseInt(target.getAttribute('img-data')) + 6);
+        }
+    </script>
+</body>
+
+</html>

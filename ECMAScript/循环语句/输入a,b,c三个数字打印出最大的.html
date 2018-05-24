@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>输入a,b,c三个数字打印出最大的</title>
+</head>
+
+<body>
+    <script>
+        var a = parseInt(window.prompt('input'));
+        var b = parseInt(window.prompt('input'));
+        var c = parseInt(window.prompt('input'));
+
+        var result = fun(a, b, c);
+        document.write(result);
+
+        function fun(a, b, c) {
+            var result = 0;
+
+            if (a >= b) {
+                if (a >= c) {
+                    result = a;
+                } else {
+                    result = c;
+                }
+            } else {
+                if (b >= c) {
+                    result = b;
+                } else {
+                    result = c;
+                }
+            }
+
+            return result;
+        }
+    </script>
+</body>
+
+</html>

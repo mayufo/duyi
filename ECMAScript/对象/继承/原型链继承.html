@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        function Student(name, age, tel, address) {
+            Person.call(this, name, age);
+            this.tel = tel;
+            this.address = address;
+        }
+
+        var student = new Student('sunny', 20, 66666666666, '123');
+
+        var obj = {};
+        var pserson = Person.apply(obj, ['cherry', 10]);
+    </script>
+</body>
+
+</html>

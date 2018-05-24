@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var deng = {
+            count: 0,
+            smoke: function () {
+                console.log('I am smoking...,cool!');
+                this.count++;
+                return this;
+            },
+            drink: function () {
+                console.log('I am drinking...,cool!');
+                this.count++;
+                return this;
+            },
+            perm: function () {
+                console.log('I am preming...,cool!')
+                this.count++;
+                return this;
+            }
+        }
+
+        deng.smoke().drink().perm();
+    </script>
+</body>
+
+</html>

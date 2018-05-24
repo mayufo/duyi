@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隐式类型转换</title>
+</head>
+
+<body>
+    <script>
+        var n1 = isNaN(NaN);
+        console.log(n1);
+        var n2 = isNaN('abc');
+        console.log(n2);
+        var n3 = isNaN(undefined);
+        console.log(n3);
+        var n4 = isNaN(null);
+        console.log(n4);
+
+        console.log("-------------------");
+
+        var n5 = "abc";
+        n5++;
+        console.log(typeof (n5) + ":" + n5);
+        var n6 = +"abc";
+        console.log(typeof (n6) + ":" + n6);
+
+        console.log("-------------------");
+        var n7 = "1" + 2;
+        console.log(typeof (n7) + ":" + n7);
+
+        console.log("-------------------");
+        var n8 = "1" - 2;
+        console.log(typeof (n8) + ":" + n8);
+
+        console.log("-------------------");
+        var n9 = null - 2;
+        console.log(typeof (n9) + ":" + n9);
+
+        console.log("-------------------");
+        var n10 = false / 2;
+        console.log(typeof (n10) + ":" + n10);
+
+        console.log("-------------------");
+        var n11 = 'a' * 2;
+        console.log(typeof (n11) + ":" + n11);
+
+        console.log("-------------------");
+        var n12 = 'a' > 12;
+        console.log(typeof (n12) + ":" + n12);
+
+        console.log("-------------------");
+        var n13 = 2 > 3 < 1;
+        console.log(typeof (n13) + ":" + n13);
+
+        console.log("-------------------");
+        var n14 = undefined > 0;
+        console.log(typeof (n14) + ":" + n14);
+
+        console.log("-------------------");
+        var n15 = undefined < 0;
+        console.log(typeof (n15) + ":" + n15);
+
+        console.log("-------------------");
+        var n16 = null == 0;
+        console.log(typeof (n16) + ":" + n16);
+
+        console.log("-------------------");
+        var n17 = NaN == NaN;
+        console.log(typeof (n17) + ":" + n17);
+
+        console.log("-------------------");
+        var n18 = "1" === 1;
+        console.log(typeof (n18) + ":" + n18);
+    </script>
+</body>
+
+</html>

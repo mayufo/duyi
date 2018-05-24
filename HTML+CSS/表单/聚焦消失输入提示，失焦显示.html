@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>聚焦消失输入提示，失焦显示</title>
+</head>
+<body>
+	<form>
+		<p>
+			username:<input type="text" name="username" value="请输入用户名" style="color:#999" onfocus="if(this.value == '请输入用户名'){this.value='';this.style.color = '#000'}" onblur="if(this.value == '') {this.value='请输入用户名';this.style.color='#999'}">
+		</p>
+		<p>
+			测试:<input type="text" name="" placeholder="测试用">
+		</p>
+		<p>
+			password:<input type="password" name="passwrod">
+		</p>
+		<p>
+			<input type="submit" name="">
+		</p>
+	</form>
+</body>
+</html>

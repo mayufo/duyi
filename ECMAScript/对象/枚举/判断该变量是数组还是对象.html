@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断该变量是数组还是对象</title>
+</head>
+
+<body>
+
+    <script>
+        var arr = [1, 2];
+        // arr = {
+        //     name: 1
+        // }
+        // 第一种方法
+        if (arr instanceof Array) {
+            console.log(111);
+        }
+        //第二种方法
+        if (arr.constructor == Array) {
+            console.log(222);
+        }
+        //第三种方法
+        console.log(Object.prototype.toString.call(arr));
+        if (Object.prototype.toString.call(arr) == "[object Object]") {
+            console.log('this is Object');
+        } else if (Object.prototype.toString.call(arr) == "[object Array]") {
+            console.log("this is Array");
+        }
+    </script>
+</body>
+
+</html>

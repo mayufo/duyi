@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>立即执行函数练习</title>
+</head>
+
+<body>
+    <script>
+        console.log(f);
+        var f = (
+            function f() {
+                return "1";
+            },
+            function g() {
+                return 2;
+            }
+        )();
+
+        console.log(typeof (f) + ":" + f);
+    </script>
+</body>
+
+</html>

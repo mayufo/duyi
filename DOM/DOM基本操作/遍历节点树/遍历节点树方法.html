@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>遍历节点树方法</title>
+</head>
+
+<body>
+
+    <div>
+        123
+        <!-- this is comment  -->
+        <strong></strong>
+        <span></span>
+    </div>
+
+    <script>
+        var strong = document.getElementsByTagName('strong')[0];
+       //strong.parentNode.parentNode.parentNode.parentNode --> div-->body-->html-->document
+       console.log(strong.parentNode);
+      var div = document.getElementsByTagName('div')[0];
+      console.log(div.childNodes);
+      console.log(div.childNodes.length);       //7
+      console.log(div.firstChild);              
+      console.log(div.lastChild);      
+      console.log(strong.nextSibling);
+      console.log(strong.nextSibling.nextSibling);
+      console.log(strong.previousSibling);
+    </script>
+</body>
+
+</html>

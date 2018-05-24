@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>for in循环</title>
+</head>
+
+<body>
+
+    <script>
+        var arr = [1, 2, 3, 4, 5];
+        var obj = {
+            name: 'cherry',
+            age: 20,
+            sex: 'male',
+            prop: '111'
+        }
+        //索引就相当于对象的属性名,返回的索引也都是字符串格式
+        for (var i in arr) {
+            console.log(i + " " + typeof (i));
+        }
+        //遍历的就是对象的属性,属性名就是索引
+        for (var prop in obj) {
+            console.log(prop + " " + typeof (prop));
+        }
+
+        for (var prop in obj) {
+            console.log(obj.prop); //undefined 这里obj.prop最终都会转为obj['prop'] obj里面没有prop这个属性或索引,所以是undefined,如果在obj中定义一个名为prop的属性,结果是4次
+            //prop的值
+            //  必须要这么写
+            console.log(obj[prop]);
+        }
+    </script>
+</body>
+
+</html>

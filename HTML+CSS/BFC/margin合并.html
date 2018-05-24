@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css">
+		.d1{
+			height: 50px;
+			background-color: #f40;
+			margin-bottom: 100px;
+		}
+		.d2{
+			height: 50px;
+			background-color: #00f;
+			margin-top: 100px;
+		}
+	</style>
+	<title>margin合并</title>
+</head>
+<body>
+	<!-- 相当于两个兄弟公用了之间的margin -->
+	<!-- 解决方法让两个元素中一个或两个的父级bfc-->
+	<!-- 不过一般不用改变结构的方式处理，会破坏HTML结构，直接自己定义需要的mairgn更合理 -->
+	<div class="d1"></div>
+	<!-- <div class="wrap" style="overflow: hidden;">
+		<div class="d2"></div>	
+	</div> -->
+	<div class="d2"></div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+在函数执行前面加了new操作符以后:
+function Test(){
+    1.在函数体最前端隐式的加上this={__proto__:Test.prototype}
+    2.执行this.xxx = xxx;
+    3.隐式的返回this
+}
+
+var test = new Test();
+
+解析：在函数执行前面加了new操作符以后，函数还是照样执行,Test()-->执行，在Test函数最前端加上了一个this={},this再Test的AO中，实际上就是通过对象字面量的方式创建了一个空对象，名叫this,
+然后给this这个对象赋值属性和方法等,this.name = '123' this.run = function(){}
+最后返回this 对象，返回后this对象赋值给test变量,因为对象是引用类型，所以赋值的是地址，this和test指向同一AO，Test()返回后函数执行完毕，AO销毁
+当再new一个Test()对象的时候，产生了一个新的AO，AO中有this，最后返回赋值给一个新的变量，所以每次new都产生一个新的this对象

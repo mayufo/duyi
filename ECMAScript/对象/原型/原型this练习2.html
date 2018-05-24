@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型this练习2</title>
+</head>
+
+<body>
+
+    <script>
+        Person.prototype = {
+            height: 100
+        }
+
+        function Person() {
+            //this指向的是调用他的对象, 所以是peron.height++,person增加了一个height属性
+            this.eat = function () {
+                this.height++;
+            }
+        }
+
+
+        var person = new Person();
+        console.log(person.eat());
+        console.log(person.height);             //101
+        console.log(Person.prototype.height);   //100
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+    .d1 {
+    	/*position: absolute和float也可以解决塌陷，但成为inling-block，宽度由内容决定*/
+    	/*position: absolute;*/
+        border: 1px solid #000;
+    }
+
+	/*.d1::after{
+		content: "";
+		display: block;
+		clear: both;
+	}*/
+
+    .d2 {
+    	float: left;
+        width: 100px;
+        height: 100px;
+        border:1px solid #f00;
+        background-color: #f40;
+    }
+    /*.d1 p {
+    	clear: both;
+    }*/
+    
+    </style>
+    <title>父级包住浮动元素（解决浮动造成的高度塌陷)</title>
+</head>
+
+<body>
+    <div class="d1">
+        <div class="d2">1</div>
+        <div class="d2">2</div>
+        <div class="d2">3</div>
+        <!-- <p></p> -->
+    </div>
+</body>
+
+</html>

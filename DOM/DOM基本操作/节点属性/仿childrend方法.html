@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仿childrend方法</title>
+</head>
+
+<body>
+
+    <div>
+        <strong></strong>
+        <span></span>
+        <em></em>
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        function retElementChildren(node) {
+            var obj = {
+                    length: 0,
+                    push: Array.prototype.push
+                },
+                children = node.childNodes,
+                len = children.length;
+
+            for (var i = 0; i < len; i++) {
+                if (children[i].nodeType == 1) {
+                    obj.push(children[i]);
+                }
+            }
+
+            return obj;
+        }
+
+        console.log(retElementChildren(div));
+    </script>
+</body>
+
+</html>

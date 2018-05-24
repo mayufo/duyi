@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>包装类演示过程</title>
+</head>
+
+<body>
+    <script>
+        var num = 5;
+        num.len = 3;                        // (new Number(5)).len ---> delete
+        console.log(num.len);               //(new Number(5)).len ---> undefined
+
+        var arr = [1,2,3];
+        arr.length = 1;
+        console.log(arr);                //Array(1)
+
+        var str = "123";
+        str.length = 1;
+        console.log(str);               //"123"
+        console.log(str.length);        //(new String("123")).length --> 系统中String构造函数就有length,即String对象就有length属性,str.length实际上访问的是(new String("123")),完事后 delete
+    </script>
+</body>
+
+</html>

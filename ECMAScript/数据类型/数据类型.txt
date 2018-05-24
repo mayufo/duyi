@@ -1,0 +1,21 @@
+数组类型又原值和引用值
+
+数据类型有6种：
+number (NaN)也属于number
+string
+object (null)也属于object
+boolean
+undefined
+function
+
+类型转换的结果:
+Number:
+Number(undefined);     //NaN
+Number(null);         //0
+Number('');           //0
+Number(false);        //0
+
+Boolean为false的6个值:
+undefined,null,NaN,'',false,0  
+
+{} == {} :false 引用值与引用值比对的是地址     

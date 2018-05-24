@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>返回字符串长度</title>
+</head>
+
+<body>
+    <script>
+        var num = window.prompt('input');
+
+        function test(target) {
+            // var count = 0;
+            // for (var i = 0; i < num.length; i++) {
+            //     if (target.charCodeAt(i) <= 255) {
+            //         count++;
+            //     } else if (target.charCodeAt(i) > 255) {
+            //         count += 2;
+            //     }
+            // }
+            var count,
+                len;
+            count = len = target.length;
+            for (var i = 0; i < len; i++) {
+                if (target.charCodeAt(i) > 255) {   //unicode编码前255位包含255占一个字节,后255位占2个字节
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        var count = test(num);
+        document.write(count);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        // var lis = document.getElementsByTagName('li');
+        // for (var i = 0; i < lis.length; i++) {
+        //     (function (j) {
+        //         lis[j].onclick = function () {
+        //             alert(i);
+        //         }
+        //     }(j));
+        // }
+        // // Person.prototype.name = "cherry";
+
+        // // function Person(name, sex) {
+        // //     this.name = name;
+        // //     this.sex = sex;
+        // // }
+
+        // // function Student(name, sex, tel) {
+        // //     Person.call(this, 'xiaoming', 20);
+        // //     this.tel = tel;
+        // // }
+
+        // // var student = new Student('xiaoming', 'male', 20);
+
+        // // Person.prototype.name = 'cherry';
+
+        // // function Person(age, sex) {
+        // //     this.age = age;
+        // //     this.sex = sex;
+        // // }
+
+        // // Student.prototype = new Person(20, 'male');
+
+        // // function Student(tel) {
+        // //     this.tel = tel;
+        // // }
+
+        // // var student = new Student(666);
+
+        // // Person.prototype.name = 'cherry';
+
+        // // function Person() {
+
+        // // }
+
+        // // Student.prototype = Person.prototype;
+
+        // // function Student() {
+
+        // // }
+
+        // // var person = new Person();
+        // // var student = new Student();
+
+        // Person.prototype.name = 'cherry';
+
+        // function Person() {
+
+        // }
+
+        // // F.prototype = Person.prototype;
+
+        // // function F() {
+
+        // // }
+
+        // // Student.prototype = new F();
+        // // Student.prototype.constructor = Student;
+        // // Student.prototype.uber = Person.prototype;
+
+        // function Student() {
+
+        // }
+        // // inherit(Student, Person);
+
+        // // function inherit(Target, Origin) {
+        // //     function F() {}
+        // //     F.prototype = Origin.prototype;
+        // //     Target.prototype = new F();
+        // //     Target.prototype.constructor = Target;
+        // //     Target.prototype.uber = Origin.prototype;
+        // // }
+
+
+
+        // // var init = (function () {
+        // //     function F() {}
+
+        // //     return function (Target, Origin) {
+        // //         F.prototype = Origin.prototype;
+        // //         Target.prototype = new F();
+        // //         Target.prototype.constructor = Target;
+        // //         Target.prototype.uber = Origin.prototype;
+        // //     }
+        // // }());
+
+        // // init(Student, Person);
+        // // var student = new Student();
+
+        // // var name = 'cherry';
+
+        // // var initCheng = (function () {
+        // //     var name = 'cheng';
+
+        // //     function callName() {
+        // //         console.log(name);
+        // //     }
+
+        // //     return function () {
+        // //         callName();
+        // //     }
+        // // }());
+
+        // // initCheng();
+
+        // // var initDeng = (function () {
+        // //     var name = 'deng';
+
+        // //     function callName() {
+        // //         console.log(name);
+        // //     }
+
+        // //     return function () {
+        // //         callName();
+        // //     }
+        // // }());
+
+        // // initDeng();
+
+        // // function Deng(name, wife) {
+        // //     var prepareWife = "xiaozhang";
+
+        // //     this.name = name;
+        // //     this.wife = wife;
+        // //     this.device = function () {
+        // //         this.wife = prepareWife;
+        // //     }
+
+        // //     this.changePrepareWife = function (target) {
+        // //         prepareWife = target;
+        // //     }
+
+        // //     this.sayPrepareWife = function () {
+        // //         console.log(prepareWife);
+        // //     }
+        // // }
+
+
+        // // var deng = new Deng('deng', 'xiaoliu');
+
+        // // function fun() {
+        // //     var arr = [];
+        // //     for (var i = 0; i < 10; i++) {
+        // //         // arr[i] = function () {
+        // //         //     document.write(i + " ");
+        // //         // }
+        // //         (function (j) {
+        // //             arr[j] = function () {
+        // //                 document.write(j + " ");
+        // //             }
+        // //         }(i));
+        // //     }
+
+        // //     return arr;
+        // // }
+
+        // // var arr = fun();
+        // // for (var i in arr) {
+        // //     arr[i]();
+        // // }
+
+        Person.prototype = {
+            height: 100
+        }
+
+        function Person() {
+            //this指向的是调用他的对象, 所以是peron.height++,person增加了一个height属性
+            this.eat = function () {
+                this.height++;
+            }
+        }
+
+
+        var person = new Person();
+        console.log(person.eat());
+        console.log(person.height); //101
+        console.log(Person.prototype.height); //100
+        var arr = [1, 2, 3, , 4, 5];
+        
+
+        
+
+    </script>
+</body>
+
+</html>

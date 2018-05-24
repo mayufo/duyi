@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es5严格模式</title>
+</head>
+
+<body>
+    <script>
+        function test() {
+            console.log(arguments.callee);
+        }
+
+        test();
+    </script>
+    <script>
+        //如果use strict不是页面逻辑最顶端，则不会启用
+        // var abc = 2;
+
+        //es5.0严格模式启动
+        // "use strict";
+
+        function test() {
+            //这个函数遵循es5.0严格模式，放在函数里面的最顶端
+            "use strict";
+            console.log(arguments.callee);
+        }
+
+        test();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>方块移动</title>
+</head>
+
+<body>
+
+    <script>
+        var initDiv = (function () {
+            var div = document.createElement('div');
+
+            return function () {
+                document.body.appendChild(div);
+                div.style.width = "200px";
+                div.style.height = "200px";
+                div.style.backgroundColor = "#f40";
+                div.style.position = "absolute";
+                div.style.left = "0px";
+                div.style.top = "0px";
+                var speed = 1;
+
+                var timer = setInterval(function () {
+                    speed += speed / 20; //加速运动
+                    div.style.left = parseInt(div.style.left) + 1 + "px";
+                    div.style.top = parseInt(div.style.top) + 1 + "px";
+                    if (parseInt(div.style.left) > 200 && parseInt(div.style.top) > 200) {
+                        clearInterval(timer);
+                    }
+                }, 10);
+            }
+
+        }());
+
+        var initDiv2 = (function () {
+            var div = document.createElement('div');
+
+            return function () {
+                document.body.appendChild(div);
+                div.style.width = "200px";
+                div.style.height = "200px";
+                div.style.backgroundColor = "#020";
+                div.style.position = "absolute";
+                div.style.right = "0px";
+                div.style.top = "0px";
+
+                setInterval(function () {
+                    div.style.right = parseInt(div.style.right) + 1 + "px";
+                    div.style.top = parseInt(div.style.top) + 1 + "px";
+                }, 100);
+            }
+
+        }());
+
+        initDiv2();
+        initDiv();
+    </script>
+</body>
+
+</html>

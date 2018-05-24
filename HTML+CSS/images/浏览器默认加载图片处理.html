@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css">
+		a{
+			color: #f40;
+			text-decoration: none;
+		}
+		/*但没有CSS的时候图片不显示，就会显示文字*/
+		.logo{
+			display: inline-block;
+			width: 145px;
+			height: 60px;
+			background-image: url(https://img.alicdn.com/tfs/TB1_uT8a5ERMeJjSspiXXbZLFXa-143-59.png);
+			/*第一种方法*/
+			/*text-indent: 145px;
+			white-space:nowrap;
+			overflow: hidden;*/
+			/*第二种方法*/
+			height: 0px;
+			padding-top: 60px;
+			overflow: hidden;
+		}
+	</style>
+	<title>浏览器默认加载图片处理</title>
+</head>
+<body>
+	<a href="www.taobao.com" class="logo">淘宝网</a>
+</body>
+</html>

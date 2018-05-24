@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        Grand.prototype.name = "gg";
+
+        function Grand() {
+
+        }
+
+        var grand = new Grand();
+
+        Farther.prototype = grand;
+
+        function Farther() {
+            this.smoke = "smoke";
+            this.con = {
+                tt: "tt"
+            }
+        }
+
+        var farther = new Farther();
+
+        Son.prototype = farther;
+
+        function Son() {
+            this.hobbly = "play";
+        }
+
+        var son = new Son();
+        console.log(son.name);
+        console.log(son.__proto__.__proto__.__proto__.name);
+        console.log(farther.con);            //tt
+         son.con = {};
+        // delete son.con.tt;                      //true
+        // son.con.tt = 1;
+        console.log(farther.con);            //undefined
+    </script>
+</body>
+
+</html>

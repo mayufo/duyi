@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拼接公司名称</title>
+</head>
+
+<body>
+
+    <script>
+        var str = "alibaba",
+            str1 = "baidu",
+            str2 = "tencent",
+            str3 = "wangyi",
+            str4 = "xiaowang",
+            str5 = "nv",
+            arr = [str, str1, str2, str3, str4, str5];
+        var strFinal = "";
+        //尽量不要用这种拼接，字符串是保存在栈内存中的，栈内存先进后出
+        // for (var i = 0; i < arr.length; i++) {
+        //     strFinal += arr[i];
+        // }
+        //数组是一种散列结构，效率高
+        strFinal = arr.join('');
+        console.log(strFinal);
+    </script>
+</body>
+
+</html>

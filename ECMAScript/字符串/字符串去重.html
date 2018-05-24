@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串去重</title>
+</head>
+
+<body>
+
+    <script>
+        var str = "aaaccxwersfjkdsjfkdundefined";
+
+        String.prototype.unique = function () {
+            var strArr = this.split("");
+            var temp = {},
+                res = "";
+
+            for (var i = 0; i < strArr.length; i++) {
+                if (!temp[strArr[i]]) {
+                    temp[strArr[i]] = "abc";
+                    res += strArr[i];
+                }
+            }
+
+            return res;
+        }
+
+        console.log(str.unique());
+    </script>
+</body>
+
+</html>

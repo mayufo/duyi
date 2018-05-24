@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>document.write解析</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = {};
+        document.write(obj); //---->obj.toString();
+        obj = Object.create(null);
+        // document.write(obj);            //报错，因为没有toString()方法
+        obj.toString = function(){
+            return 111;
+        }
+        document.write(obj);            //111
+        // var num = 123;
+        // document.write(num); //num.toString();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>toString</title>
+</head>
+
+<body>
+
+    <script>
+        //除了null和undefined都可以使用toString方法
+        [1, 2, 3].toString();   //"1,2,3"
+        ({name:"cherry"}).toString();   //"[object Object]"
+        //Object上的toString方法
+        Object.prototype.toString();    //"[object Object]"
+        Object.ptototype.toString.call([]); //"[object Array]"    
+        Object.ptototype.toString.call(123); //"[object Number]"  
+        Object.ptototype.toString.call("aaa"); //"[object String]"  
+        Object.ptototype.toString.call(true); //"[object Boolean]"  
+        Object.ptototype.toString.call({}); //"[object Object]"          
+    </script>
+</body>
+
+</html>

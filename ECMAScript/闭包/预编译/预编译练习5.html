@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预编译练习5</title>
+</head>
+
+<body>
+    <script>
+        global = 100;
+
+        function fun() {
+            console.log(global);     //undefined
+            global = 200;   
+            console.log(global);    //200
+            var global = 300;
+        }
+        
+        fun();
+        var global;
+    </script>
+</body>
+
+</html>

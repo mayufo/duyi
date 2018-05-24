@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣杯模式</title>
+</head>
+
+<body>
+
+    <script>
+        Farther.prototype.name = 'sunny';
+
+        function Farther() {
+
+        }
+
+        function Son() {
+
+        }
+
+        function F() {
+
+        }
+
+        function inherit(Target, Origin) {
+            function F() {};
+            F.prototype = Origin.prototype;
+            Target.prototype = new F();
+            Target.prototype.constructor = Target;          //构造器归位
+            Target.prototype.uber = Origin.prototype;       //保存了最终继承的原型
+        }
+
+        //共有原型
+        F.prototype = Farther.prototype;
+        //原型链
+        Son.prototype = new F();
+    </script>
+</body>
+
+</html>

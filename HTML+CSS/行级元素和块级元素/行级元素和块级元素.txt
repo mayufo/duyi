@@ -1,0 +1,13 @@
+1.行级元素/内联元素 inline
+feature:内容决定元素所占位置
+		不可以通过css改变宽高
+		span a strong em del
+2.块级元素 block
+feature:独占一行
+		可以通过css改变宽高
+		div	p ul li	ol address form
+3.行级块元素	inline-block
+feature:内容决定大小
+		可以通过css改变宽高
+		img
+任何带inline的都有文字属性

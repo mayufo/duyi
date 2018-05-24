@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算2的n次幂,n可输入，n为自然数</title>
+</head>
+
+<body>
+    <div>
+        请输入:
+        <input type="text">
+        <button onclick="fun()">计算</button>
+    </div>
+    <div>
+        结果：
+        <span class="result"></span>
+    </div>
+    <script>
+        var n = parseInt(window.prompt('input'));
+        var result = fun(n);
+        console.log(result);
+
+        function fun(n) {
+            var result = 1;
+            for (var i = 0; i < n; i++) {
+                result *= 2;
+            }
+
+            return result;
+        }
+        // function fun() {
+        //     var input = document.getElementsByTagName('input')[0];
+        //     var value = parseInt(input.value);
+        //     var result = 1;
+        //     for (var i = 0; i < value; i++) {
+        //         result *= 2;
+        //     }
+        //     var res = document.getElementsByClassName('result')[0];
+        //     res.innerHTML = result;
+        // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+包装类过程演示:
+var num = 4;
+
+num.len = 3;
+因为原始值不能有属性和方法,当出现这种情况系统会自动 (new Number(num)).len = 3 生成一个Number对象,并在Number上创建一个属性len = 3,完事后 delete
+当访问num.len的时候,因为已经delete了,所以又(new Number(num)).len这时len是undefined

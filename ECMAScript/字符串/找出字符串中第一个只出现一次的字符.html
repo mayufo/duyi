@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>找出字符串中第一个只出现一次的字符</title>
+</head>
+
+<body>
+
+    <script>
+        var str = "sdfakdsjf";
+
+        String.prototype.noUniqueFirst = function () {
+            var strArr = this.split("");
+            var temp = {},
+                arr = [];
+
+            for (var i = 0; i < strArr.length; i++) {
+                if (!temp[strArr[i]]) {
+                    temp[strArr[i]] = 1;
+                } else {
+                    temp[strArr[i]] = 2;
+                }
+            }
+
+            for (var prop in temp) {
+                if (temp[prop] == 1) {
+                    arr.push(prop);
+                }
+            }
+
+            return arr[0];
+        }
+
+        console.log(str.noUniqueFirst());
+    </script>
+</body>
+
+</html>

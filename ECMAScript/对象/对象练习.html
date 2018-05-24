@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象练习</title>
+</head>
+
+<body>
+
+    <script>
+        function Person(name, age, sex) {
+            var a = 0;
+            this.name = name;       //undefined
+            this.age = age;         //undefined
+            this.sex = sex;         //undefined
+
+            function sss() {
+                a++;
+                // document.write(a);
+                console.log(a);
+            }
+            this.say = sss;
+        }
+
+        var oPerson = new Person();
+        oPerson.say();                  //1
+        oPerson.say();                  //2
+        var oPerson1 = new Person();
+        oPerson1.say();                 //1
+    </script>
+</body>
+
+</html>

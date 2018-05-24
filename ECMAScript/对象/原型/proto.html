@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        Person.prototype.name = '123';
+
+        function Person() {
+            // var this = {
+            //     __proto__: Person.prototye
+            // };
+        }
+
+        var p = new Person();
+        console.log(p);
+        //原型可以修改
+        var obj = {
+            name: '修改的原型'
+        };
+        p.__proto__ = obj;
+        console.log(p.name);
+    </script>
+</body>
+
+</html>

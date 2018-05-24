@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prototype</title>
+</head>
+
+<body>
+
+    <script>
+        Person.prototype.name = '原型';
+        Person.prototype.say = function () {
+            console.log(this.name);
+        }
+
+        function Person() {
+
+        }
+
+        var person = new Person();
+        typeof (p); //undefined
+        // p.prototype.age = 10;    报错
+        var p = function () {
+
+        }
+        p.prototype.age = 10;
+        var n = new p();
+        console.log(n.age);
+    </script>
+</body>
+
+</html>

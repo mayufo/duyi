@@ -1,0 +1,26 @@
+ 对象的创建方法
+1.对象字面量/对象直接量 var obj = {} plainObject
+2.构造函数
+    1) 系统自带的构造函数   new Object() Array() Number()... Object也是一个函数，是系统提供的一个构造函数
+    var obj = new Object();
+    obj.name = "123";
+    obj.fun = function(){}
+    2) 自定义
+    
+    自定义构造函数和普通函数没有任何区别,即一个函数就是一个构造函数，但规范构造函数要符合大驼峰式命名规则，即单词首字母大写，并且函数也执行了入new Car();Car()也是函数执行过程
+    function Person(){
+
+    }
+
+    var person1 = new Person();
+
+    function Car(){
+        this.name = 'BMW';
+        this.height = 1400;
+    }
+
+    var car = new Car();
+    car.name;
+    car.height;
+
+

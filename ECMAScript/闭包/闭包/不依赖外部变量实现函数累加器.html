@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>不依赖外部变量实现函数累加器</title>
+</head>
+
+<body>
+    <script>
+        function test() {
+            var count = 0;
+            var counter = function () {
+                count++;
+                console.log(count);
+            }
+
+            return counter;
+        }
+
+        var counter = test();
+        counter(); //1
+        counter(); //2
+    </script>
+</body>
+
+</html>

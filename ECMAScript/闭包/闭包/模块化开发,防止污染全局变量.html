@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包实现独立空间防止变量冲突(变量私有化)</title>
+</head>
+
+<body>
+
+    <script>
+        var name = 'global';
+        var init = (function () {
+            var name = 'cherry';
+
+            function callName() {
+                console.log(name);
+            }
+
+            return function () {
+                callName();
+            }
+        }());
+
+        init();
+        console.log(name);
+
+        var initDeng = (function () {
+            var name = 'deng';
+
+            function callName() {
+                console.log(name);
+            }
+
+            return function () {
+                callName(name);
+            }
+        }());
+
+        initDeng();
+    </script>
+</body>
+
+</html>

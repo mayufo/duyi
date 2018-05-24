@@ -1,0 +1,7 @@
+bfc:block format content 块级格式化上下文
+如何触发一个盒子的bfc
+1.position:absolute
+2.display:inline-block
+3.float:left/right
+4.overflow:hidden
+

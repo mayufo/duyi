@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>apply</title>
+</head>
+
+<body>
+
+    <script>
+        //apply和call只有名字和实参传参形式不同,apply实参传参形式是数组
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        function Student(name, age, tel) {
+            Person.apply(this, [age, tel]);
+            this.tel = tel;
+        }
+
+        var student = new Student('sunny', 10, 1111);
+        console.log(student);
+
+        function foo() {
+            bar.apply(null, arguments);
+        }
+
+        function bar(x) {
+            console.log(arguments);
+        }
+
+        foo(1, 2, 3, 4, 5);
+    </script>
+</body>
+
+</html>

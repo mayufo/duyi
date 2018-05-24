@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>暗示全局变量</title>
+</head>
+<body>
+    <script>
+        //未经声明就赋值的变量归window所有
+        a = 123;
+        console.log(a);
+        function fun(){
+            //等价于console.log(window.a);
+            console.log(a);
+            var b = c = 333;
+        }
+        fun();
+        // console.log(b);
+        console.log(c);
+       
+    </script>
+</body>
+</html>

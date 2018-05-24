@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实参列表</title>
+</head>
+
+<body>
+    <script>
+        function fun(a, b, c) {
+            a = 2;
+            console.log(arguments[0]);
+            //arguments[0]和a不是同一个变量，但他们之间有个映射规则
+            arguments[0] = 3;
+            console.log(a);
+            //实参列表出生时有几个参数就有几个，当时没有映射的形参，以后也不会有
+            c = 4;
+            console.log(arguments[2]);
+        }
+
+        fun(1, 2);
+    </script>
+</body>
+
+</html>

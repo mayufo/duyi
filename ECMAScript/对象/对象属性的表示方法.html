@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象属性的表示方法</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = {
+            wife1: 'xiaoliu',
+            wife2: 'xiaozhang',
+            wife3: 'xiaoli',
+            wife4: 'xiaohong',
+            sayWife: function (num) {
+                console.log(this['wife' + num]);        //this.wife ----> this['wife'],当遇到属性名当作字符串形式可以换成数组表示形式,比如属性名的拼接只能通过数组表示形式
+            }
+        };
+
+        obj.sayWife(2);         //xiaozhang
+        obj.sayWife(4);         //xiaohong
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #f40;
+            display: inline-block;
+            margin-left: 30px;
+        }
+
+        .active {
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="active">1</button>
+    <button>2</button>
+    <button>3</button>
+    <div class="content" style="display:block">块一</div>
+    <div class="content" style="display:none">块二</div>
+    <div class="content" style="display:none">块三</div>
+
+
+    <script>
+        var btn = document.getElementsByTagName('button');
+        var div = document.getElementsByClassName('content');
+
+        for (var i = 0; i < btn.length; i++) {
+            (function (i) {
+                btn[i].onclick = function () {
+                    for (var j = 0; j < btn.length; j++) {
+                        // console.log(i);
+                        btn[j].className = "";
+                        div[j].style.display = "none";
+                    }
+                    this.className = "active";
+                    div[i].style.display = "block";
+                }
+            }(i));
+        }
+    </script>
+</body>
+
+</html>

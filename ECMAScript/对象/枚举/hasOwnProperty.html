@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hasOwnProperty</title>
+</head>
+
+<body>
+
+    <script>
+        Person.prototype.name = 'cherry';
+
+        function Person(sex, age) {
+            this.sex = sex;
+            this.age = age;
+        }
+
+        function Student(tel) {
+            this.tel = tel;
+        }
+
+        var person = new Person('male', 20);
+        Student.prototype = person;
+        for (var prop in person) {
+            //过滤原型上的属性,判断是否是自己的属性还是原型上的
+            if (person.hasOwnProperty(prop)) {
+                console.log(person[prop]);                  //male,20
+            }
+        }
+
+        // Object.prototype.aaa = "aaa";
+
+        var student = new Student('666');
+        for (var s in student) {
+            if (student.hasOwnProperty(s)) {
+                console.log(student[s]);                //666
+            }
+        }
+    </script>
+</body>
+
+</html>

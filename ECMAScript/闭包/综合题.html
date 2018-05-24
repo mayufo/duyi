@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>综合题</title>
+</head>
+
+<body>
+
+    <script>
+        var x = 1;
+        //这里注意f函数在()里成为了函数表达式,f函数名已经不存在,在使用f应该报错,f is not defined但这里typeof不会报错只会undefined
+        if (function f() {}) {
+            x += typeof (f);
+        }
+
+        console.log(x);        //1undefined
+    </script>
+</body>
+
+</html>

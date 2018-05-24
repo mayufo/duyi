@@ -1,0 +1,28 @@
+.logo {
+	padding:0 10px;
+    width: 200px;
+    line-height: 20px;
+    height: 20px;
+    color: #fff;
+    font-size: 12px;
+    background-color: rgba(123,123,123,0.8);
+}
+
+.logo::before {
+    display: inline-block;
+    content: "";
+    width: 12px;
+    height: 11px;
+    background-image: url(8.jpg);
+    background-size: 100% 100%;
+    margin-right: 5px;
+    vertical-align:-1px;
+}
+
+.logo::after{
+	display: inline-block;
+	content: ">";
+	width:6.5px;
+	height: 11.5px;
+	float:right;
+}

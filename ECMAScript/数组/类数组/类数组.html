@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类数组</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = {
+            1: 'a',
+            2: 'b',
+            3: 'c',
+            "length": 100,
+            "push": Array.prototype.push,
+            "splice": Array.prototype.splice    //加上splice属性值为Array的splice方法后后打印就变成[] 数组形式了
+        }
+
+        //结果是添加了一个d元素
+        obj.push("d");
+        console.log(obj); //100:d
+
+        //原理
+        // Array.prototype.push = function (target) {
+        //     this[this.length] = target;
+        //     this.length++;
+        // }
+    </script>
+</body>
+
+</html>

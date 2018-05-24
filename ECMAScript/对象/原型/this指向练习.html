@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this指向练习</title>
+</head>
+
+<body>
+
+    <script>
+        //a.sayName() sayName里面的this指向的是，谁调用的这个方法，this就指向谁
+        Person.prototype = {
+            name: 'a',
+            sayName: function () {
+                console.log(this.name);
+            }
+        }
+
+        function Person() {
+            this.name = 'b';
+        }
+
+        var person = new Person();
+        // console.log(person.name);
+        console.log(person.sayName());               //b
+        console.log(Person.prototype.sayName());    //a
+    </script>
+
+</body>
+
+</html>

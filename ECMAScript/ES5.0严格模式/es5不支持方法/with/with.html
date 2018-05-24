@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es5不支持方法</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = {
+            name: 'obj'
+        }
+
+        var name = 'window';
+
+        function tt(){
+            var name = 'tt';
+        }
+
+        function test() {
+            var name = 'fun';
+            var age = 20;
+
+            with(tt) {
+               console.log(name);   //tt
+               console.log(age);    //20
+            }
+        }
+
+        test();     //tt
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自己封装判断类型type方法</title>
+</head>
+
+<body>
+
+    <script>
+        function type(target) {
+            var template = {
+                "[object Object]": "object",
+                "[object Array]": "array",
+                "[object Number]": "number - object",
+                "[object String]": "number - string",
+                "[object Boolean]": "number - boolean"
+            };
+            var ret = typeof (target);
+
+            if (target === null) {
+                return "null";
+            } else if (ret == "object") {
+                var str = Object.prototype.toString.call(target);
+                return template[str];
+            } else {
+                return ret;
+            }
+        }
+    </script>
+</body>
+
+</html>

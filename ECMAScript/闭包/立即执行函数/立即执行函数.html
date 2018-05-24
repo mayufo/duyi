@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>立即执行函数</title>
+</head>
+
+<body>
+    <script>
+        (function (a, b, c) {
+            console.log(a + b + c);
+        }(1, 2, 3));
+
+        var num = (function (a, b, c) {
+            return a * b * c;
+        }(1, 2, 3));
+
+        console.log(num);
+
+        var test = function test() {
+            console.log('被执行符号执行的函数表达式');
+        }();
+
+        +
+        function tt() {
+            console.log('只有表达式才能被执行符号执行');
+        }();
+
+        ! function nn() {
+            console.log('只有表达式才能被执行符号执行');
+        }();
+
+        true && function ff() {
+            console.log('只有表达式才能被执行符号执行');
+        }();
+
+        (function test2() {
+            console.log('()也成为一个表达式')
+        })();
+
+        (function test3() {
+            console.log('()也成为一个表达式')
+        }());
+        
+        //就等于function test4(){}
+        //(1,2,3); 两个语句
+        function test4() {
+            console.log('理论上会报错，该函数不是一个表达式，但加了实参有特殊情况')
+        }(1, 2, 3);
+    </script>
+</body>
+
+</html>

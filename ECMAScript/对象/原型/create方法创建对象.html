@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>create方法创建对象</title>
+</head>
+
+<body>
+
+    <script>
+        obj = {
+            name: "123"
+        }
+
+        var obj1 = Object.create(obj);
+        //obj1.__proto__ ----> obj
+        console.log(obj1.name);
+
+        Person.prototype.name = 'sunny';
+
+        function Person() {
+
+        }
+
+        var person = Object(Person.prototype);
+        console.log(person.name);
+    </script>
+</body>
+
+</html>

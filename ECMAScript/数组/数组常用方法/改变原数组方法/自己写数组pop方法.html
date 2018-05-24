@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自己写数组pop方法</title>
+</head>
+
+<body>
+
+    <script>
+        Array.prototype.pop = function () {
+            this.length && this.length--;
+        }
+        var arr = [1, 2];
+        arr.pop();
+        console.log(arr);       //1
+    </script>
+</body>
+
+</html>

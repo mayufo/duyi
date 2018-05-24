@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Wheel(wheelSize, style) {
+            this.whellSize = wheelSize;
+            this.style = style;
+        }
+
+        function Sit(c, sitColor) {
+            this.c = c;
+            this.sitColor = sitColor;
+        }
+
+        function Model(height, width, len) {
+            this.height = height;
+            this.width = width;
+            this.len = len;
+        }
+
+        function Car(wheelSize, style, c, sitColor, height, width, len) {
+            Wheel.call(this, wheelSize, style);
+            Sit.call(this, c, sitColor);
+            Model.call(this, height, width, len);
+        }
+
+        var car = new Car(100, 's', 'c', 'white', 200, 300, 400);
+        console.log(car);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节点属性</title>
+</head>
+
+<body>
+
+    <div class="demo" id="dd">
+        <!-- this is comment -->
+        <span></span>
+        <em></em>
+        <strong></strong>
+    </div>
+
+    <div class="d2"></div>
+
+    <script>
+
+        var div = document.getElementsByTagName('div')[0];
+        console.log(div.firstChild.nodeName);
+        // console.log(div.firstChild.nextSibling.nodeName);
+        console.log(div.childNodes[1].nodeName);
+        div.childNodes[0].nodeValue = '111';
+        console.log(div.nodeType);          //1
+
+        console.log(div.attributes);
+        console.log(div.attributes[0].value);
+        div.attributes[0].value = "abc"
+        console.log(div.attributes[0].value);       //abc
+
+        var d2 = document.getElementsByClassName('d2')[0];
+        console.log(d2.hasChildNodes());
+    </script>
+</body>
+
+</html>

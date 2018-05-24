@@ -1,0 +1,10 @@
+0.14 * 100 --> 14.000000000000002
+javascript精度不准的bug,javascript尽量避免小数操作，操作的话最好加上Math.floor()向下或Math.ceil()向上取整
+同理随机方法：
+for(var i = 0; i < 10; i++){
+    //var num = Math.random().toFixed(2) * 100; //看似是0到100的随机数,其实有时候不准，还是出现小数位，所以一定要用Math.floor()或Math.ceil()
+    var num = Math.floor(Math.random() * 100);
+    console.log(num);                                               
+}
+
+javascript精度不准尽量避免用toFixed进行小数操作

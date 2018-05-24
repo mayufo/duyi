@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<div>123</div>
+<span name="test">
+    <strong class="demo">333</strong>
+    <strong class="demo">444</strong>
+</span>
+<input type="text" name="test">
+
+
+<body>
+
+    <script>
+        var div = document.getElementsByTagName('div');
+
+        var name = document.getElementsByName('test');
+        var s = document.getElementsByTagName('strong');
+        
+        //querySelector和querySelectorAll不是实时的
+        var span = document.querySelector('span > strong.demo');
+        var spanAll = document.querySelectorAll('span > strong.demo');
+
+        var demo = document.createElement('strong');
+        span.appendChild(demo);
+    </script>
+</body>
+
+</html>

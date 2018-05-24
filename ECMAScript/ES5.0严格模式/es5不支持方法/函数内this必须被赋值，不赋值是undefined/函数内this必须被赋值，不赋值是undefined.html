@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数内this必须被赋值，不赋值是undefined</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict"
+
+        function test() {
+            console.log(this);      //es5严格模式下是undefined,es3是window
+        }
+
+        test.call(123);             //123,es3是Number {123}
+
+
+        var obj = {
+            name:123,
+            name:234
+        }
+
+        console.log(obj.name);
+    </script>
+</body>
+
+</html>

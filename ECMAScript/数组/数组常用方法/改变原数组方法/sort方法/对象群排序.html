@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象群排序</title>
+</head>
+
+<body>
+
+    <script>
+        var cheng = {
+                name: "cheng",
+                age: 20,
+            },
+            deng = {
+                name: "deng",
+                age: 40
+            },
+            zhang = {
+                name: "zhang",
+                age: 20
+            },
+            arr = [cheng, deng, zhang];
+
+        arr.sort(function (a, b) {
+            // return a.age - b.age;
+            return b.age - a.age;
+        })
+    </script>
+</body>
+
+</html>

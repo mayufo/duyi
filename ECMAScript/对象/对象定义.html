@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象定义</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = {
+            name: "MrDeng",
+            age: 40,
+            sex: 'male',
+            health: 100,
+            smoke: function () {
+                console.log('I am smoking');
+                obj.health--;
+            },
+            drink: function () {
+                console.log('I am drinking');
+                obj.health++;
+            }
+        }
+
+        var a = 2;
+    </script>
+</body>
+
+</html>

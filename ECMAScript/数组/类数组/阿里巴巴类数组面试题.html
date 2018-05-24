@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>阿里巴巴类数组面试题</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = {
+            "2": "a",
+            "3": "b",
+            "length": 2,
+            "push": Array.prototype.push
+        }
+
+        obj.push("c");
+        obj.push("d");
+ 
+        console.log(obj);           //{2:c,3:d,length:4}
+    </script>
+</body>
+
+</html>

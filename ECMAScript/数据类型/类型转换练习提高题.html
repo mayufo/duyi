@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类型转换练习提高题</title>
+</head>
+
+<body>
+    <script>
+        var str = false + 1;
+        console.log(str); //1
+        var demo = false == 1;
+        console.log(demo); //false
+        if (typeof (a) && -true + (+undefined) + "") { // "NaN"
+            console.log('基础扎实');
+        }
+        if (11 + "11" * 2 == 33) { //33 == 33 --> true
+            console.log('基础扎实');
+        }
+        var aaa = !!" " + !!"" - !!false || console.log('你觉得能打印,你就是猪'); //true + false - fasle || console.log('') --> 1 + 0 - false || --> 1 - 0 || console.lg() --> 1
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css">
+		/*子元素选择器*/
+		div span{
+			color: red;
+		}
+		/*直接子元素选择器*/
+		div > span{
+			color: blue;
+		}
+	</style>
+	<title>子元素和直接子元素选择器</title>
+</head>
+<body>
+	<div>
+		<span>111</span>
+		<div><span><span>222</span></span></div>
+	</div>
+	<span>333</span>
+	<section></section>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环绑定点击事件（闭包问题）</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+
+    <script>
+        //如果使用注释中的写法点击结果都是4
+
+        var liCollenction = document.getElementsByTagName('li');
+
+        for (var i = 0; i < liCollenction.length; i++) {
+            // liCollenction[i].onclick = function () {
+            //         console.log(i);
+            //     }
+            (function (j) {
+                liCollenction[j].onclick = function () {
+                    console.log(j);
+                }
+            }(i));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+Error.name的六种值对用的信息
+
+1.EvalError:eval()的使用与定义不一致
+2.RangeError:数组越界
+3.ReferenceError:非法或不能识别的引用数值
+4.SyntaxError:发生语法解析错误
+5.TypeError:操作数类型错误
+6.URIError:URI处理函数使用不当

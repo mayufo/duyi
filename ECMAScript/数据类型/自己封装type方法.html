@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自己封装type方法</title>
+</head>
+
+<body>
+
+    <script>
+        function type(target) {
+            var template = {
+                "[object Object]": "object",
+                "[object Array]": "array",
+                "[object Number]": "number - object",
+                "[object String]": "string - object",
+                "[object Boolean]": "boolean - object"
+            }
+
+            if (target === null) {
+                return "null";
+            }
+
+            // if (typeof (target) == "function") {
+            //     return "function";
+            // }
+
+            if (typeof (target) == "object") {
+                var str = Object.prototype.toString.call(target);
+                return template[str];
+            } else {
+                return typeof (target);
+            }
+        }
+    </script>
+</body>
+
+</html>

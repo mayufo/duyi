@@ -1,0 +1,6 @@
+盒子四大部分:
+
+盒子壁:border
+内边距:padding
+盒子内容:width+height;
+外边距:margin

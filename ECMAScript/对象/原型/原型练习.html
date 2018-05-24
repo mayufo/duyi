@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型练习</title>
+</head>
+
+<body>
+
+    <script>
+        Farther.prototype = {
+            name: 'dada',
+            age: '30'
+        };
+
+        function Farther() {
+            this.name = "dd";
+            this.age = "10";
+        }
+
+        var f = new Farther();
+        // delete f.name;                       
+        f.height = 180;
+        console.log(f.name);
+        console.log(f.age);
+        console.log(f.height);
+        // console.log(Farther.prototype.height);
+        f.name = 'hh';
+        console.log(f.name);
+        console.log(Farther.prototype.name);
+    </script>
+</body>
+
+</html>

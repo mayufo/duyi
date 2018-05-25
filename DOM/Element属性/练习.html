@@ -17,13 +17,19 @@
 
     <script>
         var div = document.createElement('div');
+        var p = document.createElement('p');
         div.setAttribute('class', 'example');
+        p.setAttribute('class', 'slogan');
+        var text = document.createTextNode('最帅');
+        p.appendChild(text);
+        div.appendChild(p);
+
         document.body.appendChild(div);
 
-        var p = document.createElement('p');
-        p.setAttribute('class', 'slogan');
 
-        div.appendChild(p);
+        //或者
+        // div.innerHTML = "<p>...."
+        
     </script>
 </body>
 

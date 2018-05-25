@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>将目标节点的顺序逆序</title>
+</head>
+
+<body>
+
+    <div>
+        <a href=""></a>
+        <em></em>
+        <strong></strong>
+        <span></span>
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        // function reverse(e) {
+        //     var arr = e.children,
+        //         len = arr.length,
+        //         tarr = arr,
+        //         temp = 0;
+        //     for (var i = 0; i < len; i++) {
+        //         if (i == len - i) {
+        //             return tarr;
+        //         } else {
+        //             temp = tarr[i];
+        //             tarr[i] = tarr[len - i];
+        //             tarr[len - i] = temp;
+        //         }
+        //     }
+
+        //     return tarr;
+        // }
+
+        function reverse(e) {
+            var children = e.children,
+                len = children.length;
+            for (var i = 2; i <= len; i++) {
+                e.appendChild(e.removeChild(children[len - i]));
+            }
+
+            return e;
+        }
+    </script>
+</body>
+
+</html>

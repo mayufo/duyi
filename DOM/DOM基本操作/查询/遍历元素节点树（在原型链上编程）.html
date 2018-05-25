@@ -10,11 +10,17 @@
 
 <body>
     <div>
-        <span></span>
-        <em></em>
+        <span>
+            <em></em>
+        </span>
+        <em>
+            <span>
+                <strong></strong>
+            </span>
+        </em>
         <strong></strong>
     </div>
-    
+
 
     <script>
         var div = document.getElementsByTagName('div')[0];
@@ -35,6 +41,18 @@
             }
 
             return nodes;
+        }
+
+        var o = [];
+
+        function children(e) {
+            var arr = e.childs(),
+                len = arr.length;
+            for (var i = 0; i < len; i++) {
+                console.log(children(arr[i]));
+            }
+            console.log();
+            return e;
         }
     </script>
 </body>

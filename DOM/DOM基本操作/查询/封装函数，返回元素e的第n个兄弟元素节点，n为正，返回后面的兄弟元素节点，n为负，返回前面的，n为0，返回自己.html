@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装函数，返回元素e的第n个兄弟元素节点，n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0，返回自己</title>
+</head>
+
+<body>
+
+    <div>
+        <span></span>
+        <em></em>
+        <strong></strong>
+    </div>
+
+    <script>
+        var em = document.getElementsByTagName('em')[0];
+
+        // function test(e, n) {
+        //     var i = 0,
+        //         arr = ['nextSibling', 'previousSibling'],
+        //         fun = '';
+        //     if (n > 0) {
+        //         fun = arr[0];
+        //     } else if (n < 0) {
+        //         fun = arr[1];
+        //         n = -n;
+        //     } else {
+        //         return e;
+        //     }
+
+        //     return tt(i, n, e, fun);
+        // }
+
+        // function tt(i, n, e, fun) {
+        //     if (i == n) {
+        //         return e;
+        //     } else {
+        //         e = e[fun];
+        //         if (e === null) {
+        //             return null;
+        //         }
+        //         if (e.nodeType == 1) {
+        //             i++;
+        //         }
+
+        //         return tt(i, n, e, fun);
+        //     }
+        // }
+
+        function retSibling(e, n) {
+            while (e && n) {
+                if (n > 0) {
+                    // e = e.nextElementSibling;
+                    e = e.nextSibling;
+                    if (e && e.nodeType == 1) {
+                        n--;
+                    }
+                } else {
+                    e = e.previousElementSibling;
+                    if (e && e.nodeType == 1) {
+                        n++;
+                    }
+                }
+            }
+
+            return e;
+        }
+
+        // function retSibling(e, n) {
+        //     while (e && n) {
+        //         if (n > 0) {
+        //             if (e.nextElementSibling) {
+        //                 e = e.nextElementSibling;
+        //             } else {
+        //                 for (e = e.nextSibling; e && e.nodeType != 1; e = e.nextSibling);
+        //             }
+        //             n--;
+        //         } else {
+        //             if (e.previousElementSibling) {
+        //                 e = e.previousElementSibling;
+        //             } else {
+        //                 for (e = e.previousSibling; e && e.nodeType != 1; e = e.previousSibling);
+        //             }
+        //             n++;
+        //         }
+        //     }
+
+        //     return e;
+        // }
+    </script>
+</body>
+
+</html>

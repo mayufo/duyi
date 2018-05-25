@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组filter方法</title>
+</head>
+
+<body>
+
+    <script>
+        var arr1 = [1, 2, 3, '', 0, false, undefined, 4];
+        var arr2 = [1, 2, 3, , , , , , , 4];
+
+        var res1 = arr1.filter(function (x) {
+            return true;
+        });
+
+        var res2 = arr2.filter(function (x) {
+            return true;
+        });
+
+        var res3 = arr1.filter(function(x){
+            return x;       //----> x == true
+        })
+
+        console.log(res1);      //[1,2,3,'',0,false,undefined,4]
+        console.log(res2);      //[1,2,3,4]
+        console.log(res3);      //[1,2,3,4]
+    </script>
+</body>
+
+</html>

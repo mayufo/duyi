@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>innerText</title>
+</head>
+
+<body>
+    <div>
+        <span>111</span>
+        <strong>222</strong>
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        console.log(div.innerText); //111 222
+        // div.innerText = 333;
+        div.innerText += "<span>333</span>"
+    </script>
+</body>
+
+</html>

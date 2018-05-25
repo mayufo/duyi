@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通过原型继承创建一个新对象</title>
+</head>
+
+<body>
+
+    <script>
+        function inherit(p) {
+            if (p == null) {
+                return null;
+            }
+
+            if (Object.create) {
+                return Object.create(p);
+            }
+
+            var t = typeof (p);
+            if (t != 'object' && t != 'function') {
+                return null;
+            }
+
+            function F() {}
+            F.prototype = p;
+            return new F();
+        }
+    </script>
+</body>
+
+</html>

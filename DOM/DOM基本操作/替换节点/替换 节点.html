@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>替换节点</title>
+</head>
+
+<body>
+    <div>
+        <span></span>
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        var span = document.getElementsByTagName('span')[0];
+        var strong = document.createElement('strong');
+        var s = div.replaceChild(strong, span);
+        console.log(s);     //span
+    </script>
+</body>
+
+</html>

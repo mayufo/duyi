@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>getAttribute setAttribute练习</title>
+</head>
+
+<body>
+
+    <div></div>
+    <span></span>
+    <strong></strong>
+
+    <script>
+        var all = document.getElementsByTagName('*');
+        var len = all.length;
+        for (var i = 0; i < len; i++) {
+            all[i].setAttribute('this-data', all[i].nodeName);
+        }
+    </script>
+</body>
+    
+</html>

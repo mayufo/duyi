@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>插入节点</title>
+</head>
+
+<body>
+    <div class="d1"></div>
+
+    <span class="s1"></span>
+    <span class="s2"></span>
+
+    <div class="d2">
+        <span></span>
+    </div>
+
+    <script>
+        //appendChild 类似与 push在节点最后添加一个节点
+        var div = document.createElement('div');
+        var text = document.createTextNode('邓宝宝');
+        div.appendChild(text);
+        document.body.appendChild(div);
+        var d1 = document.getElementsByClassName('d1')[0];
+        d1.appendChild(text);
+
+        var s1 = document.getElementsByClassName('s1')[0];
+        var s2 = document.getElementsByClassName('s2')[0];
+
+        s1.appendChild(s2);
+
+
+        var d2 = document.getElementsByClassName('d2')[0];
+        var a = document.createElement('strong');
+        var sp = d2.getElementsByTagName('span')[0];
+        d2.insertBefore(a, sp);
+    </script>
+</body>
+
+</html>

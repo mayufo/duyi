@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习</title>
+</head>
+
+<body>
+
+    <!-- //写一段javascript脚本生成下面的DOM结构
+    <div class="example">
+        <p class="slogan">你最帅！</p>
+    </div> -->
+
+    <script>
+        var div = document.createElement('div');
+        div.setAttribute('class', 'example');
+        document.body.appendChild(div);
+
+        var p = document.createElement('p');
+        p.setAttribute('class', 'slogan');
+
+        div.appendChild(p);
+    </script>
+</body>
+
+</html>

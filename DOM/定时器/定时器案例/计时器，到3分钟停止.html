@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计时器，到3分钟停止</title>
+    <style>
+        input {
+            border: 1px solid rgba(0, 0, 0, .8);
+            text-align: right;
+            font-size: 24px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+    Minutes:<input type="text" value="0"> 
+    Second:<input type="text" value="0">
+    <button>PAUSE</button>
+    <button>START</button>
+
+    <script>
+        var minutesNode = document.getElementsByTagName('input')[0];
+        var secondsNode = document.getElementsByTagName('input')[1];
+        var stop = document.getElementsByTagName('button')[0];
+        var start = document.getElementsByTagName('button')[1];
+
+       var timer =  (function () {
+            var timer = {},
+                // count = 0,
+                seconds = 0,
+                minutes = 0,
+                tname = 0;
+
+            timer.start =   function () {
+                tname = setInterval(function () {
+                    // count++;
+                    seconds++;
+                    if (seconds == 60) {
+                        seconds = 0;
+                        // second.value = 0;
+                        // minutes.value = parseInt(minutes.value) + 1;
+                        minutes++;
+                    }
+                    
+                    secondsNode.value = seconds;                    
+                    minutesNode.value = minutes;
+                    if(minutes == 3){
+                        timer.stop();
+                    }
+                }, 100)
+            }
+            
+            timer.stop = function(){
+                clearInterval(tname);
+            }
+
+            return timer;
+           
+        }());
+
+        timer.start();
+        stop.onclick = function(){
+           timer.stop();
+        }
+        start.onclick = function(){
+            timer.start();
+        }
+    </script>
+</body>
+
+</html>

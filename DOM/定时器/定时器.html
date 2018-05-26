@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // var time = 1000;
+        // setInterval(function () {
+        //     console.log(123);
+        // }, time);
+
+        //没用，setInterval的时间只识别一次，不能通过time去改变定时器执行的快慢
+        time = 2000;
+
+        // var firstTime = new Date().getTime();
+        // setInterval(function () {
+        //     var lastTime = new Date().getTime();
+        //     console.log(lastTime - firstTime);
+        //     firstTime = lastTime;
+        // }, 1000)
+        var i = 0;
+        var timer1 = setInterval(function () {
+            console.log(123);
+            i++;
+            if (i > 10) {
+                // clearInterval(1);                
+                clearInterval(timer1);
+            }
+        }, 1000);
+
+        console.log(timer1); //1
+
+        var timer2 = setInterval(function () {
+
+        }, 1000);
+
+        console.log(timer2); //2
+
+        //内部this指向window
+        //第一个参数写字符串会当js代码来执行
+        setTimeout("console.log('a')", 1000);
+        setTimeout("fun()", 1000);
+        function fun(){
+            console.log('b');
+        }
+    </script>
+</body>
+
+</html>

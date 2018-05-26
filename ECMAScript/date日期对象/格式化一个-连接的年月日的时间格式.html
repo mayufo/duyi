@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>格式化一个-连接的年月日的时间格式</title>
+</head>
+
+<body>
+
+    <script>
+        Date.prototype.formatDate = function () {
+            var year = this.getFullYear();
+            var month = this.getMonth() + 1;
+            var day = this.getDate();
+            var hours = this.getHours();
+            var minutes = this.getMinutes();
+            if (month < 10) {
+                month = "0" + month;
+            }
+            if (day < 10) {
+                day = "0" + day;
+            }
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            var nowDate = year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+
+            return nowDate;
+        }
+
+        // function formatDate(date) {
+        //     var year = date.getFullYear();
+        //     var month = date.getMonth() + 1;
+        //     var day = date.getDate();
+        //     var hours = this.getHours();
+        //     var minutes = this.getMinutes();
+        //     if (month < 10) {
+        //         month = "0" + month;
+        //     }
+        //     if (day < 10) {
+        //         day = "0" + day;
+        //     }
+        //     if (hours < 10) {
+        //         hours = "0" + hours;
+        //     }
+        //     if (minutes < 10) {
+        //         minutes = "0" + minutes;
+        //     }
+        //     var nowDate = year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+
+        //     return nowDate;
+        // }
+    </script>
+</body>
+
+</html>

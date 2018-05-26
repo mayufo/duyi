@@ -11,9 +11,17 @@
 <body>
 
     <script>
-        console.log(Date());
+        // console.log(Date());
         //date对象保存了创建时候的时间，不会改变，不是实时的
-        var date = new Date();
+        // var date = new Date();
+
+        var len = 10000000;
+        //date保存了当前的时间，不是实时的，获取下一个时间点，需要新创建一个时间对象
+        var firstTime = new Date().getTime();
+        for (var i = 0; i < len; i++);
+        var lastTime = new Date().getTime();
+        console.log(lastTime - firstTime);
+
     </script>
 </body>
 

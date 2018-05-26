@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装兼容性方法，求滚动轮滚动距离</title>
+</head>
+
+<body>
+
+    <div style="width:3000px;height:3000px">
+
+    </div>
+
+    <script>
+        function getScrollOffset() {
+            var positon = {
+                x: 0,
+                y: 0
+            }
+
+            positon.x = window.pageXOffset || document.body.scrollLeft + document.documentElement.scrollLeft;
+            positon.y = window.pageYOffset || document.body.scrollTop + document.documentElement.scrollTop;
+
+            return positon;
+        }
+    </script>
+</body>
+
+</html>

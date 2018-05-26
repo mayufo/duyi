@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打印当前时间</title>
+</head>
+
+<body>
+
+    <script>
+        //封装一个函数，打印当前是何年何月何时，几分几秒
+        Date.prototype.getFullTime = function () {
+            return this.getFullYear() + "年" + (this.getMonth() + 1) + "月" + this.getDate() + "号" + this.getHours() +
+                "时" +
+                this.getMinutes() + "分" + this.getSeconds() + "秒";
+        }
+
+        function formatDate(date) {
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            if (month < 10) {
+                month = "0" + month;
+            }
+            if (day < 10) {
+                day = "0" + day;
+            }
+            var nowDate = year + "-" + month + "-" + day;
+
+            return nowDate;
+        }
+
+        Date.prototype.formatDate = function () {
+            var year = this.getFullYear();
+            var month = this.getMonth() + 1;
+            var day = this.getDate();
+            if (month < 10) {
+                month = "0" + month;
+            }
+            if (day < 10) {
+                day = "0" + day;
+            }
+            var nowDate = year + "-" + month + "-" + day;
+
+            return nowDate;
+        }
+
+        function dayDiff(time1, time2) {
+            // var time1 = arguments[0],
+            //     time2 = arguments[1];
+            time1 = Date.parse(time1) / 1000;
+            time2 = Date.parse(time2) / 1000;
+            var time_ = time2 - time1;
+            return (time_ / 3600);
+        }
+    </script>
+</body>
+
+</html>

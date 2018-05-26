@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>setTimeout</title>
+</head>
+
+<body>
+
+    <script>
+        //过1000毫秒后执行，只执行一次，由于还没执行就被清楚了，不执行
+        var timer = setTimeout(function () {
+            console.log(123);
+        }, 1000);
+
+        clearTimeout(timer);
+    </script>
+</body>
+
+</html>

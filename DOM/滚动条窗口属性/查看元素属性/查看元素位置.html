@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .d1 {
+            width: 300px;
+            height: 300px;
+            /* border: 1px solid #000; */
+            background-color: #000;
+            position: static;
+            /* position: relative; */
+            margin-left: 200px;
+            margin-top: 200px;
+        }
+
+        .d2 {
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+            margin-left: 50px;
+            margin-top: 50px;
+            /* position: absolute; 
+            top: 50px;
+            left: 50px; */
+        }
+    </style>
+    <title>查看元素位置</title>
+</head>
+
+<body>
+
+    <div class="d1">
+        <div class="d2">
+
+        </div>
+    </div>
+
+    <script>
+        var d2 = document.getElementsByClassName('d2')[0];
+        //父有定位
+        // console.log(d2.offsetLeft); //50
+        // console.log(d2.offsetTop); //0  //注意这里margin塌陷bug,父和子共享最大的margin
+
+        //父没有定位
+        console.log(d2.offsetLeft);             //258还有8像素的body margin
+        console.log(d2.offsetTop);              //250因为margin塌陷body ,父div 子div共享margin
+    </script>
+</body>
+
+</html>

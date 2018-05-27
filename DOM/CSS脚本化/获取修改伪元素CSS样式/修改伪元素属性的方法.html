@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: #f40;
+        }
+
+        .d1::after {
+            content: "";
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: #00f;
+        }
+
+
+        .d2::after {
+            content: "";
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: #000;
+        }
+    </style>
+    <title>修改伪元素属性的方法</title>
+</head>
+
+<body>
+
+    <div class="d1"></div>
+
+    <script>
+        //修改伪元素CSS属性
+        var d1 = document.getElementsByClassName('d1')[0];
+        
+        //没法直接修改伪元素的属性，可以通过间接更改类名来更换伪元素，达到更换伪元素样式的效果
+        d1.onclick = function () {
+            this.className = "d2";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+body,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    width: 400px;
+    height: 230px;
+    overflow: hidden;
+    position: relative;
+}
+
+.movie-wrap {
+    width: 2000px;
+    height: 230px;
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.movie-wrap li {
+    float: left;
+}
+
+.movie-wrap li img {
+    width: 400px;
+    height: 230px;
+}

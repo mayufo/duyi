@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .d1 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+
+        .getMore {
+            width: 300px;
+            margin-top: 10px;
+        }
+
+        .s1,
+        .s2 {
+            display: inline-block;
+            padding: 10px;
+            background-color: #f40;
+            cursor: pointer;
+            margin-left: 40px;
+        }
+    </style>
+    <title>展开更多和回到更多位置,</title>
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="d1">
+
+    </div>
+    <div class="getMore">
+        <span class="s1">点击展开</span>
+        <!-- <span class="s2">点击收回</span> -->
+    </div>
+
+
+    <script>
+        var getMore = document.getElementsByClassName('getMore')[0];
+        var d1 = document.getElementsByClassName('d1')[0];
+        var s1 = document.getElementsByClassName('s1')[0];
+        // var s2 = document.getElementsByClassName('s2')[0];
+
+        var height = 300,
+            sheight = 0,
+            show = true;
+
+        s1.onclick = function () {
+            // height += 1000;
+            if (show) {
+                sheight = window.pageYOffset;
+                d1.style.height = 1000 + "px";
+                // d1.style.transition = ".5s";
+                s1.innerHTML = "点击收起";
+                show = false;
+            } else {
+                d1.style.height = 300 + "px";
+                // d1.style.transition = ".5s";
+                s1.innerHTML = "点击展开";
+                window.scrollTo(0, sheight);
+                show = true;
+            }
+
+            // d1.style.height = height + "px";
+            // d1.style.height = parseInt(d1.style.height) + 200 + "px";
+            console.log(sheight);
+        }
+
+        // s2.onclick = function () {
+        //     window.scrollTo(0,sheight);
+        //     d1.style.height = 300 + "px";
+        // }
+    </script>
+</body>
+
+</html>

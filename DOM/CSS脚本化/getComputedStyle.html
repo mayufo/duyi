@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 200px !important;
+            height: 200px;
+            background-color: #f40;
+        }
+    </style>
+    <title>getComputedStyle</title>
+</head>
+
+<body>
+    <div style="width:100px"></div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        console.log(window.getComputedStyle(div, null).width);  //200px
+        console.log(div.style.width);                           //100px
+    </script>
+</body>
+
+</html>

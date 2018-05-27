@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .d1 {
+            width: 300px;
+            height: 300px;
+            background-color: #f40;
+        }
+    </style>
+    <title>监听方式</title>
+</head>
+
+<body>
+    <div class="d1"></div>
+
+    <script>
+        var d1 = document.getElementsByClassName('d1')[0];
+        //IE9以下不兼容，可以给一个事件绑定多个事件处理函数,会从上往下执行这些函数,如果绑定的是同一个函数，则还是只执行那一个函数
+        d1.addEventListener('click', function () {
+            console.log('a');
+        }, false);
+
+        d1.addEventListener('click',function(){
+            console.log('b');
+        },false);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绑定事件运行this指向</title>
+</head>
+
+<body>
+
+    <div style="width:300px;height: 300px;background-color: #f40;"></div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        // div.onclick = function () {
+        //     console.log(this);          //this指向dom元素本身
+        // }
+        // div.addEventListener('click', function () {
+        //     console.log(this);          //this指向dom元素本身
+        // }, false);
+
+        // div.attachEvnet('onlcick',function(){
+        //     console.log(this);           //this指向window
+        // })
+
+        div.attachEvent('onclick', function () {
+            //改变了this指向，this指向了dom元素本身
+            handle().call(div);
+        });
+
+        function handle() {
+            // this
+        }
+    </script>
+</body>
+
+</html>

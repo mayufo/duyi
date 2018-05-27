@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .d1 {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #f40;
+            position: relative;
+        }
+
+        .d2 {
+            width: 250px;
+            height: 250px;
+            background-color: #00f;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="d1">
+        <div class="d2">
+
+        </div>
+    </div>
+
+    <script>
+        function getStyle(ele, prop) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele, null)[prop];
+            } else {
+                return ele.getCurrentStyle[prop];
+            }
+        }
+
+        var d1 = document.getElementsByClassName('d1')[0];
+        var d2 = document.getElementsByClassName('d2')[0];
+        
+        console.log(getStyle(d2, 'left'));
+    </script>
+</body>
+
+</html>

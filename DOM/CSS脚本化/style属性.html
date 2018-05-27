@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 100px;
+            height: 200px;
+            background-color: #f40;
+        }
+    </style>
+    <title>style属性</title>
+</head>
+
+<body>
+
+    <div style="width:50px">
+
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        console.log(div.style.width);       //只有写在style上的有值，其他默认是空字符串，不能通过style获取到写在css中的样式,style属性取到的只是行间样式
+        console.log(typeof(div.style.height) + ":" + div.style.height);  //string: 空字符串
+    </script>
+</body>
+
+</html>

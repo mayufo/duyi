@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装兼容性解除绑定事件方法</title>
+</head>
+
+<body>
+
+    <div class="d1" style="width:150px;height: 150px;background-color: #f40;display: inline-block">
+    </div>
+    <div class="d2" style="width: 50px;height: 50px;background-color: #000;margin-left: 300px;display: inline-block"></div>
+
+
+    <script>
+        var d1 = document.getElementsByClassName('d1')[0];
+        var d2 = document.getElementsByClassName('d2')[0];
+
+        var eventUtil = {
+            test: null,
+            addEvent: function (elem, type, handle) {
+                test = function () {
+                    handle.call(elem);
+                }
+                if (elem.addEventListener) {
+                    elem.addEventListener(type, handle, false);
+                } else if (elem.attachEvent) {
+                    elem.attachEvent('on' + type, test);
+                } else {
+                    elem['on' + click] = handle;
+                }
+            },
+            removeEvent: function (elem, type, handle) {
+                if (elem.removeEventListener) {
+                    elem.removeEventListener(type, handle, false);
+                } else if (elem.detachEvent) {
+                    elem.detachEvent('on' + type, test);
+                } else {
+                    elem['on' + type] = handle;
+                }
+            }
+        }
+
+
+        // var test = function () {
+        //     handle.call(elem);
+        // }
+
+        // function addEvent(elem, type, handle) {
+
+        //     if (elem.addEventListener) {
+        //         elem.addEventListener(type, handle, false);
+        //     } else if (elem.attachEvent) {
+        //         elem.attachEvent('on' + type, test);
+        //     } else {
+        //         elem['on' + click] = handle;
+        //     }
+        // }
+
+        // function removeEvent(elem, type, handle) {
+        //     if (elem.removeEventListener) {
+        //         elem.removeEventListener(type, handle, false);
+        //     } else if (elem.deattachEvent) {
+        //         elem.deattachEvent('on' + type, test);
+        //     } else {
+        //         elem['on' + type] = handle;
+        //     }
+        // }
+
+
+
+
+        var handle1 = function () {
+            // console.log(111);
+            //注意如果只是解除了子的绑定事件函数，冒泡还是会向上冒泡的
+            // removeEvent(d2, 'click', handle2);
+            eventUtil.removeEvent(d2, 'click', handle2);
+        }
+
+        var handle2 = function () {
+            // console.log(222);
+            alert(this);
+        }
+
+        eventUtil.addEvent(d1, 'click', handle1);
+        eventUtil.addEvent(d2, 'click', handle2);
+
+
+        // addEvent(d1, 'click', handle1);
+
+        // addEvent(d2, 'click', handle2);
+    </script>
+</body>
+
+</html>

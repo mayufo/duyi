@@ -10,23 +10,49 @@
 
 <body>
 
-    <div style="width:100px;height: 100px;background-color: #f40;">
+    <div style="width:100px;height: 100px;background-color: #f40;position: relative;">
 
     </div>
 
 
     <script>
-        function addEvent(elem, type, handle) {
-            if (elem.addEventListener) {
-                elem.addEventListener(type, handle, false);
-            } else if (elem.attachEvent) {
-                elem.attachEvent('on' + type, function () {
+        // function addEvent(elem, type, handle) {
+        //     if (elem.addEventListener) {
+        //         elem.addEventListener(type, handle, false);
+        //     } else if (elem.attachEvent) {
+        //         elem.attachEvent('on' + type, function () {
+        //             handle.call(elem);
+        //         });
+        //     } else {
+        //         elem['on' + type] = handle;
+        //     }
+        // }
+
+        var eventUtil = {
+            test: null,
+            addEvent: function (elem, type, handle) {
+                test = function () {
                     handle.call(elem);
-                });
-            } else {
-                elem['on' + type] = handle;
+                }
+                if (elem.addEventListener) {
+                    elem.addEventListener(type, handle, false);
+                } else if (elem.attachEvent) {
+                    elem.attachEvent('on' + type, test);
+                } else {
+                    elem['on' + click] = handle;
+                }
+            },
+            removeEvent: function (elem, type, handle) {
+                if (elem.removeEventListener) {
+                    elem.removeEventListener(type, handle, false);
+                } else if (elem.detachEvent) {
+                    elem.detachEvent('on' + type, test);
+                } else {
+                    elem['on' + type] = handle;
+                }
             }
         }
+
 
         var div = document.getElementsByTagName('div')[0];
         var key = false;
@@ -34,11 +60,32 @@
 
         }
 
-        div.onclick = function () {
-            console.log(123);
-        }
 
-        
+
+        eventUtil.addEvent(div, 'click', function () {
+            key = true;
+        });
+
+        eventUtil.addEvent(div, 'mouseenter', function (e) {
+            // if (key) {
+            var event = e || window.event;
+            // console.log("x:" + event.clientX + "|y:" + event.clientY);
+            // this.style.left = e.clientX + "px";
+            // this.style.top = e.clientY + "px";
+            // }
+        });
+
+        eventUtil.addEvent(div, 'mouseleave', function (e) {
+            if (key) {
+                var event = e || window.event;
+                console.log("x:" + event.clientX + "|y:" + event.clientY);
+                this.style.left = e.clientX + "px";
+                this.style.top = e.clientY + "px";
+                // this.style.left = 100 + "px";
+            }
+        });
+
+
 
         // addEvent(div, 'click', handle);
 

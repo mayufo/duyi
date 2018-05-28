@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        ul li {
+            float: left;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            margin-left: 10px;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+        <li>21</li>
+        <li>22</li>
+        <li>23</li>
+        <li>24</li>
+        <li>25</li>
+        <li>26</li>
+        <li>27</li>
+        <li>28</li>
+        <li>29</li>
+        <li>30</li>
+    </ul>
+    <button>点击增加</button>
+
+
+    <script>
+        function addEvent(elem, type, handle) {
+            if (elem.addEventListener) {
+                elem.addEventListener(type, handle, false);
+            } else if (elem.attchEvent) {
+                elem.attchEvent('on' + type, function () {
+                    handle.call(elem);
+                });
+            } else {
+                elem['on' + type] = handle;
+            }
+        }
+
+        var ul = document.getElementsByTagName('ul')[0];
+        var btn = document.getElementsByTagName('button')[0];
+        var lis = document.getElementsByTagName('li');
+
+        addEvent(btn, 'click', function () {
+            var text = lis[lis.length - 1].innerText;
+            var li = document.createElement('li');
+            ul.appendChild(li);
+            li.innerText = parseInt(text) + 1;
+        });
+
+        addEvent(ul, 'click', function (e) {
+            var event = e || window.event;
+            var target = event.target || event.srcElement;
+            target.style.color = "#f40";
+            console.log(target.innerText);
+        });
+    </script>
+</body>
+
+</html>

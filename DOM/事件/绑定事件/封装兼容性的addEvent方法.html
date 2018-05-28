@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装兼容性的addEvent方法</title>
+</head>
+
+<body>
+
+    <div style="width:300px;height: 300px;background-color: #f40;"> </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        //封装兼容性的addEvent(elem,type,handle)方法
+        function addEvent(elem, type, handle) {
+            if (elem.addEventListener) {
+                elem.addEventListener(type, handle, false);
+            } else if (elem.attachEvent) {
+                elem.attachEvent('on' + type, function () {
+                    //让this指向elem元素
+                    handle.call(elem);
+                });
+            } else {
+                elem['on' + type] = handle;
+            }
+        }
+
+        addEvent(div, 'click', function () {
+            // console.log(123);
+            alert(this);
+        });
+    </script>
+</body>
+
+</html>

@@ -55,9 +55,12 @@
         var d4 = document.getElementsByClassName('d4')[0];
 
         function getElementPostion(e) {
-            if (e.offsetParent === null) {
-                return 8;
-            }
+            // if (e.offsetParent === null) {
+            //     return {
+            //         x: e.offsetLeft,
+            //         y: e.offsetTop
+            //     }
+            // }
 
             if (e.offsetParent == document.body) {
                 return {

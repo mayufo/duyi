@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        li {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #000;
+        }
+    </style>
+    <title>利用冒泡和事件源对象实现事件委托</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <button>添加</button>
+    <script>
+        var ul = document.getElementsByTagName('ul')[0];
+        ul.onclick = function (e) {
+            var event = e || window.event;
+            var target = event.target || event.srcElement;
+            console.log(target.innerHTML);
+        }
+
+
+
+        function createLi() {
+            var li = document.createElement('li');
+            li.innerHTML = count;
+            ul.appendChild(li);
+        }
+
+        var btn = document.getElementsByTagName('button')[0];
+        var count = 11;
+        btn.onclick = function () {
+            createLi();
+            count++;
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽简单写法</title>
+</head>
+
+<body>
+
+    <div style="width:100px;height: 100px;background-color: #f40;position: relative;left:0;top:0">
+
+    </div>
+
+    <script>
+        function getStyle(elem, prop) {
+            if (window.computedStyle) {
+                return windwo.computedStyle(elem, null)[prop];
+            } else {
+                return elem.currentStyle[prop];
+            }
+        }
+
+        var div = document.getElementsByTagName('div')[0];
+
+        div.onmousedown = function (e) {
+            var event = e || window.event;
+            var disX,
+                disY;
+
+            disX = e.pageX - parseInt(this.style.left);
+            disY = e.pageY - parseInt(this.style.top);
+
+            document.onmousemove = function (e) {
+                var event = e || window.event;
+                div.style.left = event.pageX - disX + "px";
+                div.style.top = event.pageY - disY + "px";
+            }
+
+            div.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

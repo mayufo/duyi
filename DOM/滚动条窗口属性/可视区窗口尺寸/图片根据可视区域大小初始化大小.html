@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片根据可视区域大小初始化大小</title>
+</head>
+
+<body>
+
+    <img src="images/166024905033.jpg" alt="">
+
+    <script>
+        function getViewPortOffset() {
+            if (window.innerWidth) {
+                return {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                }
+            } else if (document.compatMode == "CSS1Compat") {
+                return {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight
+                }
+            } else {
+                return {
+                    width: document.body.clientWidth,
+                    height: document.body.clientHeight
+                }
+            }
+        }
+
+        var size = getViewPortOffset();
+        var img = document.getElementsByTagName('img')[0];
+        img.style.width = size.width + "px";
+        img.style.height = size.height + "px";
+
+    </script>
+</body>
+
+</html>

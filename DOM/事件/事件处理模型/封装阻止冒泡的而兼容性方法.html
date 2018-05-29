@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装阻止冒泡的而兼容性方法</title>
+</head>
+
+<body>
+
+    <div class="d1" style="width: 200px;height: 200px;background-color: #f40;">
+        <div class="d2" style="width: 50px;height: 50px;background-color: #000;"></div>
+    </div>
+
+    <script>
+        var d1 = document.getElementsByClassName('d1')[0];
+        var d2 = document.getElementsByClassName('d2')[0];
+
+        d1.onclick = function (e) {
+            var event = e || window.event;
+
+            console.log(111);
+        }
+
+        d2.onclick = function () {
+            event.stopPropagation();
+            console.log(222);
+        }
+        
+        function stopBubble(event) {
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+    </script>
+</body>
+
+</html>

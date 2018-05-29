@@ -11,39 +11,86 @@
 <body>
 
     <div class="d1" style="width:150px;height: 150px;background-color: #f40;display: inline-block">
+        <div class="d2" style="width: 50px;height: 50px;background-color: #000;margin-left: 300px;display: inline-block"></div>
     </div>
-    <div class="d2" style="width: 50px;height: 50px;background-color: #000;margin-left: 300px;display: inline-block"></div>
 
 
     <script>
         var d1 = document.getElementsByClassName('d1')[0];
         var d2 = document.getElementsByClassName('d2')[0];
 
-        var eventUtil = {
-            test: null,
-            addEvent: function (elem, type, handle) {
-                test = function () {
-                    handle.call(elem);
-                }
-                if (elem.addEventListener) {
-                    elem.addEventListener(type, handle, false);
-                } else if (elem.attachEvent) {
-                    elem.attachEvent('on' + type, test);
-                } else {
-                    elem['on' + click] = handle;
-                }
-            },
-            removeEvent: function (elem, type, handle) {
-                if (elem.removeEventListener) {
-                    elem.removeEventListener(type, handle, false);
-                } else if (elem.detachEvent) {
-                    elem.detachEvent('on' + type, test);
-                } else {
-                    elem['on' + type] = handle;
-                }
+        //封装兼容性的addEvent(elem,type,handle)方法
+        function addEvent(elem, type, handler) {
+            if (elem.addEventListener) {
+                elem.addEventListener(type, handler, false);
+            } else if (elem.attachEvent) {
+                elem['temp' + type + handler] = handler;
+                elem[type + handler] = function () {
+                    elem['temp' + type + handler].call(elem);
+                };
+                elem.attachEvent('on' + type, elem[type + handler]);
+            } else {
+                elem['on' + type] = handler;
             }
         }
 
+        //封装兼容性的removeEvent(elem,type,handle)方法
+        function removeEvent(elem, type, handler) {
+            if (elem.removeEventListener) {
+                elem.removeEventListener(type, handler, false);
+            } else if (elem.detachEvent) {
+                elem.detachEvent('on' + type, elem[type + handler]);
+            } else {
+                elem['on' + type] = null;
+            }
+        }
+
+        function stopBubble(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else {
+                e.cancelBubble = true;
+            }
+        }
+
+        var onclick1 = function (e) {
+            console.log(222);
+            removeEvent(d2, 'click', onclick2);
+        }
+
+        var onclick2 = function (e) {
+            var event = e || window.event;
+            stopBubble(event);
+            console.log(111);
+        }
+
+        addEvent(d1, 'click', onclick1);
+        addEvent(d2, 'click', onclick2);
+
+        // var eventUtil = {
+        //     test: null,
+        //     addEvent: function (elem, type, handle) {
+        //         test = function () {
+        //             handle.call(elem);
+        //         }
+        //         if (elem.addEventListener) {
+        //             elem.addEventListener(type, handle, false);
+        //         } else if (elem.attachEvent) {
+        //             elem.attachEvent('on' + type, test);
+        //         } else {
+        //             elem['on' + click] = handle;
+        //         }
+        //     },
+        //     removeEvent: function (elem, type, handle) {
+        //         if (elem.removeEventListener) {
+        //             elem.removeEventListener(type, handle, false);
+        //         } else if (elem.detachEvent) {
+        //             elem.detachEvent('on' + type, test);
+        //         } else {
+        //             elem['on' + type] = handle;
+        //         }
+        //     }
+        // }
 
         // var test = function () {
         //     handle.call(elem);
@@ -70,23 +117,20 @@
         //     }
         // }
 
+        // var handle1 = function () {
+        //     // console.log(111);
+        //     //注意如果只是解除了子的绑定事件函数，冒泡还是会向上冒泡的
+        //     // removeEvent(d2, 'click', handle2);
+        //     eventUtil.removeEvent(d2, 'click', handle2);
+        // }
 
+        // var handle2 = function () {
+        //     // console.log(222);
+        //     alert(this);
+        // }
 
-
-        var handle1 = function () {
-            // console.log(111);
-            //注意如果只是解除了子的绑定事件函数，冒泡还是会向上冒泡的
-            // removeEvent(d2, 'click', handle2);
-            eventUtil.removeEvent(d2, 'click', handle2);
-        }
-
-        var handle2 = function () {
-            // console.log(222);
-            alert(this);
-        }
-
-        eventUtil.addEvent(d1, 'click', handle1);
-        eventUtil.addEvent(d2, 'click', handle2);
+        // eventUtil.addEvent(d1, 'click', handle1);
+        // eventUtil.addEvent(d2, 'click', handle2);
 
 
         // addEvent(d1, 'click', handle1);

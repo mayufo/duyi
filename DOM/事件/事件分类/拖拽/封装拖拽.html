@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装拖拽</title>
+</head>
+
+<body>
+
+    <div style="width:100px;height: 100px;background-color: #f40;position: relative;left:0;top:0">
+
+    </div>
+
+
+    <script>
+        // var eventUtil = {
+        //     test: null,
+        //     addEvent: function (elem, type, handle) {
+        //         test = function () {
+        //             handle.call(elem);
+        //         }
+        //         if (elem.addEventListener) {
+        //             elem.addEventListener(type, handle, false);
+        //         } else if (elem.attachEvent) {
+        //             elem.attachEvent('on' + type, test);
+        //         } else {
+        //             elem['on' + click] = handle;
+        //         }
+        //     },
+        //     removeEvent: function (elem, type, handle) {
+        //         if (elem.removeEventListener) {
+        //             elem.removeEventListener(type, handle, false);
+        //         } else if (elem.detachEvent) {
+        //             elem.detachEvent('on' + type, test);
+        //         } else {
+        //             elem['on' + type] = null;
+        //         }
+        //     }
+        // }
+
+        function addEvent(elem, type, handler) {
+            if (elem.addEventListener) {
+                elem.addEventListener(type, handler, false);
+            } else if (elem.attachEvent) {
+                elem['temp' + type + handler] = handler;
+                elem[type + handler] = function () {
+                    elem['temp' + type + handler].call(elem);
+                }
+                elem.attachEvent('on' + type, elem[type + handler]);
+            } else {
+                elem['on' + type] = handler;
+            }
+        }
+
+        function removeEvent(elem, type, handler) {
+            if (elem.removeEventListener) {
+                elem.removeEventListener(type, handler, false);
+            } else if (elem.detachEvent) {
+                elem.detachEvent('on' + type, elem[type + handler]);
+            } else {
+                elem['on' + type] = null;
+            }
+        }
+
+        function getStyle(elem, prop) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(elem, null)[prop];
+            } else {
+                return elem.currentStyle[prop];
+            }
+        }
+
+        function stopBubble(event) {
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+
+        function cancelHandler(event) {
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+            }
+
+        }
+
+        var div = document.getElementsByTagName('div')[0];
+
+
+        function drag(elem) {
+            var disX,
+                disY;
+
+            addEvent(elem, 'mousedown', function (e) {
+                var event = e || window.event;
+
+                disX = e.pageX - parseInt(getStyle(this, 'left'));
+                disY = e.pageY - parseInt(getStyle(this, 'top'));
+
+                addEvent(document, 'mousemove', mouseMove);
+                addEvent(div, 'mouseup', mouseup);
+                stopBubble(event);
+                cancelHandler(event);
+            })
+
+            function mouseMove(e) {
+                var event = e || window.event;
+                div.style.left = event.pageX - disX + "px";
+                div.style.top = event.pageY - disY + "px";
+            }
+
+            function mouseup(e) {
+                var event = e || window.event;
+                removeEvent(document, 'mousemove', mouseMove);
+            }
+        }
+
+        // eventUtil.addEvent(div, 'click', function () {
+        //     key = !key;
+        // });
+
+        // eventUtil.addEvent(div, 'mousedown', function (e) {
+        //     // key = true;
+        //     var event = e || window.event;
+        //     var disX,
+        //         disY;
+
+        //     var test = function (e) {
+        //         var event = e || window.event;
+        //         div.style.left = event.pageX - disX + "px";
+        //         div.style.top = event.pageY - disY + "px";
+        //     }
+
+        //     disX = e.pageX - parseInt(getStyle(this, 'left'));
+        //     disY = e.pageY - parseInt(getStyle(this, 'top'));
+
+        //     eventUtil.addEvent(document, 'mousemove', test);
+
+        //     eventUtil.addEvent(div, 'mouseup', function (e) {
+        //         var event = e || window.event;
+        //         eventUtil.removeEvent(document, 'mousemove', test);
+        //     });
+
+        // });
+
+        // eventUtil.addEvent(div, 'mouseup', function () {
+        //     key = false;
+        // });
+
+        // eventUtil.addEvent(div, 'mouseenter', function (e) {
+        //     // if (key) {
+        //     var event = e || window.event;
+        //     // console.log("x:" + event.clientX + "|y:" + event.clientY);
+        //     // this.style.left = e.clientX + "px";
+        //     // this.style.top = e.clientY + "px";
+        //     // }
+        // });
+
+
+
+        // function getElementPostion(elem) {
+        //     if (elem.offsetParent == document.body) {
+        //         return {
+        //             x: elem.offsetLeft,
+        //             y: elem.offsetTop
+        //         }
+        //     }
+
+        //     return {
+        //         x: elem.offsetLeft + getElementPostion(elem.offsetParent).x,
+        //         y: elem.offsetTop + getElementPostion(elem.offsetParent).y
+        //     }
+        // }
+
+        // eventUtil.addEvent(document, 'mousemove', function (e) {
+        //     if (key) {
+        //         var event = e || window.event;
+        //         console.log("x:" + event.clientX + "|y:" + event.clientY);
+        //         // div.style.left = e.clientX - 8 - parseInt(getStyle(div, 'width')) / 2 + "px";
+        //         // div.style.top = e.clientY - 8 - parseInt(getStyle(div, 'height')) / 2 + "px";
+        //         // div.style.left = e.clientX + "px";
+        //     }
+        // });
+
+
+        // eventUtil.addEvent(div, 'mousemove', function (e) {
+        //     if (key) {
+        //         var event = e || window.event;
+        //         console.log("x:" + event.clientX + "|y:" + event.clientY);
+        //         this.style.left = e.clientX - parseInt(getStyle(this, 'width')) / 2 + "px";
+        //         this.style.top = e.clientY - parseInt(getStyle(this, 'height')) / 2 + "px";
+        //         // console.log(this.offsetLeft);            8   这个是相对于文档
+        //         // console.log(parseInt(getStyle(this, 'left')));       0      这个是相对于父级body
+        //         // this.style.left = 100 + "px";
+        //     }
+        // });
+
+        // addEvent(div, 'click', handle);
+
+        // addEvent(div, 'mouseenter', handle);
+    </script>
+</body>
+
+</html>

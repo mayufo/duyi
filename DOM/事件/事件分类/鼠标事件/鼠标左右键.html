@@ -5,32 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>封装兼容性的addEvent方法</title>
+    <title>鼠标左右键</title>
 </head>
 
 <body>
 
-    <div style="width:300px;height: 300px;background-color: #f40;"> </div>
+    <div style="width: 100px;height: 100px;background-color: #f40;"></div>
+
 
     <script>
         var div = document.getElementsByTagName('div')[0];
 
-        //封装兼容性的addEvent(elem,type,handle)方法
         function addEvent(elem, type, handler) {
             if (elem.addEventListener) {
                 elem.addEventListener(type, handler, false);
             } else if (elem.attachEvent) {
-                elem['temp' + type + handler] = handler;
                 elem[type + handler] = function () {
-                    elem['temp' + type + handler].call(elem);
-                };
+                    handler.call(elem);
+                }
                 elem.attachEvent('on' + type, elem[type + handler]);
             } else {
                 elem['on' + type] = handler;
             }
         }
 
-        //封装兼容性的removeEvent(elem,type,handle)方法
         function removeEvent(elem, type, handler) {
             if (elem.removeEventListener) {
                 elem.removeEventListener(type, handler, false);
@@ -41,11 +39,20 @@
             }
         }
 
-        addEvent(div, 'click', function () {
-            // console.log(123);
-            alert(this);
-        });
+        var test = function (e) {
+            var event = e || window.event;
+            if (event.button == 0) {
+                console.log(123);
+            } else if (event.button == 2) {
+                removeEvent(this, 'mousedown', test);
+            } else {
+                console.log('middle');
+            }
+        }
+
+        addEvent(div, 'mousedown', test)
     </script>
+
 </body>
 
 </html>

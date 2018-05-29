@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>结局mousedown和click冲突</title>
+</head>
+
+<body>
+
+    <div style="width:100px;height:100px;background-color: #f40;display: block"></div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        var firstTime = 0,
+            lastTime = 0,
+            key = false;
+
+        div.onmousedown = function () {
+            firstTime = new Date().getTime();
+        }
+
+        div.onmouseup = function () {
+            lastTime = new Date().getTime();
+            if (lastTime - firstTime < 300) {
+                key = true;
+            } else {
+                console.log('tuozhuai');
+            }
+        }
+
+        div.onclick = function () {
+            if (key) {
+                console.log('click');
+                key = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

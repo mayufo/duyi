@@ -21,7 +21,8 @@
 
         str = "aabb";
         reg = /(\w)\1(\w)\2/g;
-        console.log(str.match(reg));       //['aabb']
+        console.log(str.match(reg));       //['aabb']       如果不加g返回的也会把索引位也当作匹配出来的字符串添加到类数组中类似exec
+        console.log(reg.exec(str));        //['aabb','a','b']  会把索引位也当作匹配出来的字符串添加到类数组中
     </script>
 </body>
 

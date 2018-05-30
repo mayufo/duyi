@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>将-变成小驼峰写法</title>
+</head>
+
+<body>
+
+
+    <script>
+        //the-first-name变成小驼峰写法
+        var str = "the-first-name";
+        var reg = /-(\w)/g;
+
+        str = str.replace(reg, function ($,$1) {
+            return $1.toUpperCase();
+        })
+    </script>
+</body>
+
+</html>

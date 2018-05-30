@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>exec方法</title>
+</head>
+
+<body>
+
+    <script>
+        var str = "sabldjsabkfksablbb";
+
+        var reg = /sab/g;
+        console.log(reg.lastIndex);         //0
+        console.log(reg.exec(str));         //[sab]
+        console.log(reg.lastIndex);         //3
+        console.log(reg.exec(str));         //[sab]
+        console.log(reg.lastIndex);         //9
+        console.log(reg.exec(str));         //[sab]
+        console.log(reg.lastIndex);         //15
+        console.log(reg.exec(str));         //null
+        console.log(reg.lastIndex);         //0
+
+        reg.lastIndex = 9;
+        console.log(reg.exec(str));         //[sab]  input:12
+    </script>
+</body>
+
+</html>

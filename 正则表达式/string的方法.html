@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>string的方法</title>
+</head>
+
+<body>
+
+    <script>
+        var str = "abc";
+        var reg = /\d/;
+
+        console.log(str.search(reg));       //-1
+
+        
+        var str = "123abc";
+        var reg = /\D/;
+
+        console.log(str.search(reg));       //3
+
+        var str = "klxaaxeqqld";
+        var reg = /aa/;
+        console.log(str.split(reg));    //["klx", "xeqqld"]
+        // var reg = /(\w)\1/;
+
+        // console.log(str.split(reg));       //["klx", "a", "xe", "q", "ld"]  字表达式会把自身的一个也返回
+    </script>
+
+</body>
+
+</html>

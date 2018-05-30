@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>string的replace方法</title>
+</head>
+
+<body>
+
+    <script>
+        var str = "aa";
+        var reg = /a/;
+        console.log(str.replace('a', 'b'));     //ba 非正则表达式匹配只能替换一次
+
+        console.log(str.replace(reg,'b'));     //ba reg没有写参数g
+        reg = /a/g;
+        console.log(str.replace(reg,'b'));      //bb
+
+        //把如aabb这种两个两个组合的倒叙换成如bbaa
+        str = "eeffzxcchh";
+        reg = /(\w)\1(\w)\2/g;
+
+        console.log(str.replace(reg,"$2$2$1$1"));       //ffeezxhhcc $1表示第一个字表达式内容$2表示第二个字表达式的内容
+        console.log(str.replace(reg,function($,$1,$2){
+                return $2 + $2 + $1 + $1;                //ffeezxhhcc $1表示第一个字表达式内容$2表示第二个字表达式的内容
+        }));
+    </script>
+</body>
+
+</html>

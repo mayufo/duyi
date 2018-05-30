@@ -1,0 +1,4 @@
+josn是一种数据格式，本质上就是对象，但属性名必须加双引号
+
+JSON.parse();   string->json
+JSON.stringify();   json->string

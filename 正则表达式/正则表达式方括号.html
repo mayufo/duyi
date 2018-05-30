@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式方括号</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        var reg = /abc/;
+        var str = "abc";
+        console.log(reg.test(str)); //true
+
+
+        //-----------修饰符---------------//
+        //i不区分大小写
+        var reg1 = /abc/ig;
+        var str1 = "ABC\nABC";
+        console.log(reg1.test(str1)); //true
+        //全局匹配
+        console.log(str1.match(reg1)); //[ABC,ABC]
+        //m多行匹配,^a就是必须以a开头的
+        var reg2 = /^a/gm;
+        var str2 = "ab\nac";
+        console.log(str2.match(reg2)); //ABC
+
+        //-----------方括号（表达式）-------//
+        //[]表达式表示一位，里面表示范围
+        var str3 = "abc";
+        var reg3 = /[abc][b]/g;
+        console.log(str3.match(reg3)); //[ab]
+
+        var reg4 = /[0-9A-z]/g;
+        var str4 = "abc";
+        console.log(str4.match(reg4)); //[a,b,c]
+
+        var reg5 = /[^a]/g;
+        var str5 = "abc";
+        console.log(str4.match(reg5)); //[b,c]
+
+        var reg6 = /(abc|bcd)[0-9]/g;
+        var str6 = "bcd3";
+        console.log(str6.match(reg6)); //[bcd3]
+    </script>
+</body>
+
+</html>

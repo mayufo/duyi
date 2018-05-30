@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式圆括号</title>
+</head>
+
+<body>
+
+    <script>
+        var reg = /(\w)\1\1\1/g;
+        var str = "aaaa";
+
+        console.log(str.match(reg));        //['aaaa']
+
+        str = "aaaabbbb";
+        console.log(str.match(reg));        //['aaaa','bbbb']      
+
+        str = "aabb";
+        reg = /(\w)\1(\w)\2/g;
+        console.log(str.match(reg));       //['aabb']
+    </script>
+</body>
+
+</html>

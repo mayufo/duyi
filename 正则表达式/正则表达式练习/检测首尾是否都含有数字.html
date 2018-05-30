@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式练习</title>
+</head>
+
+<body>
+
+    <script>
+        //写一个正则表达式，检测首尾是否都含有数字
+        var reg = /^\d[\w\W]*\d$/g;
+        var str = "2aaa2";
+
+        // console.log(str.match(reg));
+        console.log(reg.test(str));
+    </script>
+</body>
+
+</html>

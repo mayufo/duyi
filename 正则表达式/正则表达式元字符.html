@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式元字符</title>
+</head>
+
+<body>
+
+    <script>
+        var reg = new RegExp('a', 'g');
+        var str = "abca";
+
+        console.log(str.match(reg));
+
+
+        // \w查找单词   \W非单词
+        var reg1 = new RegExp('\\w');
+        // var reg1 = /\w/;
+        var str1 = "abc";
+
+        console.log(str1.match(reg1));  //a 
+
+
+        // \d查找数字   \D非数字
+        // var reg2 = new RegExp('[\\d][\\w]');
+        var reg2 = /[\d][\w]/;
+        var str2 = "2a";
+
+        console.log(str2.match(reg2));  //[2a]
+
+        // \s空白字符包含空格\n\t\r\v\f   \S非空白字符
+        var reg3 = /\s/;
+        var str3 = " ";
+        console.log(str3.match(reg3));     //[" "]
+
+        var reg3 = /\s/;
+        var str3 = "\n";
+        console.log(str3.match(reg3));     //["回车"]
+
+        var reg4 = /\bc/g;       //必须是单词边界c
+        var str4 = "acb c";     //[c]只有一个c 只有" c"是由单词边界的c
+
+        console.log(str4.match(reg4));      //[x]
+
+        //unicode编码也可以匹配
+        var reg5 = /\u4f60\u597d/g;      
+        var str5 = "你好";     
+
+        console.log(str5.match(reg5));
+
+
+        //\t\n等匹配必须写\t\n不能直接打"   " 换行等
+        var reg6 = /\t/g;      
+        var str6 = "abc\ta";     
+
+        console.log(str6.match(reg6));      //["  "]
+
+
+    </script>
+</body>
+
+</html>

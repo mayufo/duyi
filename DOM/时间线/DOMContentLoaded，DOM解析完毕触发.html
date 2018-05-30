@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        //DOMContentLoaded只能通过监听的方式绑定
+        document.addEventListener('DOMContentLoaded', function () {
+            var div = document.getElementsByTagName('div')[0];
+            div.style.width = "300px";
+            div.style.height = "300px";
+            div.style.backgroundColor = "#f40";
+        }, false);
+
+        //注释DOMContentLoaded直接获取的话是undefined
+        // var div = document.getElementsByTagName('div')[0];
+        // div ---> undefined;
+    </script>
+    <title>DOMContentLoaded，DOM解析完毕触发</title>
+</head>
+
+<body>
+
+    <div></div>
+
+</body>
+
+</html>

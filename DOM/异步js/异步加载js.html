@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>异步加载js</title>
+</head>
+
+<body>
+
+    <script>
+        var script = document.createElement('script');
+        script.type = "text/javascript";
+        script.src = "demo.js";                         //只要写了src就开始下载js文件了，是异步下载，当appendChild后才会执行
+
+
+        if (script.readyState) {
+            //IE    
+            script.onreadystatechange = function () {
+                if (script.readyState == "complete" || script.readyState == "loaded") {
+                    test();
+                }
+            }
+        } else {
+            //只有下载完了才会触发onload,除了IE其他都兼容
+            script.onload = function () {
+                test();
+            } 
+        }
+
+
+        //只有下载完了才会触发onload,除了IE其他都兼容
+        // script.onload = function () {
+        //     test();
+        // }
+
+        document.head.appendChild(script);
+
+        // test();                                      //因为事异步加载的，还没加载完就执行会报错test is not defined
+
+        // setTimeout(function(){
+        //     test();                                     //1秒后已经加载完了，所以可以执行        
+        // },1000);       
+
+        // 同理
+        var img = document.createElement('img');
+        // img.src = "";                            //写了src就开始下载图片文件了,预加载
+    </script>
+</body>
+
+</html>

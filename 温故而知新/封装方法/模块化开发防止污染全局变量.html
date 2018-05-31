@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模块化开发防止污染全局变量</title>
+</head>
+
+<body>
+
+    <script>
+        var init = (function () {
+            var name = 'cherry';
+
+            function callName() {
+                console.log(name);
+            }
+
+            return function () {
+                callName();
+            }
+        }());
+
+        init();
+
+        var initDeng = (function () {
+            var name = 'deng';
+
+            function callName() {
+                console.log(name);
+            }
+
+            return function () {
+                callName();
+            }
+        }());
+
+
+        initDeng();
+    </script>
+</body>
+
+</html>

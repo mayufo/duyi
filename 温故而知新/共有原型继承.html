@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>共有原型继承</title>
+</head>
+
+<body>
+
+    <script>
+        Person.prototype.name = '123';
+
+        function Person() {
+
+        }
+
+        function Student() {
+
+        }
+
+        function inherit(target, origin) {
+            target.prototype = origin.prototype;
+        }
+
+        inherit(Student, Person);
+        var s = new Student();
+    </script>
+</body>
+
+</html>

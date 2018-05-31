@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>运算符</title>
+</head>
+
+<body>
+
+    <script>
+        console.log(0 / 0); //NaN
+        console.log(1 / 0); //Infinity
+        console.log(-1 / 0); //-Infinity
+
+        console.log(5 && 8); //1
+        console.log(false && 8); //false
+
+        var data = true;
+
+        data && fun();
+
+
+        function fun() {
+            console.log(123);
+        }
+
+
+        var a = (fun(), 3);
+        console.log(a);
+    </script>
+
+</body>
+
+</html>

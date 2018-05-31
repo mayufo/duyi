@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>求字符串字节长度</title>
+</head>
+
+<body>
+
+    <script>
+        function getBytes(str) {
+            var len = str.length,
+                count = len;
+            for (var i = 0; i < len; i++) {
+                if (str.charCodeAt(i) > 255) {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+    </script>
+</body>
+
+</html>

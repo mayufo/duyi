@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>找出字符串第一个重复字符</title>
+</head>
+
+<body>
+
+    <script>
+        var str = "adfjdsdkjfkl";
+
+        String.prototype.uniqueFirst = function () {
+            var arr = this.split(""),
+                temp = {},
+                len = arr.length,
+                resArr = [];
+
+            for (var i = 0; i < len; i++) {
+                if (!temp[arr[i]]) {
+                    temp[arr[i]] = "abc";
+                } else {
+                    resArr.push(this.indexOf(arr[i]));
+                }
+            }
+
+            resArr.sort(function (a, b) {
+                return a - b;
+            });
+
+            return this[resArr[0]];
+        }
+
+        console.log(str.uniqueFirst());
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串去重</title>
+</head>
+
+<body>
+
+    <script>
+        var str = "aaabcxx1233";
+
+        String.prototype.unique = function () {
+            var arr = this.split(""),
+                temp = {},
+                res = "",
+                len = arr.length;
+
+            for (var i = 0; i < len; i++) {
+                if (!temp[arr[i]]) {
+                    temp[arr[i]] = "abc";
+                    res += arr[i];
+                }
+            }
+
+            return res;
+        }
+
+        console.log(str.unique());
+    </script>
+</body>
+
+</html>

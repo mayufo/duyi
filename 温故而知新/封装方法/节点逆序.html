@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节点逆序</title>
+</head>
+
+<body>
+
+    <div>
+        <span></span>
+        <strong></strong>
+        <em></em>
+        <a href=""></a>
+    </div>
+
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        function reverseNode(e) {
+            var children = e.children,
+                len = children.length;
+
+            for (var i = len - 2; i >= 0; i--) {
+                e.appendChild(e.removeChild(children[i]));
+            }
+        }
+
+        reverseNode(div);
+    </script>
+
+</body>
+
+</html>

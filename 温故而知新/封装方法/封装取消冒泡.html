@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装取消冒泡</title>
+</head>
+
+<body>
+
+    <div style="width:100px;height: 100px;background-color: #f40;"></div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        function stopBubble(event) {
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+
+        document.oncontextmenu = function (e) {
+            cancelHandler(e);
+            console.log(123);
+        }
+
+        function cancelHandler(event) {
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else if (event.returnValue) {
+                event.returnValue = false;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

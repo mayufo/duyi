@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装hasChildren（判断子元素有没有元素节点)</title>
+</head>
+
+<body>
+
+    <div>
+        <span></span>
+    </div>
+
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        Element.prototype.hasChildren = function () {
+            // if (this.children.length > 0) {
+            //     return true;
+            // } else {
+            //     return false;
+            // }
+            var children = this.childNodes,
+                len = children.length;
+
+            for (var i = 0; i < len; i++) {
+                if (children[i].nodeType == 1) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    </script>
+
+</body>
+
+</html>

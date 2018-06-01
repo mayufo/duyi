@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元素相对于文档坐标</title>
+</head>
+
+<body>
+    <div style="position:relative;width:150px;height: 150px;background-color: #000;">
+        <div style="position:relative;width:100px;height: 100px;background-color: #00f;">
+            <div style="width:50px;height:50px;background-color: #f40;margin-left:20px;margin-top:20px"></div>
+        </div>
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[2];
+
+        function getElementPosition(elem) {
+            if (elem.offsetParent === document.body) {
+                return {
+                    x: elem.offsetLeft,
+                    y: elem.offsetTop
+                }
+            } else {
+                var e = elem.offsetParent;
+                var pos = getElementPosition(e);
+                return {
+                    x: elem.offsetLeft + pos.x,
+                    y: elem.offsetTop + pos.y
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

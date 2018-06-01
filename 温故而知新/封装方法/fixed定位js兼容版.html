@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fixed定位js兼容版</title>
+</head>
+
+<body>
+    <hr style="width:3000px">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div style="width:50px;height:50px;background-color:#f40;position:absolute;top:500px;right:50px"></div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        function addEvent(elem, type, handler) {
+            if (elem.addEventListener) {
+                elem.addEventListener(type, handler, false);
+            } else if (elem.attachEvent) {
+                elem['temp' + type + handler] = handler;
+                elem[type + handler] = function () {
+                    elem['temp' + type + handler].call(elem);
+                }
+                elem.attachEvent(type, elem['on' + type + handler]);
+            } else {
+                elem['on' + type] = handler;
+            }
+        }
+
+        function getScrollOffset() {
+            return {
+                x: window.pageXOffset || document.body.scrollLeft + document.documentElement.scrollLeft,
+                y: window.pageYOffset || document.body.scrollTop + document.documentElement.scrollTop
+            }
+        }
+
+        var initFixed = (function () {
+            var disX = parseInt(div.style.right),
+                disY = parseInt(div.style.top);
+
+            return function () {
+                addEvent(window, 'scroll', function () {
+                    //left是加，right是减
+                    div.style.right = disX - getScrollOffset().x + "px";
+                    div.style.top = disY + getScrollOffset().y + "px";
+                });
+            }
+        }());
+
+        initFixed();
+    </script>
+</body>
+
+</html>

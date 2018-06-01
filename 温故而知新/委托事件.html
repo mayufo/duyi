@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        ul li {
+            border: 1px solid #000;
+            float: left;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 50px;
+            height: 30px;
+        }
+    </style>
+    <title>委托事件</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <button>新增</button>
+
+
+    <script>
+        var btn = document.getElementsByTagName('button')[0];
+        var ul = document.getElementsByTagName('ul')[0];
+        var li = document.getElementsByTagName('li');
+
+        var i = li[li.length - 1].innerHTML;
+
+        btn.onclick = function () {
+            var li = document.createElement('li');
+            li.innerHTML = parseInt(i++) + 1;
+            ul.appendChild(li);
+        }
+
+        ul.onclick = function (e) {
+            var event = e || window.event;
+
+            var target = e.target || e.srcElement;
+
+            alert(target.innerHTML);
+        }
+    </script>
+</body>
+
+</html>

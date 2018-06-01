@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装insertAfter</title>
+</head>
+
+<body>
+    <div>
+        <strong></strong>
+        <span></span>
+        <em></em>
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        var span = document.getElementsByTagName('span')[0];
+        var ee = document.getElementsByTagName('em')[0];
+        var d2 = document.createElement('div');
+
+        Element.prototype.insertAfter = function (targetNode, afterNode) {
+            var nexeElement = afterNode.nextElementSibling;
+            if (nexeElement == null) {
+                return this.appendChild(targetNode);
+            } else {
+                return this.insertBefore(targetNode, nexeElement);
+            }
+        }
+    </script>
+</body>
+
+</html>

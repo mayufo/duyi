@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>返回元素e的第n个兄弟元素节点，n为正，返回后面的兄弟元素节点，n为负，返回前面的，n为0，返回自己</title>
+</head>
+
+<body>
+
+    <div>
+        <span></span>
+        <strong></strong>
+        <em></em>
+        <a href=""></a>
+    </div>
+
+    <script>
+        var em = document.getElementsByTagName('em')[0];
+
+        // function retSibling(e, num) {
+        //     while (e && num) {
+        //         if (num > 0) {
+        //             e = e.nextElementSibling;
+        //             num--;
+        //         } else {
+        //             e = e.previousElementSibling;
+        //             num++;
+        //         }
+        //     }
+
+        //     return e;
+        // }
+
+        // function retSibling(e, num) {
+        //     while (e && num) {
+        //         if (num > 0) {
+        //             if (e.nextSibling && e.nextSibling.nodeType == 1) {
+        //                 e = e.nextSibling;
+        //             } else {
+        //                 for (e = e.nextSibling; e && e.nodeType != 1; e = e.nextSibling);
+        //             }
+        //             num--;
+        //         } else {
+        //             if (e.previousSibling && e.previousSibling.nodeType == 1) {
+        //                 e = e.previousSibling;
+        //             } else {
+        //                 for (e = e.previousSibling; e && e.nodeType != 1; e = e.previousSibling);
+        //             }
+        //             num++;
+        //         }
+        //     }
+
+        //     return e;
+        // }
+
+        function retSibling(e, num) {
+            while (e && num) {
+                if (num > 0) {
+                    e = e.nextSibling;
+                    if (e && e.nodeType == 1) {
+                        num--;
+                    }
+                } else {
+                    e = e.previousSibling;
+                    if (e && e.nodeType == 1) {
+                        num++
+                    }
+                }
+            }
+
+            return e;
+        }
+    </script>
+</body>
+
+</html>

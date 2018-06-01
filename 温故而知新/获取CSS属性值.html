@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+        }
+
+        div::after {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: #000;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+    <title>获取CSS属性值</title>
+</head>
+
+<body>
+
+    <div>
+
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        console.log(window.getComputedStyle(div, null).width);
+        console.log(window.getComputedStyle(div, 'after').left);
+    </script>
+</body>
+
+</html>

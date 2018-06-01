@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        input {
+            border: 1px solid rgba(0, 0, 0, .8);
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+    <title>计时器</title>
+</head>
+
+<body>
+
+    Minutes:
+    <input type="text" value="0"> Second:
+    <input type="text" value="0">
+    <button>start</button>
+    <button>stop</button>
+
+    <script>
+        var btnStart = document.getElementsByTagName('button')[0];
+        var btnStop = document.getElementsByTagName('button')[1];
+        var secText = document.getElementsByTagName('input')[1];
+        var minText = document.getElementsByTagName('input')[0];
+
+        var timer = (function () {
+            var timer = {},
+                second = 0,
+                minutes = 0,
+                tname = 0,
+                key = true;
+
+            timer.start = function () {
+                if (key) {
+                    tname = setInterval(function () {
+                        second++;
+                        if (second == 60) {
+                            second = 0;
+                            minutes++;
+                        }
+                        secText.value = second;
+                        minText.value = minutes;
+                        if (minutes == 3) {
+                            timer.sopt();
+                        }
+                        key = false;
+                    }, 100);
+                }
+            }
+
+            timer.stop = function () {
+                clearInterval(tname);
+                key = true;
+            }
+
+            return timer;
+        }());
+
+        timer.start();
+
+        btnStart.onclick = function () {
+            timer.start();
+        }
+
+        btnStop.onclick = function () {
+            timer.stop();
+        }
+    </script>
+</body>
+
+</html>

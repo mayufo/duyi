@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+        }
+
+        div::after {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: #000;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+    <title>绑定事件</title>
+</head>
+
+<body>
+
+    <div onclick="test()">
+
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        function test() {
+            console.log(132);
+        }
+
+        div.addEventListener('click', function () {
+            console.log(111);
+        }, false);
+
+        div.addEventListener('click', function () {
+            console.log(222);
+        },false);
+    </script>
+</body>
+
+</html>

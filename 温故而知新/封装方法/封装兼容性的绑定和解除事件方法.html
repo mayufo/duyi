@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装兼容性的绑定和解除事件方法</title>
+</head>
+
+<body>
+
+    <div style="width:100px;height: 100px;background-color: #f40;"></div>
+
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        function addEvent(elem, type, handler) {
+            if (elem.addEventListener) {
+                elem.addEventListener(type, handler, false);
+            } else if (elem.attachEvent) {
+                elem['temp' + type + handler] = handler;
+                elem[type + handler] = function () {
+                    elem['temp' + type + handler].call(elem);
+                }
+
+                elem.attachEvent('on' + type, elem[type + handler]);
+            } else {
+                elem['on' + type] = handler;
+            }
+        }
+
+        function removeEvent(elem, type, handler) {
+            if (elem.removeEventListener) {
+                elem.removeEventListener(type, handler, false);
+            } else if (elem.detachEvent) {
+                elem.removeEvent('on' + type, elem[type + handler]);
+            } else {
+                elem['on' + type] = null;
+            }
+        }
+
+        function test() {
+            alert(123);
+        }
+
+        addEvent(div, 'click', test);
+    </script>
+</body>
+
+</html>

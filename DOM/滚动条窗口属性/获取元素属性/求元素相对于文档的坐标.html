@@ -54,25 +54,19 @@
     <script>
         var d4 = document.getElementsByClassName('d4')[0];
 
-        function getElementPostion(e) {
-            // if (e.offsetParent === null) {
-            //     return {
-            //         x: e.offsetLeft,
-            //         y: e.offsetTop
-            //     }
-            // }
-
-            if (e.offsetParent == document.body) {
+        function getElementPosition(elem) {
+            if (elem.offsetParent === document.body) {
                 return {
-                    x: e.offsetLeft,
-                    y: e.offsetTop
+                    x: elem.offsetLeft,
+                    y: elem.offsetTop
                 }
             } else {
+                var e = elem.offsetParent;
+                var pos = getElementPosition(e);
                 return {
-                    x: e.offsetLeft + getElementPostion(e.offsetParent).x,
-                    y: e.offsetTop + getElementPostion(e.offsetParent).y
-
-                };
+                    x: elem.offsetLeft + pos.x,
+                    y: elem.offsetTop + pos.y
+                }
             }
         }
 

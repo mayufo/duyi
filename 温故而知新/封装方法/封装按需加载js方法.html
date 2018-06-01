@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装按需加载js方法</title>
+</head>
+
+<body>
+
+    <script>
+        function loadscript(url, callback) {
+            var script = document.createElement('script');
+            script.type = "text/javascript";
+
+            if (script.readyState) {
+                script.onreadystatechange = function () {
+                    if (script.readyState == "complete" || script.readyState == "loaded") {
+                        tools[callback]();
+                    }
+                }
+            } else {
+                script.onload = function () {
+                    tools[callback]();
+                }
+            }
+
+            script.src = url;
+            document.head.appendChild(script);
+        }
+
+        // loadscript('../demo.js', function () {
+        //     test();
+        // });
+
+        loadscript('../demo.js', "test");
+    </script>
+</body>
+
+</html>

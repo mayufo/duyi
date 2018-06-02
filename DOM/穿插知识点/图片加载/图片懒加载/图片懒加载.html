@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片懒加载</title>
+</head>
+
+<body style="width:1000px;height: 1000px;">
+
+    <button>点击加载图片</button>
+
+    <script>
+        //图片懒加载其实就是按需加载
+
+        var btn = document.getElementsByTagName('button')[0];
+
+        btn.onclick = function () {
+            var img = new Image();
+            img.src =
+                "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527932872880&di=3af550e239df74de45884eb4372db65e&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F63d0f703918fa0ec53d199aa2a9759ee3d6ddb07.jpg";
+            img.style.width = "300px";
+            img.style.height = "500px";
+            document.body.appendChild(img);
+        }
+
+        // window.onscroll = function () {
+        //     var img = new Image();
+        //     img.src =
+        //         "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527932872880&di=3af550e239df74de45884eb4372db65e&imgtype=0&src=http%3A%2F%2Fd.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F63d0f703918fa0ec53d199aa2a9759ee3d6ddb07.jpg";
+        //     img.style.width = "300px";
+        //     img.style.height = "500px";
+        //     document.body.appendChild(img);
+        // }
+    </script>
+</body>
+
+</html>

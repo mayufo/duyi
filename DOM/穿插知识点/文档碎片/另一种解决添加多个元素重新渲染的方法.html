@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>另一种解决添加多个元素重新渲染的方法</title>
+</head>
+
+<body>
+
+    <ul></ul>
+
+    <script>
+        var ul = document.getElementsByTagName('ul')[0];
+        var str = '';
+
+        for (var i = 0; i < 10000; i++) {
+            str += '<li>' + i + '</li>';
+        }
+
+        
+        ul.innerHTML = str;
+    </script>
+</body>
+
+</html>

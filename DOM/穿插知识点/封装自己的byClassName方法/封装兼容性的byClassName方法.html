@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装兼容性的byClassName方法</title>
+</head>
+
+<body>
+
+
+    <div class="demo">
+        <strong class="demo">
+            <span class="demo"></span>
+        </strong>
+        <em class="demo"></em>
+
+        <em class="demo"></em>
+
+    </div>
+    <span class="demo"></span>
+
+
+
+    <script>
+        var arr = getElementsByClassName(document, 'demo');
+
+        function getElementsByClassName(elem, name, target) {
+            var children = elem.children,
+                len = children.length,
+                target = target || {
+                    length: 0,
+                    push: Array.prototype.push,
+                    splice: Array.prototype.splice
+                };
+
+            for (var i = 0; i < len; i++) {
+                if (children[i].hasAttribute('class', name)) {
+                    target.push(children[i]);
+                }
+                if (children[i].children.length) {
+                    getElementsByClassName(children[i], name, target);
+                }
+            }
+
+            return target;
+        }
+
+        Document.prototype.getByClassName = function (className) {
+            var all = document.getElementsByTagName('*');
+            var arr = [];
+            for (var i = 0; i < all.length; i++) {
+                if (all[i].hasAttribute('class', className)) {
+                    arr.push(all[i]);
+                }
+            }
+
+            return arr;
+        }
+    </script>
+</body>
+
+</html>

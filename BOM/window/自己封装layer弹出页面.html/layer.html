@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        button {
+            margin-top: 300px;
+            margin-left: 300px;
+        }
+    </style>
+    <title>layer</title>
+</head>
+
+<body>
+    <button>创建窗口</button>
+    <button>移动窗口</button>
+    <button>打开窗口</button>
+
+    <script>
+        var btn1 = document.getElementsByTagName('button')[0];
+        var btn2 = document.getElementsByTagName('button')[1];
+        var btn3 = document.getElementsByTagName('button')[2];
+
+        var myWindow;
+
+        btn1.onclick = function () {
+            var left = window.screenLeft;
+            var top = window.screenTop;
+
+            var width = window.innerWidth / 2;
+            var height = window.innerHeight / 2;
+
+            var data = 'width=' + 300 + ',height=' + 300 + ',left=' + (left + width) + ',top= ' + (top + height);
+
+            // myWindow = open('', 'aa', data);
+            myWindow = layer(300, 300, -200, -200);
+        }
+
+        btn2.onclick = function () {
+            myWindow.moveBy(100, 100);
+        }
+
+        btn3.onclick = function () {
+            open('window对象.html');
+        }
+
+        function layer(width, height, left, top) {
+            var l = window.screenLeft;
+            var t = window.screenTop;
+
+            var data = 'width=' + width + ',height=' + height + ',left=' + (left + l) + ',top= ' + (top + t);
+
+            return open('', '', data);
+        }
+    </script>
+</body>
+
+</html>

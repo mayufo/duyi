@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性映射</title>
+</head>
+
+<body>
+
+    <div></div>
+    <input type="text">
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        var input = document.getElementsByTagName('input')[0];
+
+        div.id = "main";
+        div.className = "c";
+
+        input.name = "input";
+
+        div.setAttribute('data-id', 1);
+        console.log(div.getAttribute('data-id'));
+    </script>
+</body>
+
+</html>

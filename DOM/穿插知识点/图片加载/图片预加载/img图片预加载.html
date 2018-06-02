@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>img图片预加载</title>
+</head>
+
+<body>
+
+    <script>
+        var img = new Image();
+        img.src = "https://imgsa.baidu.com/forum/pic/item/349b033b5bb5c9ea5edd3772d939b6003af3b370.jpg";
+        img.style.width = "300px";
+        img.style.height = "500px";
+
+        if (img.onreadystatechange) {
+            img.onreadystatechange = function () {
+                if (img.readyState == "complete" || img.readyState == "loaded") {
+                    document.body.appendChild(img);
+                }
+            }
+        } else {
+            img.onload = function () {
+                document.body.appendChild(img);
+            }
+        }
+
+        // function loadimg(url) {
+        //     var img = new Image();
+        //     img.src = url;
+        //     img.style.width = "300px";
+        //     img.style.height = "500px";
+
+        //     if (img.onreadystatechange) {
+        //         img.onreadystatechange = function () {
+        //             if (img.readyState == "complete" || img.readyState == "loaded") {
+        //                 document.body.appendChild(img);
+        //             }
+        //         }
+        //     } else {
+        //         img.onload = function () {
+        //             document.body.appendChild(img);
+        //         }
+        //     }
+        // }
+
+        // loadimg('https://imgsa.baidu.com/forum/pic/item/349b033b5bb5c9ea5edd3772d939b6003af3b370.jpg');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类似解决方法</title>
+</head>
+
+<body>
+    <ul></ul>
+
+    <script>
+        var oUl = document.getElementsByTagName('ul')[0];
+        //创建要给文档碎片
+        var ofrag = document.createDocumentFragment();
+
+        for (var i = 0; i < 10000; i++) {
+            //这样页面会重新渲染10000次
+            var oLi = document.createElement('li');
+            oLi.innerHTML = i;
+            //将元素添加到文档碎片中
+            ofrag.appendChild(oLi);
+            // oUl.appendChild(oLi);
+        }
+
+        //将文档
+        oUl.appendChild(ofrag);
+    </script>
+</body>
+
+</html>

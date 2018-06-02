@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>label</title>
+</head>
+
+<body>
+
+    <label for="username">用户名:</label>
+    <input id="username" type="text">
+
+    <script>
+        var oLable = document.getElementsByTagName('label')[0],
+            oInput = document.getElementById('username');
+
+        oLable.onclick = function () {
+            console.log('lable');
+        }
+
+        oInput.onclick = function () {
+            console.log('input');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+            left: 0;
+        }
+
+        .top {
+            top: 50px;
+        }
+
+        .bottom {
+            top: 300px;
+        }
+    </style>
+    <title>物体多值链式匀速运动框架</title>
+</head>
+
+<body>
+    <div class="top"></div>
+    <div class="bottom"></div>
+
+    <script>
+        var oTop = document.getElementsByTagName('div')[0];
+        var oBottom = document.getElementsByTagName('div')[1];
+
+        function getStyle(obj, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(obj, null)[attr];
+            } else {
+                return obj.currentStyle[attr];
+            }
+        }
+
+        oTop.onclick = function () {
+            var targetObj = {
+                width: 10,
+                height: 10,
+                left: 300,
+                top: 300,
+                opacity: 50
+            }
+
+            startMove(this, targetObj, function () {
+                startMove(oBottom, targetObj);
+            });
+        }
+
+        function startMove(obj, json, callback) {
+            clearInterval(obj.timer);
+            var iSpeed, iCur;
+
+            obj.timer = setInterval(function () {
+                var bStop = true;
+                for (var attr in json) {
+                    if (attr == 'opacity') {
+                        iCur = parseFloat(getStyle(obj, attr)) * 100;
+                    } else {
+                        iCur = parseInt(getStyle(obj, attr));
+                    }
+
+                    // iSpeed = (json[attr] - iCur);
+                    if (iCur > json[attr]) {
+                        iSpeed = -10;
+                    } else {
+                        iSpeed = 10;
+                    }
+
+                    if (Math.abs(json[attr] - iCur) < Math.abs(iSpeed)) {
+                        if (attr == 'opacity') {
+                            obj.style[attr] = (json[attr]) / 100;
+                        } else {
+                            obj.style[attr] = json[attr] + "px";
+                        }
+                    } else {
+                        bStop = false;
+                        if (attr == 'opacity') {
+                            obj.style.opacity = (iCur + iSpeed) / 100;
+                        } else {
+                            obj.style[attr] = iCur + iSpeed + "px";
+                        }
+                    }
+
+                    // iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                }
+
+                if (bStop) {
+                    clearInterval(obj.timer);
+                    typeof callback == 'function' ? callback() : '';
+                }
+            }, 30);
+        }
+    </script>
+</body>
+
+</html>

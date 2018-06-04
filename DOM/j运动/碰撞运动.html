@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <title>碰撞运动</title>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+
+        oDiv.onclick = function () {
+            startMove(this);
+        }
+
+
+        function startMove(obj) {
+            clearInterval(obj.timer);
+            var iSpeedX = 10,
+                iSpeedY = 10;
+            var g = 6;
+
+            obj.timer = setInterval(function () {
+                iSpeedY += g;
+                var newLeft = obj.offsetLeft + iSpeedX;
+                var newTop = obj.offsetTop + iSpeedY;
+                var client = getViewPortOffset();
+
+                if (newTop >= client.height - obj.offsetHeight) {
+                    iSpeedY *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newTop = client.height - obj.offsetHeight;
+                }
+
+                if (newTop <= 0) {
+                    iSpeedY *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newTop = 0;
+                }
+
+                if (newLeft >= client.width - obj.offsetWidth) {
+                    iSpeedX *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newLeft = client.width - obj.offsetWidth;
+                }
+
+                if (newLeft <= 0) {
+                    iSpeedX *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newLeft = 0;
+                }
+
+                // if (Math.abs(iSpeedX) < 1) {
+                //     iSpeedX = 0;
+                // }
+
+                // if (Math.abs(iSpeedY) < 1) {
+                //     iSpeedY = 0;
+                // }
+
+                if (Math.abs(iSpeedX) < 1 && Math.abs(iSpeedY) < 1 && newTop == client.height - obj.offsetHeight) {
+                    clearInterval(obj.timer);
+                    console.log('over');
+                }
+
+                obj.style.left = newLeft + "px";
+                obj.style.top = newTop + "px";
+
+            }, 30);
+        }
+
+
+        function getViewPortOffset() {
+            if (window.innerWidth) {
+                return {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                }
+            } else if (document.compatMode == "CSS1Compat") {
+                return {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight
+                }
+            } else {
+                return {
+                    width: document.body.clientWidth,
+                    height: document.body.clientHeight
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

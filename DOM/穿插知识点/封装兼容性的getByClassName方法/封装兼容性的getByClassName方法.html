@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装兼容性的getByClassName方法</title>
+</head>
+
+<body>
+
+
+    <div class="demo aaa">
+        <strong class="demo aaa">
+            <span class="demo"></span>
+        </strong>
+        <em class="demo"></em>
+
+        <em class="demo"></em>
+
+    </div>
+    <span class="demo"></span>
+
+
+
+    <script>
+        var arr = getElementsByClassName(document, 'demo');
+
+        Document.prototype.getByClassName = function (className) {
+            var arr = Array.prototype.slice.call(document.getElementsByTagName('*'), 0);
+            var filterArr = [];
+
+
+            function dealClass(name) {
+                var reg = /\s+/g;
+
+                return name.replace(reg, ' ').trim();
+            }
+
+            arr.forEach(function (elem, index) {
+                var itemClassArr = dealClass(elem.className).split(' '),
+                    len = itemClassArr.length;
+                for (var i = 0; i < len; i++) {
+                    if (itemClassArr[i] == className) {
+                        filterArr.push(elem);
+                        break;
+                    }
+                }
+            });
+
+            return filterArr;
+        }
+    </script>
+</body>
+
+</html>

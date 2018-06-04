@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .demo {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+            left: 0px;
+            top: 0;
+        }
+
+        .st {
+            width: 1px;
+            height: 150px;
+            background-color: #000;
+            position: absolute;
+            left: 300px;
+            top: 0px;
+        }
+    </style>
+    <title>运动</title>
+</head>
+
+<body>
+
+    <div class="demo"></div>
+    <div class="st"></div>
+
+    <script>
+        Document.prototype.getByClassName = function (className) {
+            var arr = Array.prototype.slice.call(document.getElementsByTagName('*'), 0);
+            var filterArr = [];
+
+            function dealClass(name) {
+                var reg = /\s+/g;
+
+                return name.replace(reg, ' ').trim();
+            }
+
+            arr.forEach(function (elem) {
+                var classArr = dealClass(elem.className).split(' '),
+                    len = classArr.length;
+                for (var i = 0; i < len; i++) {
+                    if (classArr[i] == className) {
+                        filterArr.push(elem);
+                        break;
+                    }
+                }
+            });
+
+            return filterArr;
+        }
+
+        var oDiv = document.getByClassName('demo')[0];
+
+        var initMove = (function () {
+            var iSpeed;
+
+            return function () {
+                if (oDiv.offsetLeft > 300) {
+                    iSpeed = -8;
+                } else {
+                    iSpeed = 8;
+                }
+
+                var timer = setInterval(function () {
+                    if (Math.abs(300 - oDiv.offsetLeft) < Math.abs(iSpeed)) {
+                        clearInterval(timer);
+                        oDiv.style.left = "300px";
+                    } else {
+                        oDiv.style.left = oDiv.offsetLeft + iSpeed + "px";
+                    }
+                }, 30)
+
+            }
+        }());
+
+        initMove();
+    </script>
+</body>
+
+</html>

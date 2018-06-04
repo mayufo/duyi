@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            margin-top: 20px;
+        }
+    </style>
+    <title>多个物体运动</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div');
+
+        for (var i = 0; i < oDiv.length; i++) {
+            oDiv[i].onmouseenter = function () {
+                startMove(this, 400);
+            }
+
+            oDiv[i].onmouseleave = function () {
+                startMove(this, 150);
+            }
+        }
+
+        function startMove(obj, target) {
+            clearInterval(obj.timer);
+            var iSpeed;
+
+            obj.timer = setInterval(function () {
+                iSpeed = (target - obj.offsetWidth) / 7;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+                if (obj.offsetWidth === target) {
+                    clearInterval(obj.timer);
+                } else {
+                    obj.style.width = obj.offsetWidth + iSpeed + "px";
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

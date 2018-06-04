@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .wrapper {
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            left: -200px;
+            top: 200px;
+        }
+
+        .wrapper img {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .demo {
+            width: 50px;
+            height: 300px;
+            position: absolute;
+            right: -50px;
+            top: 0px;
+            background-color: #f40;
+            text-align: center;
+            line-height: 70px;
+            font-size: 30px;
+        }
+    </style>
+    <title>缓冲运动弹出框</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="demo">
+            移入弹出
+        </div>
+    </div>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oDemo = document.getElementsByTagName('div')[1];
+
+        imageload(
+            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528018567927&di=bbaf7612646990bddc5097cf26e4f742&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F908fa0ec08fa513d88fa2e4c316d55fbb3fbd9d4.jpg'
+        );
+
+        function imageload(url) {
+            var img = new Image();
+            img.src = url;
+
+            img.onclick = function () {
+                location.href = "https://www.baidu.com";
+            }
+
+            if (img.onreadystatechange) {
+                if (img.readySate == 'complete' || img.readySate == 'loadesedd') {
+                    oDiv.appendChild(img);
+                }
+            } else {
+                img.onload = function () {
+                    oDiv.appendChild(img);
+                }
+            }
+        }
+
+        function getStyle(elem, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(elem, null)[attr];
+            } else {
+                return elem.currentStyle[attr];
+            }
+        }
+
+        oDiv.onmouseenter = function () {
+            startMove(this, {
+                left: 0
+            });
+            oDemo.innerHTML = '移开隐藏';
+        }
+
+        oDiv.onmouseleave = function () {
+            startMove(this, {
+                left: -200
+            })
+            oDemo.innerHTML = '移入弹出';
+        }
+
+        function startMove(obj, json, callBack) {
+            clearInterval(obj.timer);
+            var iSpeed, iCur;
+
+            obj.timer = setInterval(function () {
+                var bStop = true;
+                for (var attr in json) {
+                    if (attr == 'opacity') {
+                        iCur = parseFloat(getStyle(obj, attr)) * 100;
+                    } else {
+                        iCur = parseInt(getStyle(obj, attr));
+                    }
+
+                    iSpeed = (json[attr] - iCur) / 50;
+                    iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+                    if (attr == 'opacity') {
+                        obj.style[attr] = (iCur + iSpeed) / 100;
+                    } else {
+                        obj.style[attr] = iCur + iSpeed + "px";
+                    }
+
+                    if (iCur != json[attr]) {
+                        bStop = false;
+                    }
+                }
+
+                if (bStop) {
+                    clearInterval(obj.timer);
+                    typeof callBack == 'function' ? callBack() : '';
+                }
+            }, );
+        }
+    </script>
+
+</body>
+
+</html>

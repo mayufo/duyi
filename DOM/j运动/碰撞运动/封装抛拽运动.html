@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <title>抛拽运动</title>
+</head>
+
+<body>
+
+    <div></div>
+
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+
+        function drag(elem) {
+            var disX,
+                disY,
+                lastX = elem.offsetLeft,
+                lastY = elem.offsetTop;
+
+            addEvent(elem, 'mousedown', function (e) {
+                var event = e || window.event;
+
+                var x = event.pageX || event.clientX;
+                var y = event.pageY || event.clientY;
+
+                var iSpeedX, iSpeedY;
+
+                disX = x - this.offsetLeft;
+                disY = y - this.offsetTop;
+
+                addEvent(document, 'mousemove', mousemove);
+                addEvent(elem, 'mouseup', mouseup);
+
+                stopBubble(event);
+                cancelHandler(event);
+            });
+
+            function mousemove(e) {
+                var event = e || window.event;
+                var x = event.pageX || event.clientX;
+                var y = event.pageY || event.clientY;
+
+                var newLeft = x - disX;
+                var newTop = y - disY;
+                iSpeedX = newLeft - lastX;
+                iSpeedY = newTop - lastY;
+
+                lastX = newLeft;
+                lastY = newTop;
+
+                elem.style.left = newLeft + "px";
+                elem.style.top = newTop + "px";
+            }
+
+            function mouseup(e) {
+                removeEvent(document, 'mousemove', mousemove);
+                startMove(elem, iSpeedX, iSpeedY);
+            }
+        }
+
+        drag(oDiv);
+
+        function addEvent(elem, type, handler) {
+            if (elem.addEventListener) {
+                elem.addEventListener(type, handler, false);
+            } else if (elem.attachEvent) {
+                elem['temp' + type + handler] = handler;
+                elem[type + handler] = function () {
+                    elem['temp' + type + handler].call(elem);
+                }
+                elem.attachEvent('on' + type, elem[type + handler]);
+            } else {
+                elem['on' + type] = handler;
+            }
+        }
+
+        function removeEvent(elem, type, handler) {
+            if (elem.removeEventListener) {
+                elem.removeEventListener(type, handler, false);
+            } else if (elem.detachEvent) {
+                elem.detachEvent('on' + type, handler);
+            } else {
+                elem['on' + type] = null;
+            }
+        }
+
+        function stopBubble(event) {
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+
+        function cancelHandler(event) {
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+            }
+        }
+
+
+        function getViewPortOffset() {
+            if (window.innerWidth) {
+                return {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                }
+            } else if (document.compatMode == "CSS1Compat") {
+                return {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight
+                }
+            } else {
+                return {
+                    width: document.body.clientWidth,
+                    height: document.body.clientHeight
+                }
+            }
+        }
+
+        function startMove(obj, iSpeedX, iSpeedY) {
+            clearInterval(obj.timer);
+            var g = 6;
+
+            obj.timer = setInterval(function () {
+                iSpeedY += g;
+                var client = getViewPortOffset();
+                var newLeft = obj.offsetLeft + iSpeedX;
+                var newTop = obj.offsetTop + iSpeedY;
+
+                if (newLeft >= client.width - obj.offsetWidth) {
+                    iSpeedX *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newLeft = client.width - obj.offsetWidth;
+                }
+
+                if (newLeft <= 0) {
+                    iSpeedX *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newLeft = 0;
+                }
+
+                if (newTop >= client.height - obj.offsetHeight) {
+                    iSpeedY *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newTop = client.height - obj.offsetHeight;
+                }
+
+                if (newTop <= 0) {
+                    iSpeedY *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newTop = 0;
+                }
+
+                if (Math.abs(iSpeedX) < 1) {
+                    iSpeedX = 0;
+                }
+
+                if (Math.abs(iSpeedY) < 1) {
+                    iSpeedY = 0;
+                }
+
+                if (iSpeedX == 0 && iSpeedY == 0 && newTop == client.height - obj.offsetHeight) {
+                    clearInterval(obj.timer);
+                    console.log('over');
+                }
+
+
+                obj.style.left = newLeft + "px";
+                obj.style.top = newTop + "px";
+
+            }, 30);
+        }
+    </script>
+</body>
+
+</html>

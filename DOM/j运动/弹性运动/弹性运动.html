@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        span {
+            width: 1px;
+            height: 150px;
+            background-color: #000;
+            position: absolute;
+            left: 500px;
+            top: 0;
+        }
+    </style>
+    <title>弹性运动</title>
+</head>
+
+<body>
+    <div class="demo">
+    </div>
+    <span></span>
+
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+
+        oDiv.onclick = function () {
+            startMove(this);
+        }
+
+        function startMove(obj) {
+            clearInterval(obj.timer);
+            var iSpeed = 5,
+                a;
+
+            obj.timer = setInterval(function () {
+                a = (500 - obj.offsetLeft) / 10;
+                iSpeed = a + iSpeed;
+                iSpeed = iSpeed * 0.9;
+                if (Math.abs(iSpeed) < 1 && Math.abs(500 - obj.offsetLeft) < 1) {
+                    clearInterval(obj.timer);
+                    obj.style.left = "500px";
+                    console.log('over');
+                } else {
+                    obj.style.left = obj.offsetLeft + iSpeed + "px";
+                }
+            }, 30);
+        }
+    </script>
+</body>
+
+</html>

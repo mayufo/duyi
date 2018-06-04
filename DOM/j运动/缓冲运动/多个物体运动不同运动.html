@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            margin-top: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 1;
+        }
+
+        div:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+            left: 0;
+            top: 200px;
+            opacity: 1;
+        }
+
+        div:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+            left: 0;
+            top: 400px;
+            opacity: 1;
+        }
+
+        div:nth-child(4) {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            margin-top: 20px;
+            position: absolute;
+            left: 0;
+            top: 600px;
+            opacity: 1;
+            border: 1px solid #000;
+        }
+    </style>
+    <title>多个物体运动</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div');
+
+        oDiv[0].onclick = function () {
+            startMove(this, 400, 'width');
+        }
+
+        oDiv[1].onclick = function () {
+            startMove(this, 150, 'left');
+        }
+        oDiv[2].onclick = function () {
+            startMove(this, 50, 'opacity');
+        }
+        oDiv[3].onclick = function () {
+            startMove(this, 150, 'borderWidth');
+        }
+
+        function getStyle(obj, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(obj, null)[attr];
+            } else {
+                return obj.currentStyle[attr];
+            }
+        }
+
+        function startMove(obj, target, attr) {
+            clearInterval(obj.timer);
+            var iSpeed, iCur;
+
+            obj.timer = setInterval(function () {
+                if (attr == 'opacity') {
+                    iCur = parseFloat(getStyle(obj, attr)) * 100;
+                } else {
+                    iCur = parseInt(getStyle(obj, attr));
+                }
+
+                iSpeed = (target - iCur) / 7;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+                if (iCur === target) {
+                    clearInterval(obj.timer);
+                } else {
+                    if (attr == 'opacity') {
+                        obj.style.opacity = (iCur + iSpeed) / 100;
+                        return obj;
+                    } else {
+                        obj.style[attr] = iCur + iSpeed + "px";
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

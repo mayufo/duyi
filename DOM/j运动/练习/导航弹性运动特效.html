@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            width: 600px;
+            height: 70px;
+            margin: 200px auto 0px;
+            position: relative;
+        }
+
+        ul li {
+            width: 148px;
+            height: 68px;
+            border: 1px solid #000;
+        }
+
+        ul li.nav {
+            float: left;
+            line-height: 68px;
+            text-align: center;
+        }
+
+        ul li.bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #f40;
+            opacity: 0.7;
+        }
+    </style>
+    <title>导航弹性运动特效</title>
+</head>
+
+<body>
+
+    <ul>
+        <li class="nav">一</li>
+        <li class="nav">二</li>
+        <li class="nav">三</li>
+        <li class="nav">四</li>
+        <li class="bg"></li>
+    </ul>
+
+    <script>
+        Document.prototype.getByClassName = function (name) {
+            var arr = Array.prototype.slice.call(document.getElementsByTagName('*'), 0);
+            var filterArr = [];
+
+            function dealClass(className) {
+                var reg = /\s+/g;
+
+                return className.replace(reg, ' ').trim();
+            }
+
+            arr.forEach(function (elem, index) {
+                var classArr = dealClass(elem.className).split(' '),
+                    len = classArr.length;
+                for (var i = 0; i < len; i++) {
+                    if (classArr[i] == name) {
+                        filterArr.push(elem);
+                        break;
+                    }
+                }
+            })
+
+            return filterArr;
+        }
+
+        var oLi = document.getByClassName('nav');
+        var tLi = document.getByClassName('bg')[0];
+
+        oLi.forEach(function (item, index) {
+            item.onmouseenter = function () {
+                startMove(tLi, this.offsetLeft);
+            }
+        });
+
+        function startMove(obj, target) {
+            clearInterval(obj.timer);
+            var iSpeed = 5,
+                a;
+
+            obj.timer = setInterval(function () {
+                a = (target - obj.offsetLeft) / 10;
+                iSpeed = a + iSpeed;
+                iSpeed = iSpeed * 0.9;
+                if (Math.abs(iSpeed) < 1 && Math.abs(target - obj.offsetLeft) < 1) {
+                    clearInterval(obj.timer);
+                    console.log('over');
+                    obj.style.left = target + "px";
+                } else {
+                    obj.style.left = obj.offsetLeft + iSpeed + "px";
+                }
+            }, 30);
+        }
+    </script>
+</body>
+
+</html>

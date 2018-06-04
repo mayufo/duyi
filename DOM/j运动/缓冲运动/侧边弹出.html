@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .wrapper {
+            position: absolute;
+            left: -150px;
+            top: 300px;
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+        }
+
+        .show {
+            position: absolute;
+            right: -30px;
+            top: 0px;
+            background-color: #000;
+            width: 30px;
+            height: 150px;
+        }
+    </style>
+    <title>侧边弹出</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="show"></div>
+    </div>
+
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oShow = document.getElementsByTagName('div')[1];
+        var timer = null;
+
+        oDiv.onmouseenter = function () {
+            startMove(this, 0);
+        }
+
+        oDiv.onmouseleave = function () {
+            startMove(this, -150);
+        }
+
+        function startMove(obj, target) {
+            clearInterval(timer);
+            var iSpeed;
+
+            timer = setInterval(function () {
+                iSpeed = (target - obj.offsetLeft) / 7;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+                if (obj.offsetLeft === target) {
+                    clearInterval(timer);
+                } else {
+                    obj.style.left = obj.offsetLeft + iSpeed + "px";
+                }
+            }, 30);
+        }
+
+        function getStyle(elem, prop) {
+            if (elem.getComputedStyle) {
+                return window.getComputedStyle(elem, null)[prop];
+            } else {
+                return elem.currentStyle[prop];
+            }
+        }
+    </script>
+</body>
+
+</html>

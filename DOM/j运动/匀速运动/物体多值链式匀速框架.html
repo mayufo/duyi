@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+        }
+
+        .demo1 {
+            left: 800px;
+            top: 0;
+            opacity: 1;
+        }
+
+        .demo2 {
+            left: 0;
+            top: 0;
+            opacity: 0.8;
+        }
+
+        span {
+            width: 1px;
+            height: 150px;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 500px;
+        }
+    </style>
+    <title>js运动</title>
+</head>
+
+<body>
+    <div class="demo1"></div>
+    <div class="demo2"></div>
+    <span></span>
+
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oDiv2 = document.getElementsByTagName('div')[1];
+
+        oDiv.onclick = function () {
+            var targetObj = {
+                width: 500,
+                height: 500,
+                left: 500,
+                opacity: 30
+            }
+
+            startMove(this, targetObj, function () {
+                startMove(oDiv2, {
+                    left: 500,
+                    width: 100,
+                    height: 100,
+                    opacity: 20
+                });
+            });
+        }
+
+        function startMove(obj, json, callback) {
+            clearInterval(obj.timer);
+            var iSpeed, iCur;
+
+            obj.timer = setInterval(function () {
+                var oStop = true;
+                for (var attr in json) {
+                    if (attr == 'opacity') {
+                        iCur = parseFloat(getStyle(obj, 'opacity')) * 100;
+                    } else {
+                        iCur = parseInt(getStyle(obj, attr));
+                    }
+
+                    if (iCur > json[attr]) {
+                        iSpeed = -2;
+                    } else {
+                        iSpeed = 2;
+                    }
+
+                    if (Math.abs(json[attr] - iCur) >= Math.abs(iSpeed)) {
+                        oStop = false;
+                        obj.style[attr] = attr == 'opacity' ? (iCur + iSpeed) / 100 : iCur + iSpeed + "px";
+                        // obj.style[attr] = iCur + iSpeed + "px";
+                    } else {
+                        // obj.style[attr] = json[attr] + "px";
+                        obj.style[attr] = attr == 'opacity' ? json[attr] / 100 : json[attr] + "px";
+                    }
+                }
+
+                if (oStop) {
+                    clearInterval(obj.timer);
+                    typeof callback == 'function' ? callback() : '';
+                }
+            }, 30);
+        }
+
+        function getStyle(elem, prop) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(elem, null)[prop];
+            } else {
+                return elem.currentStyle[prop];
+            }
+        }
+    </script>
+</body>
+
+</html>

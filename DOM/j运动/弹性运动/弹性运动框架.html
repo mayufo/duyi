@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+        }
+
+        .demo1 {
+            left: 800px;
+            top: 0;
+            opacity: 1;
+        }
+
+        .demo2 {
+            left: 0;
+            top: 0;
+            opacity: 0.8;
+        }
+
+        span {
+            width: 1px;
+            height: 150px;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 500px;
+        }
+    </style>
+    <title>加速运动</title>
+</head>
+
+<body>
+    <div class="demo1"></div>
+    <div class="demo2"></div>
+    <span></span>
+
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oDiv2 = document.getElementsByTagName('div')[1];
+
+        oDiv.onclick = function () {
+            startMove(this, 500);
+        }
+
+        function startMove(obj, target) {
+            clearInterval(obj.timer);
+            var iSpeed = 5,
+                g;
+
+            obj.timer = setInterval(function () {
+                g = (target - obj.offsetLeft) / 10;
+                iSpeed = iSpeed + g;
+                iSpeed = iSpeed * 0.9;
+
+                if (Math.abs(target - obj.offsetLeft) < 1 && Math.abs(iSpeed) < 1) {
+                    clearInterval(obj.timer);
+                    console.log('over');
+                    obj.style.left = target + "px";
+                } else {
+                    obj.style.left = obj.offsetLeft + iSpeed + "px";
+                }
+            }, 30);
+
+        }
+
+        function getStyle(elem, prop) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(elem, null)[prop];
+            } else {
+                return elem.currentStyle[prop];
+            }
+        }
+    </script>
+</body>
+
+</html>

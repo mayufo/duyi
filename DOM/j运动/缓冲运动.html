@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .demo {
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+            left: 1349px;
+            top: 0;
+        }
+
+        .d {
+            width: 1px;
+            height: 150px;
+            background-color: #000;
+            position: absolute;
+            left: 300px;
+            top: 0;
+        }
+
+        button {
+            margin-top: 200px;
+        }
+    </style>
+    <title>js运动</title>
+</head>
+
+<body>
+
+    <div class="demo"></div>
+    <div class="d"></div>
+    <button>run</button>
+
+    <script>
+        Document.prototype.getByClassName = function (name) {
+            var arr = Array.prototype.slice.call(document.getElementsByTagName('*'), 0);
+            var filterArr = [];
+
+            function dealClass(name) {
+                var reg = /\s+/g;
+
+                return name.replace(reg, ' ').trim();
+            }
+
+            arr.forEach(function (elem, index) {
+                var cnArr = dealClass(elem.className).split(' '),
+                    len = cnArr.length;
+                for (var i = 0; i < len; i++) {
+                    if (cnArr[i] == name) {
+                        filterArr.push(elem);
+                        break;
+                    }
+                }
+            });
+
+            return filterArr;
+        }
+
+        var oBtn = document.getElementsByTagName('button')[0];
+        var oDiv = document.getByClassName('demo')[0];
+        var timer = null;
+
+        oBtn.onclick = function () {
+            startMove(oDiv);
+        }
+
+        function startMove(elem) {
+            clearInterval(timer);
+            var iSpeed;
+
+            timer = setInterval(function () {
+                iSpeed = (300 - elem.offsetLeft) / 7;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                console.log(iSpeed + "|" + elem.offsetLeft);
+                if (elem.offsetLeft === 300) {
+                    clearInterval(timer);
+                } else {
+                    elem.style.left = elem.offsetLeft + iSpeed + "px";
+                }
+            }, 30);
+        }
+    </script>
+</body>
+
+</html>

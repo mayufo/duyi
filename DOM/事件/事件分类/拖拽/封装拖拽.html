@@ -92,6 +92,7 @@
 
         var div = document.getElementsByTagName('div')[0];
 
+        drag(div);
 
         function drag(elem) {
             var disX,
@@ -100,8 +101,11 @@
             addEvent(elem, 'mousedown', function (e) {
                 var event = e || window.event;
 
-                disX = e.pageX - parseInt(getStyle(this, 'left'));
-                disY = e.pageY - parseInt(getStyle(this, 'top'));
+                var x = event.pageX || event.clientX;
+                var y = event.pageY || event.clientY;
+
+                disX = x - this.offsetLeft;
+                disY = y - this.offsetTop;
 
                 addEvent(document, 'mousemove', mouseMove);
                 addEvent(div, 'mouseup', mouseup);
@@ -111,6 +115,9 @@
 
             function mouseMove(e) {
                 var event = e || window.event;
+                var x = event.pageX || event.clientX;
+                var y = event.pageY || event.clientY;
+                
                 div.style.left = event.pageX - disX + "px";
                 div.style.top = event.pageY - disY + "px";
             }

@@ -49,17 +49,17 @@
 
         oDiv.onclick = function () {
             var targetObj = {
-                width: 500,
-                height: 500,
-                left: 500,
+                // left: 500,
+                // width: 100,
+                // height: 100,
                 opacity: 30
             }
 
             startMove(this, targetObj, function () {
                 startMove(oDiv2, {
-                    left: 500,
-                    width: 100,
-                    height: 100,
+                    // left: 500,
+                    // width: 100,
+                    // height: 100,
                     opacity: 20
                 });
             });
@@ -73,6 +73,7 @@
                 var bStop = true;
                 for (var attr in json) {
                     if (attr == 'opacity') {
+                        name = 'opacity';
                         iCur = parseFloat(getStyle(obj, 'opacity')) * 100;
                     } else {
                         iCur = parseInt(getStyle(obj, attr));
@@ -86,10 +87,17 @@
                     if (iCur != json[attr]) {
                         bStop = false;
                     }
+                    // if (Math.floor(Math.abs(json[attr] - iCur)) != 0) {
+                    //     bStop = false;
+                    // }
+                    console.log(json[attr] + "|" + iCur);
                 }
 
                 if (bStop) {
                     clearInterval(obj.timer);
+                    // if (name === 'opacity') {
+                    //     obj.style.opacity = json[name] / 100;
+                    // }
                     typeof callback == 'function' ? callback() : '';
                 }
             }, 30);

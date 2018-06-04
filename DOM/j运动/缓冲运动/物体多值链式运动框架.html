@@ -62,6 +62,7 @@
             obj.timer = setInterval(function () {
                 var bStop = true;
                 for (var attr in json) {
+                    console.log(attr);
                     if (attr == 'opacity') {
                         iCur = parseFloat(getStyle(obj, attr)) * 100;
                     } else {

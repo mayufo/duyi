@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 600px;
+            height: 150px;
+            position: relative;
+            margin: 100px auto 0px;
+            overflow: hidden;
+        }
+
+        .wrapper .sliderPage {
+            width: 2400px;
+            height: 150px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .wrapper .sliderPage li {
+            width: 600px;
+            height: 150px;
+            float: left;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .wrapper .sliderPage img {
+            width: 140px;
+            height: 150px;
+            /* margin-right: 40px; */
+        }
+
+        .wrapper .btn {
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            background-color: #000;
+            width: 40px;
+            height: 40px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            line-height: 40px;
+            opacity: 0.2;
+        }
+
+        .wrapper:hover .btn {
+            opacity: 0.7;
+        }
+
+
+        .wrapper .leftBtn {
+            left: 15px;
+        }
+
+        .wrapper .rightBtn {
+            right: 15px;
+        }
+
+        .wrapper .sliderIndex {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            bottom: 15px;
+        }
+
+        .wrapper .sliderIndex span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+            border-radius: 50%;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .wrapper .sliderIndex .active {
+            background-color: #f40;
+        }
+    </style>
+    <title>轮播</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <ul class="sliderPage">
+            <li>
+                <img src="images/theme/1.jpg" alt=""><img src="images/theme/2.jpg" alt=""><img src="images/theme/3.jpg" alt=""><img src="images/theme/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/theme/5.jpg" alt=""><img src="images/theme/6.jpg" alt=""><img src="images/theme/7.jpg" alt=""><img src="images/theme/8.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/theme/9.jpg" alt=""><img src="images/theme/10.jpg" alt=""><img src="images/theme/11.jpg" alt=""><img src="images/theme/12.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/theme/1.jpg" alt=""><img src="images/theme/2.jpg" alt=""><img src="images/theme/3.jpg" alt=""><img src="images/theme/4.jpg" alt="">
+            </li>
+        </ul>
+        <div class="btn leftBtn">&lt</div>
+        <div class="btn rightBtn">&gt</div>
+        <div class="sliderIndex">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <script src="./move.js"></script>
+    <script>
+        var timer = null;
+        var sliderPage = document.getByClassName('sliderPage')[0];
+        var moveWidth = sliderPage.children[0].offsetWidth;
+        var num = sliderPage.children.length - 1;
+        var lBtn = document.getByClassName('leftBtn')[0];
+        var rBtn = document.getByClassName('rightBtn')[0];
+        var oSpanArray = document.getByClassName('sliderIndex')[0].getElementsByTagName('span');
+        var lock = true;
+        var index = 0;
+
+
+        //direction
+        //默认轮播方向/right按钮 'left->right' / undefined  
+        //点击left按钮 'right->left' 
+        function autoMove(direction) {
+            if (lock) {
+                lock = false;
+                clearTimeout(timer);
+                if (!direction || direction == 'left->right') {
+                    index++;
+                    startMove(sliderPage, {
+                        left: sliderPage.offsetLeft - moveWidth
+                    }, function () {
+                        if (sliderPage.offsetLeft == -num * moveWidth) {
+                            index = 0;
+                            sliderPage.style.left = "0px";
+                        }
+                        timer = setTimeout(autoMove, 2000);
+                        lock = true;
+                        changeIndex(index);
+                    })
+                } else if (direction == 'right->left') {
+                    if (sliderPage.offsetLeft == 0) {
+                        sliderPage.style.left = -num * moveWidth + "px";
+                        index = num;
+                    }
+                    index--;
+                    startMove(sliderPage, {
+                        left: sliderPage.offsetLeft + moveWidth
+                    }, function () {
+                        timer = setTimeout(autoMove, 2000);
+                        lock = true;
+                        changeIndex(index);
+                    });
+                }
+            }
+        }
+
+        function changeIndex(_index) {
+            var len = oSpanArray.length;
+            for (var i = 0; i < len; i++) {
+                oSpanArray[i].className = '';
+            }
+
+            oSpanArray[_index].className = 'active';
+        }
+
+        addEvent(lBtn, 'click', function () {
+            autoMove('right->left');
+
+        });
+
+        addEvent(rBtn, 'click', function () {
+            autoMove('left->right');
+        });
+
+        // timer = setTimeout(autoMove, 2000);
+
+        for (var i = 0; i < oSpanArray.length; i++) {
+            (function (myIndex) {
+                oSpanArray[myIndex].onclick = function () {
+                    lock = false;
+                    clearTimeout(timer);
+                    index = myIndex;
+                    startMove(sliderPage, {
+                        left: -index * moveWidth
+                    }, function () {
+                        lock = true;
+                        timer = setTimeout(autoMove, 2000);
+                        changeIndex(index);
+                    })
+                }
+            })(i);
+        }
+    </script>
+</body>
+
+</html>

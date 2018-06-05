@@ -49,17 +49,17 @@
 
         oDiv.onclick = function () {
             var targetObj = {
-                // left: 500,
-                // width: 100,
-                // height: 100,
+                left: 500,
+                width: 100,
+                height: 100,
                 opacity: 30
             }
 
             startMove(this, targetObj, function () {
                 startMove(oDiv2, {
-                    // left: 500,
-                    // width: 100,
-                    // height: 100,
+                    left: 500,
+                    width: 100,
+                    height: 100,
                     opacity: 20
                 });
             });
@@ -79,7 +79,7 @@
                         iCur = parseInt(getStyle(obj, attr));
                     }
 
-                    iSpeed = (json[attr] - iCur) / 7;
+                    iSpeed = (json[attr] - iCur) / 2;
                     iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
 
                     obj.style[attr] = attr == 'opacity' ? (iCur + iSpeed) / 100 : iCur + iSpeed + "px";
@@ -90,9 +90,8 @@
                     // if (Math.floor(Math.abs(json[attr] - iCur)) != 0) {
                     //     bStop = false;
                     // }
-                    console.log(json[attr] + "|" + iCur);
+                    // console.log(json[attr] + "|" + iCur);
                 }
-
                 if (bStop) {
                     clearInterval(obj.timer);
                     // if (name === 'opacity') {

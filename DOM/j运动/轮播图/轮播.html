@@ -13,43 +13,67 @@
         }
 
         .wrapper {
-            width: 300px;
-            height: 150px;
-            margin: 200px 0 0 200px;
+            width: 400px;
+            height: 300px;
             position: relative;
-            overflow: hidden;
+            margin: 200px 0 0 200px;
+            /* overflow: hidden; */
         }
 
-        .banner {
-            width: 1500px;
-            height: 150px;
-            position: absolute;
-            left: 0;
-            top: 0;
+        ul.banner {
+            width: 2000px;
+            height: 300px;
+            position: relative;
         }
 
-        .banner li {
-            width: 300px;
-            height: 150px;
+        ul.banner li {
+            width: 400px;
+            height: 300px;
             float: left;
         }
 
-        .banner li img {
+        ul.banner li img {
             width: 100%;
             height: 100%;
         }
 
-        .demo {
-            width: 300px;
-            height: 300px;
-            background-color: #f40;
+        .btn {
             position: absolute;
+            background-color: #000;
+            opacity: 0.5;
+            width: 30px;
+            height: 300px;
+            color: #fff;
+            font-size: 24px;
+            line-height: 300px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .leftBtn {
             left: 0;
             top: 0;
         }
 
-        button {
-            margin: 50px 0 0 200px;
+        .rightBtn {
+            right: 0;
+            top: 0;
+        }
+
+        ul.control {
+            position: absolute;
+            left: 30px;
+            bottom: 10px;
+        }
+
+        ul.control li {
+            width: 20px;
+            height: 20px;
+            float: left;
+            background-color: #000;
+            margin-left: 10px;
+            border-radius: 50%;
+            opacity: 0.7;
         }
     </style>
     <title>轮播</title>
@@ -75,76 +99,17 @@
                 <img src="images/cat1.jpg" alt="">
             </li>
         </ul>
+        <div class="btn leftBtn">&lt</div>
+        <div class="btn rightBtn">&gt</div>
+        <ul class="control">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
 
-    <button>切换</button>
-
-
-
     <script>
-        var oUl = document.getElementsByTagName('ul')[0];
-
-        // startMove(oUl, {
-        //     left: 300
-        // })
-
-        var oDiv = document.getElementsByClassName('demo')[0];
-
-        var btn = document.getElementsByTagName('button')[0];
-        var count = 1,
-            dis;
-
-
-        btn.onclick = function () {
-            if (count >= 5) {
-                count = 1;
-            }
-
-            dis = count * -300;
-            count++;
-
-            startMove(oUl, {
-                left: dis
-            })
-        }
-
-        function startMove(obj, json, callback) {
-            clearInterval(obj.timer);
-            var iSpeed, iCur;
-
-            obj.timer = setInterval(function () {
-                var bStop = true;
-                for (var attr in json) {
-                    iCur = attr == 'opacity' ? parseFloat(getStyle(obj, 'opacity')) * 100 : parseInt(getStyle(
-                        obj, attr));
-
-                    iSpeed = (json[attr] - iCur) / 7;
-                    iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
-
-                    obj.style[attr] = attr == 'opacity' ? (iCur + iSpeed) / 100 : iCur + iSpeed + "px";
-
-                    if (iCur != json[attr]) {
-                        bStop = false;
-                    }
-                }
-
-                if (bStop) {
-                    if (obj.offsetLeft == -1200) {
-                        obj.style.left = '0px';
-                    }
-                    clearInterval(obj.timer);
-                    typeof callback == 'function' ? callback() : '';
-                }
-            }, 30);
-        }
-
-        function getStyle(obj, attr) {
-            if (window.getComputedStyle) {
-                return window.getComputedStyle(obj, null)[attr];
-            } else {
-                return obj.currentStyle[attr];
-            }
-        }
     </script>
 </body>
 

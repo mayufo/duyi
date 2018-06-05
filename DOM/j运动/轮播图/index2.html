@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 400px;
+            height: 200px;
+            margin: 200px 0 0 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wrapper .sliderPage {
+            width: 2000px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .wrapper .sliderPage li {
+            width: 400px;
+            height: 200px;
+            float: left;
+        }
+
+        .wrapper .sliderPage li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrapper .btn {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            opacity: 0.2;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .wrapper:hover .btn {
+            opacity: 0.8;
+        }
+
+        .wrapper .btnLeft {
+            left: 15px;
+        }
+
+        .wrapper .btnRight {
+            right: 15px;
+        }
+
+        .wrapper .sliderIndex {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .wrapper .sliderIndex span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+            margin-right: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .wrapper .sliderIndex .active {
+            background-color: #f40;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <ul class="sliderPage">
+            <li>
+                <img src="images/cat1.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/cat2.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/cat3.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/cat4.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/cat1.jpg" alt="">
+            </li>
+        </ul>
+        <div class="btn btnLeft">&lt</div>
+        <div class="btn btnRight">&gt</div>
+        <div class="sliderIndex">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <script src="./move.js"></script>
+    <script>
+        var timer = null;
+        var sliderPage = document.getByClassName('sliderPage')[0];
+        var moveWidth = sliderPage.children[0].offsetWidth;
+        var num = sliderPage.children.length - 1;
+        var btnL = document.getByClassName('btnLeft')[0];
+        var btnR = document.getByClassName('btnRight')[0];
+        var oSpanArray = document.getByClassName('sliderIndex')[0].getElementsByTagName('span');
+        var oSpanlen = oSpanArray.length;
+        var lock = true;
+        var index = 0;
+
+
+        function autoMove(direction) {
+            if (lock) {
+                lock = false;
+                // clearTimeout(timer);
+                if (!direction || direction == 'left->right') {
+                    index++;
+                    if (index > 3) {
+                        index = 0;
+                    }
+                    changeIndex(index);
+                    // changeIndex(index);
+                    startMove(sliderPage, {
+                        left: sliderPage.offsetLeft - moveWidth
+                    }, function () {
+                        if (sliderPage.offsetLeft == -num * moveWidth) {
+                            sliderPage.style.left = "0px";
+                            // index = 0;
+                        }
+                        lock = true;
+                        timer = setTimeout(autoMove, 1500);
+                    });
+                } else if (direction == 'right->left') {
+                    if (sliderPage.offsetLeft == 0) {
+                        sliderPage.style.left = -num * moveWidth + "px";
+                        index = num;
+                    }
+                    index--;
+                    changeIndex(index);
+                    startMove(sliderPage, {
+                        left: sliderPage.offsetLeft + moveWidth
+                    }, function () {
+                        lock = true;
+                        // changeIndex(index);
+                        timer = setTimeout(autoMove, 1500);
+                    })
+                }
+            }
+        }
+
+        addEvent(btnR, 'click', function () {
+            autoMove('left->right');
+        });
+
+        addEvent(btnL, 'click', function () {
+            autoMove('right->left');
+        });
+
+        for (var i = 0; i < oSpanlen; i++) {
+            (function (myIndex) {
+                addEvent(oSpanArray[myIndex], 'click', function () {
+                    index = myIndex;
+                    lock = false;
+                    clearTimeout(timer);
+                    changeIndex(index);
+                    startMove(sliderPage, {
+                        left: -index * moveWidth
+                    }, function () {
+                        lock = true;
+                        // changeIndex(index);
+                        tiemr = setTimeout(autoMove, 1500);
+                    })
+                });
+            })(i);
+        }
+
+        function changeIndex(_index) {
+            for (var i = 0; i < oSpanlen; i++) {
+                oSpanArray[i].className = '';
+            }
+            oSpanArray[_index].className = 'active';
+        }
+
+        timer = setTimeout(autoMove, 1500);
+    </script>
+</body>
+
+</html>

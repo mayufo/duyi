@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自己封装map方法</title>
+</head>
+
+<body>
+
+    <script>
+        var arr = [{
+                name: 'zhangsan',
+                sex: 'female',
+                obj: {
+                    name: 'obj1',
+                    obj: {
+                        name: 'obj2',
+                        sex: [1, 2, 3]
+                    }
+                }
+            },
+            {
+                name: 'lisi',
+                sex: null
+            }
+        ];
+
+
+        Array.prototype.myMap = function (func) {
+            var len = this.length,
+                newArr = [];
+            for (var i = 0; i < len; i++) {
+                if (this[i] !== null && typeof this[i] == 'object') {
+                    var newObj = {};
+                    deepClone(this[i], newObj);
+                    newArr.push(func(newObj, i));
+                } else {
+                    newArr.push(func(this[i], i));
+                }
+            }
+
+            return newArr;
+        }
+
+        //利用map实现浅拷贝
+        var newArr = arr.myMap(function (elem, index) {
+            return elem;
+        });
+
+
+        arr[0].obj.obj.name = 11;
+        console.log(arr);
+        console.log(newArr);
+
+
+        function deepClone(origin, target) {
+            if (origin !== null) {
+                for (var prop in origin) {
+                    if (origin.hasOwnProperty(prop)) {
+                        var src = target[prop];
+                        var copy = origin[prop];
+
+                        if (copy && typeof copy == 'object') {
+                            src = Object.prototype.toString.call(copy) == '[object Array]' ? [] : {};
+                            target[prop] = deepClone(copy, src);
+                        } else {
+                            target[prop] = copy;
+                        }
+                    }
+                }
+            }
+
+            return target;
+        }
+    </script>
+</body>
+
+</html>

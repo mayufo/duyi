@@ -11,7 +11,7 @@
 <body>
 
     <script>
-        // var arr = [1, 2, 3, 4, 5];
+        var arr = [1, 2, 3, 4, 5];
 
         // Array.prototype.myForEach = function (func) {
         //     var len = this.length;
@@ -25,7 +25,7 @@
         //     console.log(item);
         // });
 
-        arr.forEach(function (elem, index) {
+         arr.forEach(function (elem, index) {
             if (index == 1) {
                 //报错，forEach不能使用break;
                 // break;
@@ -34,6 +34,8 @@
         
             console.log(index);     //0 2 3 4,只有indwex==1的时候return,renturn是结束的一次func函数的执行，而func函数执行数组的长度次，ForEach不能终止循环，所以需要跳出循环的不用forEach
         });
+
+        console.log(aa);
     </script>
 </body>
 

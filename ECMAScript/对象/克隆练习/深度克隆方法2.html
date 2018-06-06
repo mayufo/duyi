@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var arr = [{
+                name: 'zhangsan',
+                sex: 'female',
+                obj: {
+                    name: 'obj1',
+                    obj: {
+                        name: 'obj2',
+                        sex: [1, 2, 3]
+                    }
+                }
+            },
+            {
+                name: 'lisi',
+                sex: null
+            }
+        ];
+
+        function deepClone(target, option) {
+            if (option != null) {
+                for (var prop in option) {
+                    if (option.hasOwnProperty(prop)) {
+                        var src = target[prop];
+                        var copy = option[prop];
+                        if (copy && typeof copy == 'object') {
+                            if (Object.prototype.toString.call(copy) == '[object Object]') {
+                                src = {};
+                            } else {
+                                src = [];
+                            }
+                            target[prop] = deepClone(src, copy);
+                        } else {
+                            target[prop] = copy;
+                        }
+                    }
+                }
+            }
+
+            return target;
+        }
+
+        var arr2 = [];
+
+        deepClone(arr2, arr);
+        arr[0].obj.obj.name = 111;
+        console.log(arr2[0].obj.obj.name);
+        console.log(arr[0].obj.obj.name);
+    </script>
+</body>
+
+</html>

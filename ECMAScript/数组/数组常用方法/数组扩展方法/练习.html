@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        var arr = [1, 2, 3, 4, 5];
+
+        Array.prototype.myForEach = function (func) {
+            var len = this.length;
+            for (var i = 0; i < len; i++) {
+                func(this[i], i);
+            }
+        }
+
+        // arr.myForEach(function (elem, index) {
+        //     console.log(elem);
+        // });
+
+        var arr = [{
+                count: 3
+            },
+            {
+                count: 4
+            },
+            [1, 2, 3]
+        ];
+
+        // Array.prototype.myFilter = function (func) {
+        //     var len = this.length,
+        //         newArray = [];
+        //     for (var i = 0; i < len; i++) {
+        //         if (func(this[i], i)) {
+        //             newArray.push(this[i]);
+        //         }
+        //     }
+
+        //     return newArray;
+        // }
+
+        Array.prototype.myFilter = function (func) {
+            var len = this.length,
+                newArr = [];
+            for (var i = 0; i < len; i++) {
+                if (this[i] !== null && typeof this[i] == 'object') {
+                    if (func(this[i], i)) {
+                        var obj = deepClone(this[i]);
+                        newArr.push(obj);
+                    } else {
+                        newArr.push(this[i]);
+                    }
+                }
+            }
+
+            return newArr;
+        }
+
+        var filterArr = arr.myFilter(function (elem, index) {
+            if (elem.count > 3) {
+                return true;
+            }
+        });
+
+        arr[1].count = 5;
+        console.log(filterArr[1].count); //5
+
+
+        console.log(filterArr);
+
+        function deepClone(origin, target) {
+            if (origin !== null) {
+                target = target || (Object.prototype.toString.call(origin) == '[Object Array]' ? [] : {});
+                for (var prop in origin) {
+                    if (origin.hasOwnProperty(prop)) {
+                        var src = target[prop];
+                        var copy = origin[prop];
+                        if (copy && typeof cope == 'object') {
+                            src = Object.prototype.toString.call(copy) == '[object Array]' ? [] : {};
+                            target[prop] = deepClone(copy, src);
+                        } else {
+                            target[prop] = copy;
+                        }
+                    }
+                }
+
+                return target;
+            }
+        }
+
+        Array.prototype.myMap = function (func) {
+            var len = this.length,
+                newArr = [];
+
+            for (var i = 0; i < len; i++) {
+                if (this[i] !== null && typeof this[i] == 'object') {
+                    newArr.push(func(deepClone(this[i]), i));
+                } else {
+                    newArr.push(this[i]);
+                }
+            }
+
+            return newArr;
+        }
+
+        var arr = [{
+            count: 1
+        }];
+
+        arr.myMap(function (item, index) {
+            item.count = 2;
+        });
+
+        Array.prototype.myReduce = function (func, init) {
+            var len = this.length,
+                previous = init,
+                k = 0;
+
+            if (init === undefined) {
+                previous = this[0];
+                k++;
+            }
+
+            for (; k < len; k++) {
+                previous = func(previous, this[k], k);
+            }
+
+            return previous;
+        }
+
+        var arr = [1, 2, 3, 4, 5];
+
+        var value = arr.myReduce(function (preValue, item, index) {
+            return preValue + item;
+        });
+
+        console.log(value);
+
+        Array.prototype.myReduceRight = function (func, init) {
+            var len = this.length,
+                previous = init,
+                k = len - 1;
+
+            if (init === undefined) {
+                previous = this[len - 1];
+                k--;
+            }
+
+            for (; k >= 0; k--) {
+                previous = func(previous, this[k], k);
+            }
+
+            return previous;
+        }
+
+        var arr = [1, 2, 3, 4, 5];
+
+        var value = arr.myReduceRight(function (preValue, item, index) {
+            return preValue + item;
+        });
+
+        console.log(value);
+    </script>
+
+</body>
+
+</html>

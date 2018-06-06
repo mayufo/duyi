@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>map</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        var arr = [{
+                name: '张三',
+                sex: 'female'
+            },
+            {
+                name: '李四',
+                sex: 'male'
+            }
+        ];
+
+        var newArr = arr.map(function (item, index) {
+            if (item.sex == 'male') {
+                item.bf = 'bf';
+            } else {
+                item.gl = 'gl';
+            }
+
+            return item;
+        });
+
+        // console.log(newArr);
+        // console.log(arr);
+
+        var arr2 = [1, 2, 3, 4, 5];
+
+        var newArr2 = arr2.map(function (item) {
+            item += 2;
+            return item;
+        });
+
+        console.log(newArr2);
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

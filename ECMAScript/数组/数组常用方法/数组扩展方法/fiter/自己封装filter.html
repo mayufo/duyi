@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自己封装filter</title>
+</head>
+
+<body>
+
+    <script>
+        Array.prototype.myFilter = function (func) {
+            var newArr = [],
+                len = this.length;
+
+            for (var i = 0; i < len; i++) {
+                if (func(this[i], i)) {
+                    newArr.push(this[i]);
+                }
+            }
+
+            return newArr;
+        }
+
+        var arr = [1, 2, 3, 4, 5];
+
+        var newArr = arr.myFilter(function (item, index) {
+            if (item > 3) {
+                return true;
+            }
+        });
+
+        console.log(newArr);        //[4,5]
+    </script>
+</body>
+
+</html>

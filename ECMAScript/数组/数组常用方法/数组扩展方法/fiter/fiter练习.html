@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fiter练习</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+
+    <script>
+        var oLi = Array.prototype.slice.call(document.getElementsByTagName('li'), 0);
+
+        oLi.filter(function (item, index) {
+            if (index % 2 == 0) {
+                item.style.color = '#f40';
+            }
+        });
+
+
+        var personArr = [{
+                name: '张三',
+                sex: 'male'
+            },
+            {
+                name: '李四',
+                sex: 'female'
+            }
+        ];
+
+        var newArr = personArr.filter(function (item) {
+            if (item.sex == 'male') {
+                return true;
+            }
+        });
+
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>123</title>
+</head>
+
+<body>
+
+    <div id="demo"></div>
+
+    <ul>
+        <li class="demo">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>
+            <span>
+                <strong>4</strong>
+            </span>
+        </li>
+    </ul>
+
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script>
+        var oDiv = document.getElementById('demo');
+        console.log(oDiv);
+        console.log($(oDiv));
+        console.log($(null));
+
+        // $('ul>li:first').css({
+        //     color: "#f40"
+        // });
+
+        // $('ul li:last').css({
+        //     color:'#03f'
+        // });
+
+        // $('ul li:eq(1)').css({
+        //     color:'#0ff'
+        // });
+
+        $('ul li:odd').css({ //索引为奇数的所有元素
+            color: '#ff0'
+        })
+
+        $('ul li:even').css({ //索引为偶数的所有元素
+            color: '#ccc'
+        })
+
+        $('li').filter('.demo').css({
+            fontSize: '24px'
+        })
+
+        $('li').filter(function (index, item) {
+            // if (index % 3 == 0) {
+            //     return true;
+            // }
+            return index % 3 == 0;
+        }).css({
+            backgroundColor: "#999"
+        })
+
+        $('li').has('span').css({
+            backgroundColor: "#f40"
+        });
+    </script>
+</body>
+
+</html>f

@@ -92,95 +92,79 @@ var personData = [{
     }
 ];
 
-var list = document.getElementById('list');
-var oSearch = document.getByClassName('search')[0];
-var oLi = document.getElementById('sex').getElementsByTagName('li');
-var oSearchInp = document.getElementById('inp');
+var oUl = document.getByClassName('user')[0];
+var search = document.getByClassName('search')[0];
+var searchIpt = document.getByClassName('search-box')[0];
 
-var store = createStroe({
+var store = createStore({
     name: '',
     sex: 'all'
 });
 
 store.subScribe(function () {
-    renderList(lastFilterFunc());
+    render(lastFilterFuc());
 });
 
-function renderList(arr) {
-    var str = '';
+var lastFilterFuc = addFilter({
+    name: nameFilter,
+    sex: sexFilter
+}, personData);
 
-    arr.forEach(function (elem, index) {
-        str += '<li>\
-                <img src=../img/' + elem.src + '>\
-                <span class="name"> ' + elem.name + ' </span>\
-                <span class="des"> ' + elem.des + '</span>\
-                </li>';
-    });
+render(lastFilterFuc());
 
-    list.innerHTML = str;
-}
-
-renderList(personData);
-
-// var state = {
-//     name: '',
-//     sex: 'all'
-// }
-
-addEvent(oSearch, 'click', function (e) {
+addEvent(search, 'click', function (e) {
     var event = e || window.event;
     var target = event.target || event.srcElement;
 
     if (target.nodeName == 'LI') {
-        // state.sex = target.getAttribute('sex');
         store.dispatch({
             type: 'sex',
             value: target.getAttribute('sex')
-        })
-        // renderList(lastFilterFunc(personData));
-        // for (var i = 0; i < oLi.length; i++) {
-        //     oLi[i].className = '';
-        // }
+        });
+
         document.getByClassName('active')[0].className = '';
         target.className = 'active';
     }
 });
 
-addEvent(oSearchInp, 'input', function () {
-    // state.name = this.value;
+addEvent(searchIpt, 'input', function () {
     store.dispatch({
         type: 'name',
         value: this.value
     });
+});
 
-    // renderList(lastFilterFunc(personData));
-})
+function render(arr) {
+    var str = '';
 
-//根据name筛选数组
-function filterName(text, arr) {
-    return arr.filter(function (elem, index) {
-        return elem.name.indexOf(text) != -1;
+    arr.forEach(function (item, index) {
+        str += "<li>\
+            <img src='../img/" + item.src + "'>\
+             <span>" + item.name + "</span>\
+              <span>" + item.des + "</span>\
+               </li> ";
+    });
+
+    oUl.innerHTML = str;
+}
+
+function nameFilter(text, arr) {
+    return arr.filter(function (item, index) {
+        return item.name.indexOf(text) != -1;
     });
 }
 
-//根据sex筛选数组
-function filterSex(text, arr) {
+function sexFilter(text, arr) {
     if (text == 'all') {
         return arr;
     } else {
-        return arr.filter(function (elem, index) {
-            return elem.sex == text;
-        })
+        return arr.filter(function (item, index) {
+            return text == item.sex;
+        });
     }
 }
 
-//合并筛选条件
-// 公共函数筛选
-// var state = {
-//     text: '',
-//     sex: 'all'
-// }
-function unionFilterFunc(obj, arr) {
+function addFilter(obj, arr) {
 
     return function () {
         var newArr = arr;
@@ -191,10 +175,3 @@ function unionFilterFunc(obj, arr) {
         return newArr;
     }
 }
-
-var lastFilterFunc = unionFilterFunc({
-    name: filterName,
-    sex: filterSex
-}, personData);
-
-// state状态--》改变状态filter--》[arr]  renderDom--->view区域

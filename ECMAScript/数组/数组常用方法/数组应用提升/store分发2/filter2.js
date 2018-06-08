@@ -117,7 +117,7 @@ var initPserson = (function () {
         });
 
         function render(arr) {
-            var str = '';   
+            var str = '';
             arr.forEach(function (elem, index) {
                 str += "<li>\
                 <img src=../img/" + elem.src + ">\
@@ -125,8 +125,8 @@ var initPserson = (function () {
                 <p>" + elem.des + "</p>\
                 </li>";
             });
-            
-         
+
+
             oUl.innerHTML = str;
         }
 
@@ -136,6 +136,20 @@ var initPserson = (function () {
                 value: this.value
             });
         });
+
+        addEvent(oSearchDiv, 'click', function (e) {
+            var event = e || window.event;
+            var target = event.target || event.srcElement;
+
+            if (target.nodeName == 'SPAN') {
+                store.dispatch({
+                    type: 'sex',
+                    value: target.getAttribute('sex')
+                })
+                document.getByClassName('active')[0].className = '';
+                target.className = 'active';
+            }
+        })
 
         render(personData);
 
@@ -161,12 +175,14 @@ var initPserson = (function () {
         }
 
         function addFilter(obj, arr) {
+
             return function () {
+                var newArr = arr;
                 for (var prop in obj) {
-                    arr = obj[prop](store.getStore()[prop], arr);
+                    newArr = obj[prop](store.getStore()[prop], newArr);
                 }
 
-                return arr;
+                return newArr;
             }
         }
     }

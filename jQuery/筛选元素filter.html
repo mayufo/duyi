@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>123</title>
+</head>
+
+<body>
+
+    <div id="demo"></div>
+
+    <ul>
+        <li class="demo">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>
+            <span>
+                <strong>4</strong>
+            </span>
+        </li>
+    </ul>
+
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script>
+        $('ul>li').filter('.demo').css({
+            color: '#f40'
+        })
+
+        $('ul>li').filter(function (index, item) {
+            return index == 2;
+        }).css({
+            color: '#00f'
+        });
+    </script>
+</body>
+
+</html>

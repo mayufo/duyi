@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li {
+            width: 50px;
+            height: 50px;
+            float: left;
+            margin-left: 10px;
+            border-radius: 50%;
+            background-color: #888;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: #f40;
+        }
+    </style>
+    <title>查找寻兄弟节点</title>
+</head>
+
+<body>
+
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script src="../jquery-3.3.1.min.js"></script>
+    <script>
+        $('li').click(function () {
+            $('li').css('backgroundColor', '#888');
+            $(this).css('backgroundColor', '#f40');
+            console.log($(this).index());
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+jquery创建元素的方法直接写:
+var div = $("<div class='demo'>123</div>);
+$('body').append(div);
+
+或
+$("<div class='demo'>123</div>).appendTo($('body'));

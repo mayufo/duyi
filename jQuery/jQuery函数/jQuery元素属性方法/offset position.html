@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            margin-left: 300px;
+        }
+
+        .demo {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #f40;
+        }
+    </style>
+    <title>offset position</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="demo">
+
+        </div>
+    </div>
+
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        console.log($('.demo').offset()); //相对于文档
+        console.log($('.demo').position()); //相对于有定位父级
+    </script>
+</body>
+
+</html>

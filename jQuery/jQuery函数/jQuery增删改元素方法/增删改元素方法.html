@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 60px;
+            height: 50px;
+            margin-top: 20px;
+            background-color: #f40;
+            font-size: 12px;
+            text-align: center;
+            line-height: 50px;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
+    <title>增删改元素方法</title>
+</head>
+
+<body>
+    <div class="d1">点击删除1</div>
+    <div class="d2">点击删除2</div>
+    <button>增加</button>
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        $('.d1').click(function () {
+            item1 = $(this).remove();
+        });
+
+        $('.d2').click(function () {
+            item2 = $(this).detach();
+        });
+
+        $('button').click(function () {
+            $('body').prepend(item1).prepend(item2);
+        });
+    </script>
+</body>
+
+</html>

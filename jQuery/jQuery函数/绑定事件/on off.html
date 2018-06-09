@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .demo {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+
+        span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #f40;
+        }
+    </style>
+    <title>on off</title>
+</head>
+
+<body>
+
+    <div class="demo">
+        <span class="s1">1</span>
+        <span class="s2">2</span>
+        <span class="s3">3</span>
+    </div>
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        // $('.demo').on('click', 'span', {
+        //     name: 'cherry'
+        // }, function (e) {
+        //     // console.log(e.data);
+        //     console.log($(this));
+        // });
+
+        // $('span').on('click', function () {
+        //     console.log($(this)); //新增的4没有绑定
+        // })
+
+        // $("<span>4</span>").appendTo($('.demo'));
+
+        function a() {
+            console.log('a');
+        }
+
+        function b() {
+            console.log('b');
+        }
+
+        function c() {
+            console.log('c');
+        }
+
+        $('.demo').on('click',a);
+        $('.demo').on('click','.s1',a);
+        $('.demo').on('click','.s1',b);
+
+        // $('.s1').on('click',a);
+        // $('.s1').on('click',b)
+
+        // $('.s1').off('click',a);
+        $('.demo').off('click','.s1',a);
+    </script>
+</body>
+
+</html>

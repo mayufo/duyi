@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+        }
+
+        .s1 {
+            background-color: #f40;
+        }
+
+        .s2 {
+            background-color: #00f;
+        }
+    </style>
+    <title>index</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <span></span>
+        <li></li>
+    </ul>
+
+    <div>
+        <span class="s1"></span>
+        <span class="s1"></span>
+        <span class="s2"></span>
+        <span class="s1"></span>
+        <span class="s1"></span>
+    </div>
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        $('li').click(function () {
+            console.log($(this).index());
+        });
+
+        $('.s1').click(function () {
+            // console.log($(this).index());
+            console.log($('.s1').index($(this)));
+        });
+
+        console.log($('li'));
+    </script>
+</body>
+
+</html>

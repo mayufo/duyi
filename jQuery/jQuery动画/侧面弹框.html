@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            width: 100px;
+            height: 150px;
+            background-color: #f40;
+            position: absolute;
+            left: -100px;
+            top: 200px;
+        }
+
+        .wrapper img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .demo {
+            width: 30px;
+            height: 150px;
+            position: absolute;
+            top: 0;
+            right: -30px;
+            text-align: center;
+            line-height: 37.5px;
+            font-size: 16px;
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+    <title>侧面弹框</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="demo">点击弹出</div>
+    </div>
+
+    <script src="../jquery-3.3.1.min.js"></script>
+    <script src="jquery.easing.min.js"></script>
+    <script>
+        var flag = true;
+        var lock = true;
+
+        $('.demo').on('click', function (e) {
+            var that = this;
+            if (lock) {
+                loadImage(
+                    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528018567927&di=bbaf7612646990bddc5097cf26e4f742&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F908fa0ec08fa513d88fa2e4c316d55fbb3fbd9d4.jpg'
+                );
+                lock = false;
+            }
+            if (flag) {
+                $(this).offsetParent().animate({
+                    left: 0
+                }, 500, function () {
+                    that.innerHTML = '点击移回';
+                    flag = false;
+                });
+            } else {
+                $(this).offsetParent().animate({
+                    left: -100
+                }, 500, function () {
+                    that.innerHTML = '点击弹出';
+                    flag = true;
+                })
+            }
+        });
+
+        function loadImage(url) {
+            var image = new Image();
+            image.src = url;
+
+            if (image.onreadystatechange) {
+                if (image.readystate == 'complete' || image.readystate == 'loaded') {
+                    $('.wrapper').append(image);
+                }
+            } else {
+                image.onload = function () {
+                    $('.wrapper').append(image);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

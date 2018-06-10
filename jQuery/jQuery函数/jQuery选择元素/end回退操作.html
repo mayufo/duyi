@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>end回退操作</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        $('li').eq(0).css('color', '#f40').end().eq(1).css('color', '#00f').end().eq(3).css('color', '#0f0');
+        console.log($('li').eq(0)); //就是$('li')
+    </script>
+</body>
+
+</html>

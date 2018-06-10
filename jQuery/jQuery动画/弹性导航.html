@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        .wrapper ul {
+            position: relative;
+        }
+
+        .wrapper ul .demo {
+            float: left;
+            width: 148px;
+            height: 70px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 70px;
+            cursor: pointer;
+        }
+
+        .wrapper ul .active {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 148px;
+            height: 70px;
+            border: 1px solid #000;
+            background-color: #f40;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+    </style>
+    <title>弹性导航</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <ul>
+            <li class="demo">1</li>
+            <li class="demo">2</li>
+            <li class="demo">3</li>
+            <li class="demo">4</li>
+            <li class="active"></li>
+        </ul>
+    </div>
+
+    <script src="../jquery-3.3.1.min.js"></script>
+    <script src="jquery.easing.min.js"></script>
+    <script>
+        $('.demo').mouseenter(function () {
+            var left = $(this).position().left;
+            $('.active').animate({
+                left: left
+            }, 200,'easeOutElastic');
+        })
+    </script>
+</body>
+
+</html>

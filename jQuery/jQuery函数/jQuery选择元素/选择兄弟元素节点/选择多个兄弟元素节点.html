@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择多个兄弟元素节点</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <span>span</span>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <script src="../../../jquery-3.3.1.min.js"></script>
+    <script>
+        // $('li').eq(2).siblings().css('color', '#f40');
+        // $('li').eq(2).prevAll().css('color', '#0f0');
+        // $('li').eq(2).nextAll().css('color','#00f');
+        $('li').eq(2).prevUntil($('li:eq(0)')).css('color', '#0ff');
+    </script>
+</body>
+
+</html>

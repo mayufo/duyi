@@ -5,25 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>attr和prop</title>
+    <title>包裹元素wrapF</title>
 </head>
 
 <body>
+
     <ul>
-        <li class="demo"></li>
         <li></li>
+        <li></li>
+        <span>123</span>
         <li></li>
         <li></li>
     </ul>
-
-    <input type="text">
+    <p></p>
+    <li>333</li>
 
     <script src="../../jquery-3.3.1.min.js"></script>
     <script>
-        console.log($('li:first').attr('class', 'dd'));
-        console.log($('input').attr('checked')); //有checked属性是checked 没有是undefined
-        console.log($('input').prop('checked')); //false
-        console.log($('input').attr('checked')); //undefined
+        // $('li:eq(0)').wrap('<p>');
+        // $('li:eq(0)').wrap($('p'));
+        // $('li').wrap(function (index) {
+        //     if (index == 2) {
+        //         return '<p>';
+        //     }
+        // })
+
+        $('li').wrapAll('<div>');
     </script>
 </body>
 

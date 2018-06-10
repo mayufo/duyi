@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <title>123</title>
+</head>
+
+<body>
+
+    <div></div>
+
+    <script src="../jquery-3.3.1.min.js"></script>
+    <script src="jquery.easing.min.js"></script>
+    <script>
+        // var oDiv = document.getElementsByTagName('div')[0];
+
+        // var timer = setInterval(function () {
+        //     if (oDiv.offsetLeft >= 300) {
+        //         oDiv.style.left = "300px";
+        //         clearInterval(timer);
+        //     }
+        //     oDiv.style.left = oDiv.offsetLeft + 8 + "px";
+        // }, 10);
+
+        //easeOutElastic弹性参数
+
+        $('div').animate({
+            left: 500,
+            height: 300,
+            opacity: 0.5
+        }, 5000, 'easeOutElastic').animate({
+            top: 1000
+        }, 5000);
+
+        $(document).click(function () {
+            $('div').stop(false, false);
+        })
+    </script>
+</body>
+
+</html>

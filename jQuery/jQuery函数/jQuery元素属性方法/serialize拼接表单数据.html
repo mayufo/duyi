@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>serialize拼接表单数据</title>
+</head>
+
+<body>
+
+    <form action="" onsubmit="return false">
+        <p>用户名:
+            <input type="text" name="useranme"> </p>
+        <p>密码:
+            <input type="txt" name="password">
+        </p>
+        <p>
+            <input type="submit" value="提交">
+        </p>
+    </form>
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        $('form').submit(function (e) {
+            // e.preventDefault();
+            console.log($(this).serialize());            //username=value的值&password=value的值
+            console.log($('form').serializeArray());    //[{name:username,value:value}{name:password,value:value}]
+            return false;                               //阻止表单默认提交事件和冒泡
+        });
+    </script>
+</body>
+
+</html>

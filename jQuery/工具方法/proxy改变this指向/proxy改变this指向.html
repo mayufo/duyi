@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>proxy改变this指向</title>
+</head>
+
+<body>
+    <div style="width:300px;height: 300px;background-color: #f40;"></div>
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        var obj = {
+            init: function () {
+                this.bindEvent();
+            },
+            bindEvent: function () {
+                // $('div').click(this.cb);
+                $('div').click($.proxy(this.cb, this));
+            },
+            cb: function () {
+                this.aa(); //这里的this指向的是div
+            },
+            aa: function () {
+                console.log(this);
+            }
+        }
+
+        obj.init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="width:300px;height: 300px;background-color: #f40;"></div>
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        var obj = {
+            init: function () {
+                this.bindEvent();
+            },
+            bindEvent: function () {
+                // $('div').click(function () {
+                //     this.cb(1,2);       //报错，这里的this指向div
+                // });
+                $('div').click($.proxy(this.cb, this, 1, 2));
+            },
+            cb: function (a, b) {
+                console.log("a:" + a + "|" + "b:" + b);
+            }
+        }
+
+        obj.init();
+    </script>
+</body>
+
+</html>

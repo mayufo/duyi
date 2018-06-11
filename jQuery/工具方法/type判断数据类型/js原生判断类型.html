@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js原生判断类型</title>
+</head>
+
+<body>
+
+    <iframe src="index1.html" frameborder="0"></iframe>
+
+    <script>
+        var arr = [1, 2, 3];
+
+        //在arr的原型链上既有Array也有Object
+        console.log(arr instanceof Array);
+        console.log(arr instanceof Object);
+
+        console.log(arr.constructor == Array);
+        console.log(arr.constructor == Object);
+
+
+
+        var oIframe = document.getElementsByTagName('iframe');
+        oIframe.onload = function () {
+            var a = oIframe.contentWindow.arr1;
+                console.log(a.constructor == Array); //false
+        }
+    </script>
+</body>
+
+</html>

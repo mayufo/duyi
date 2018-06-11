@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sliderPage {
+            position: relative;
+            width: 250px;
+            height: 150px;
+            margin: 200px auto;
+            overflow: hidden;
+        }
+
+        .sliderPage ul {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 1250px;
+            height: 150px;
+        }
+
+        .sliderPage ul li {
+            float: left;
+            width: 250px;
+            height: 150px;
+        }
+
+        .sliderPage ul li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .sliderPage .btn {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            background-color: #000;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .sliderPage .leftBtn {
+            left: 10px;
+        }
+
+        .sliderPage .rightBtn {
+            right: 10px;
+        }
+
+        .sliderPage .sliderIndex {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sliderIndex span {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+            background-color: #000;
+            border-radius: 50%;
+        }
+
+        .sliderIndex .active {
+            background-color: #f40;
+        }
+    </style>
+    <title>轮播图</title>
+</head>
+
+<body>
+
+    <div class="sliderPage">
+        <ul class="banner">
+            <li>
+                <img src="images/cat1.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/cat2.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/cat3.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/cat4.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/cat1.jpg" alt="">
+            </li>
+        </ul>
+        <div class="btn leftBtn">&lt</div>
+        <div class="btn rightBtn">&gt</div>
+        <div class="sliderIndex">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+
+    <script src="move.js"></script>
+    <script>
+        var sliderPage = document.getByClassName('banner')[0];
+        var lLi = sliderPage.getElementsByTagName('li');
+        var num = lLi.length - 1;
+        var width = lLi[0].offsetWidth;
+        var btnl = document.getByClassName('leftBtn')[0];
+        var btnr = document.getByClassName('rightBtn')[0];
+        var indexSpan = document.getByClassName('sliderIndex')[0].getElementsByTagName('span');
+        var lock = true;
+        var index = 0;
+        var timer = null;
+
+        addEvent(btnr, 'click', function () {
+            autoMove('left-right');
+        });
+
+        addEvent(btnl, 'click', function () {
+            autoMove('right-left');
+        })
+
+        function autoMove(dection) {
+            dection = dection || 'left-right';
+            if (lock) {
+                clearTimeout(timer);
+                lock = false;
+                if (dection == 'left-right') {
+                    index++;
+                    startMove(sliderPage, {
+                        left: sliderPage.offsetLeft - width
+                    }, function () {
+                        if (sliderPage.offsetLeft == -num * width) {
+                            sliderPage.style.left = "0px";
+                            index = 0;
+                        }
+                        changeIndex(index);
+                        timer = setTimeout(autoMove,1500);
+                        lock = true;
+                    })
+                } else if (dection == 'right-left') {
+                    if (sliderPage.offsetLeft == 0) {
+                        sliderPage.style.left = -num * width + "px";
+                        index = num;
+                    }
+
+                    startMove(sliderPage, {
+                        left: sliderPage.offsetLeft + width
+                    }, function () {
+                        lock = true;
+                        index--;
+                        changeIndex(index);
+                        timer = setTimeout(autoMove,1500);
+                    })
+                }
+            }
+        }
+
+        function changeIndex(index) {
+            for (var i = 0; i < indexSpan.length; i++) {
+                indexSpan[i].className = '';
+            }
+
+            indexSpan[index].className = 'active';
+        }
+
+        for (var i = 0; i < indexSpan.length; i++) {
+            (function (i) {
+                addEvent(indexSpan[i], 'click', function () {
+                    clearTimeout(timer);
+                    index = i;
+                    lock = false;
+                    startMove(sliderPage, {
+                        left: -index * width
+                    }, function () {
+                        lock = true;
+                        changeIndex(index);
+                       timer =  setTimeout(autoMove, 1500);
+                    })
+                });
+            })(i);
+        }
+
+        var timer = setTimeout(autoMove, 1500);
+    </script>
+</body>
+
+</html>

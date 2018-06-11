@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>合并对象</title>
+</head>
+
+<body>
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        var obj1 = {
+            name1: 'zhangsan',
+            age: 20
+        };
+
+        var obj2 = {
+            name2: 'lisi',
+            age: 18
+        }
+
+        console.log($.extend(obj1, obj2));
+        console.log(obj1);
+    </script>
+</body>
+
+</html>

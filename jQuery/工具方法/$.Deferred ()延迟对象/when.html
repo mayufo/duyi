@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>when</title>
+</head>
+
+<body>
+
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script>
+        function aa() {
+            var dtd = $.Deferred();
+            dtd.resolve();
+
+            return dtd;
+        }
+
+        function bb() {
+            var dtd = $.Deferred();
+            dtd.reject();
+
+            return dtd;
+        }
+
+        var cb1 = aa();
+        var cb2 = bb();
+
+        $.when(cb1, cb2).done(function () {
+            console.log('ok');
+        }).fail(function () {
+            console.log('error')
+        }).progress(function () {
+            console.log('doing');
+        });
+    </script>
+</body>
+
+</html>

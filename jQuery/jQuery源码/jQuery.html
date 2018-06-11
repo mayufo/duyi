@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+</head>
+
+<body>
+
+    <div id="demo"></div>
+
+    <script>
+        function jQuery(selector) {
+            return new jQuery.prototype.init(selector);
+        }
+
+        jQuery.prototype = {
+            init: function (selector) {
+                var dom = document.getElementById(selector);
+                this[0] = dom;
+                this.length = 1;
+            }
+        }
+
+        console.log(jQuery('demo'));
+    </script>
+</body>
+
+</html>

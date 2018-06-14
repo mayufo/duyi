@@ -51,8 +51,7 @@ var ppt = {
         });
 
         this.$slider.on('go', function () {
-            $(this).fadeOut(300);
-            $(this).find('p').animate({
+            $(this).fadeOut(300).find('p').animate({
                 fontSize: '16px'
             }).end().find('.image').animate({
                 width: "0px"
@@ -83,7 +82,8 @@ var ppt = {
     },
     changeOrder: function (index) {
         $('.slider-order .active').removeClass('active');
-        $('.slider-order li').eq(index).attr('class', 'active');
+        // $('.slider-order li').eq(index).attr('class', 'active');
+        $('.slider-order li').eq(index).addClass('active');
     },
     totalFun: function (direction) {
         if (this.flag) {

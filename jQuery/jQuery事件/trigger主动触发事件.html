@@ -20,17 +20,29 @@
 
     <div></div>
 
+    <p>
+        点击触发
+    </p>
+
     <script src="../jquery-3.3.1.min.js"></script>
     <script>
-        $('div').on('eat', function (evemt, a) {
-            $(this).animate({
-                width: $(this).outerWidth() + a,
-                height: $(this).outerWidth() + a
-            });
+        // $('div').on('eat', function (evemt, a) {
+        //     $(this).animate({
+        //         width: $(this).outerWidth() + a,
+        //         height: $(this).outerWidth() + a
+        //     });
+        // });
+
+        // $(document).click(function () {
+        //     $('div').trigger('eat', [50]);
+        // });
+
+        $('div').on('click', function (event, data) {
+            console.log(data);
         });
 
-        $(document).click(function () {
-            $('div').trigger('eat', [50]);
+        $('p').on('click', function () {
+            $('div').trigger('click', 123);
         });
     </script>
 </body>

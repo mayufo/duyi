@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #fff;
+}
+
+html,
+body,
+.wrapper,
+.slider-list {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    position: relative;
+}
+
+.slider-list .slider {
+    width: 100%;
+    height: 100%;
+    padding: 200px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.slider-list .slider:nth-of-type(1) {
+    background-image: url('images/bg-1.jpg');
+}
+
+.slider-list .slider:nth-of-type(2) {
+    display: none;
+    background-image: url('images/bg-2.jpg');
+}
+
+.slider-list .slider:nth-of-type(3) {
+    display: none;
+    background-image: url('images/bg-3.jpg');
+}
+
+.slider .title {
+    float: left;
+    width: 40%;
+    font-size: 16px;
+}
+
+.slider:nth-of-type(1) .title p {
+    font-size: 20px;
+}
+
+/* .slider:nth-of-type(2) .title p {
+    font-size: 16px;
+}
+
+.slider:nth-of-type(2) .title p {
+    font-size: 16px;
+} */
+
+.slider .image {
+    float: right;
+    width: 0%;
+}
+
+.slider .image img {
+    width: 100%;
+}
+
+.slider:nth-of-type(1) .image {
+    width: 40%;
+}
+
+/* .slider:nth-of-type(2) .image {
+    width: 0;
+}
+
+.slider:nth-of-type(3) .image {
+    width: 0;
+} */
+
+.wrapper .btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -15px;
+    height: 30px;
+    width: 100%;
+}
+
+.btn .btnLeft,
+.btn .btnRight {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.btn .btnLeft {
+    left: 100px;
+    background-image: url('images/left-btn.png');
+}
+
+.btn .btnRight {
+    right: 100px;
+    background-image: url('images/right-btn.png');
+}
+
+.wrapper .slider-order {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+}
+
+.slider-order ul {
+    display: inline-block;
+}
+
+.slider-order ul li {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 20px;
+    border-radius: 50%;
+    background-color: #888;
+    cursor: pointer;
+}
+
+.slider-order ul li:nth-of-type(3) {
+    margin-right: 0;
+}
+
+.slider-order .active {
+    background-color: #f00;
+}

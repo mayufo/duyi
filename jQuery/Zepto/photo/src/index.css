@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.wrapper {
+    width: 100%;
+    font-size: 0;
+}
+
+.wrapper li {
+    display: inline-block;
+    width: 25%;
+    box-sizing: border-box;
+    padding: 3px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.wrapper li img {
+    width: 100%;
+}
+
+.show {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.show img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}

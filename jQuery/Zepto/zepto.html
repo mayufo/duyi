@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>zepto</title>
+</head>
+
+<body>
+
+    <div></div>
+
+    <script src="zeoto.js"></script>
+    <script src="touch.js"></script>
+    <script>
+        $('div').css({
+            width: 300,
+            height: 300,
+            backgroundColor: '#f00'
+        });
+
+        $('div').on('tap', function () {
+            console.log(123);
+        });
+
+        $('div').on('swipeLeft', function () {
+            console.log('left');
+        });
+    </script>
+</body>
+
+</html>

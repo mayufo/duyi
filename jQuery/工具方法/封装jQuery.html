@@ -35,19 +35,20 @@
                     console.log('html');
                     return this;
                 }
+
             }
-            
+
             jQuery.prototype.init.prototype = jQuery.prototype;
 
             function jQuery(selector) {
                 return new jQuery.prototype.init(selector);
             }
-            
+
             this.jQuery = this.$ = jQuery;
         });
 
+
         $('demo').css().html();
-    
     </script>
 </body>
 

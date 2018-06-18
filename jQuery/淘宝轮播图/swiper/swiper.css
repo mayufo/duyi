@@ -37,9 +37,18 @@
 }
 
 .silderBtn {
+    display: none;
     position: absolute;
     top: 50%;
     width: 100%;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
 }
 
 .silderBtn .prevBtn,
@@ -50,6 +59,11 @@
     padding: 10px;
     background-color: #000;
     opacity: 0.5;
+}
+
+.silderBtn .prevBtn:hover,
+.silderBtn .nextBtn:hover {
+    opacity: 0.6;
 }
 
 .silderBtn .prevBtn {

@@ -1,0 +1,32 @@
+.tabs>ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tabs>ul.tab-bar {
+    display: flex;
+    border-bottom: 1px solid #f00;
+}
+
+.tabs>ul.tab-bar>li {
+    padding: 10px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+}
+
+.tabs>ul.tab-bar>li:hover {
+    border-color: #f00;
+}
+
+.tabs>ul.tab-bar>li.active {
+    border-color: #00f;
+}
+
+.tabs>ul.tab-content>li {
+    display: none;
+}
+
+.tabs>ul.tab-content>li.active {
+    display: block;
+}

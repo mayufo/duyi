@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        @font-face {
+            font-family: 'myFamily';
+            src: url('./Gomo.ttf');
+        }
+
+        .nav {
+            display: inline-block;
+            margin-top: 100px;
+            margin-left: 100px;
+            height: 15px;
+            padding: 10px 0;
+            background-color: #f40;
+            border-radius: 5px;
+            box-shadow: 0px 4px 3px;
+        }
+
+        .nav li {
+            float: left;
+            width: 120px;
+            height: 15px;
+            line-height: 15px;
+            text-align: center;
+            border-right: 1px dotted #ccc;
+        }
+
+        .nav li:last-child {
+            border-right: 0;
+        }
+
+        .nav li a {
+            text-decoration: none;
+            color: #fff;
+            font-family: 'myFamily';
+        }
+    </style>
+    <title>nav</title>
+</head>
+
+<body>
+
+    <ul class="nav">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">About me</a>
+        </li>
+        <li>
+            <a href="#">Prortfolio</a>
+        </li>
+        <li>
+            <a href="#">Blog</a>
+        </li>
+        <li>
+            <a href="#">Resources</a>
+        </li>
+        <li>
+            <a href="#">Contact me</a>
+        </li>
+    </ul>
+
+</body>
+
+</html>

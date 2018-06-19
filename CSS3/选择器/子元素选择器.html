@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        li:first-child {
+            color: #f40;
+        }
+
+        div span:first-child {
+            color: #00f;
+        }
+
+        li:nth-child(odd) {
+            color: bisque;
+        }
+
+        .demo ul li:nth-child(2n+1) {
+            color: #0f0;
+        }
+    </style>
+    <title>子元素选择器</title>
+</head>
+
+<body>
+
+    <li>0</li>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <li>4</li>
+
+    <div>
+        <span>0</span>
+        <ul>
+            <span>1</span>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="demo">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

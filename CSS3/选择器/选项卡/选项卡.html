@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        .wrapper input {
+            width: 30px;
+            height: 30px;
+        }
+
+        .wrapper div {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 400px;
+            height: 370px;
+            text-align: center;
+            line-height: 370px;
+            font-size: 30px;
+            color: #fff;
+            display: none;
+        }
+
+        .wrapper div:nth-of-type(1) {
+            background-color: red;
+        }
+
+        .wrapper div:nth-of-type(2) {
+            background-color: green;
+        }
+
+        .wrapper div:nth-of-type(3) {
+            background-color: yellow;
+        }
+
+        input:checked+div {
+            display: block;
+        }
+    </style>
+    <title>选项卡</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <input type="radio" name="tab" checked>
+        <div>a</div>
+        <input type="radio" name="tab">
+        <div>b</div>
+        <input type="radio" name="tab">
+        <div>c</div>
+    </div>
+</body>
+
+</html>

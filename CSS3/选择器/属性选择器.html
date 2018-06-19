@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        li[class~='demo'] {
+            color: #f00;
+        }
+
+        li[class^="de"] {
+            color: #00f;
+        }
+
+        li[class$='de'] {
+            color: #0f0;
+        }
+
+        li[class*='mo'] {
+            color: peru;
+        }
+
+        /* li[data-src~='s1'] {
+            color: #f00;
+        } */
+        :root{
+            background-color: #ccc;
+        }
+    </style>
+    <title>属性选择器</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li data-src="s1 s2" class="demo de">4</li>
+    </ul>
+
+</body>
+
+</html>

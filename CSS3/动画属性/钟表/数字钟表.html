@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            border-radius: 50%;
+        }
+
+        ul {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        ul>li {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: 50% 100px;
+        }
+
+        ul>li:nth-of-type(2) {
+            transform: rotate(30deg);
+        }
+
+        li:nth-of-type(3) {
+            transform: rotate(60deg);
+        }
+
+        li:nth-of-type(4) {
+            transform: rotate(90deg);
+        }
+
+            
+    </style>
+    <title>数字钟表</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

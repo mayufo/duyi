@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+        }
+
+        a {
+            position: fixed;
+            top: 0;
+        }
+
+        .item:target {
+            background-color: #00f;
+        }
+    </style>
+    <title>target目标元素选择器</title>
+</head>
+
+<body>
+
+    <a href="#item1" style="left:100px">click1</a>
+    <a href="#item2" style="left:200px">click2</a>
+    <a href="#item3" style="left:300px">click3</a>
+
+    <div id="item1" class="item" style="top: 50px"></div>
+    <div id="item2" class="item" style="top: 650px"></div>
+    <div id="item3" class="item" style="top: 1050px"></div>
+</body>
+
+</html>

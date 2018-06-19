@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        :root {
+            background-color: #ccc;
+        }
+
+        /* li:not([class='demo']) {
+            background-color: #00f;
+            margin-top: 10px;
+        } */
+
+        li:empty {
+            background-color: #00f;
+            margin-top: 10px;
+        }
+
+        li::after {
+            content: '123';
+            color: #000;
+        }
+    </style>
+    <title>伪类选择器</title>
+</head>
+
+<body>
+
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="demo">4</li>
+    </ul>
+
+</body>
+
+</html>

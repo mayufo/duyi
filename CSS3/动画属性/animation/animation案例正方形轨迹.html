@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .demo {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            animation: move 2s linear;
+        }
+
+        @keyframes move {
+            0% {
+                left: 0px;
+                top: 0px;
+            }
+            25% {
+                left: 300px;
+                top: 0px;
+            }
+            50% {
+                left: 300px;
+                top: 300px;
+            }
+            75% {
+                left: 0px;
+                top: 300px;
+            }
+            100% {
+                left: 0px;
+                top: 0px;
+            }
+        }
+    </style>
+    <title>animation案例</title>
+</head>
+
+<body>
+    <div class="demo"></div>
+</body>
+
+</html>

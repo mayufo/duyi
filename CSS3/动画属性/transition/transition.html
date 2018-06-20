@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .item {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            transition: left 1s linear, top 1s linear 1s;
+        }
+
+        .demo:hover+.item {
+            left: 150px;
+            top: 150px;
+            /* width: 200px; */
+            /* height: 200px; */
+        }
+    </style>
+    <title>transition</title>
+</head>
+
+<body>
+    <div class="demo">demo</div>
+    <div class="item"></div>
+</body>
+
+</html>

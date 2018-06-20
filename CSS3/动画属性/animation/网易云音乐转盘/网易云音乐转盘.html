@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .table {
+            width: 150px;
+            height: 150px;
+            border: 50px solid #333;
+            background-image: url('bg.jpg');
+            background-size: cover;
+            border-radius: 50%;
+            animation: rotate 5s linear paused infinite;
+        }
+
+        .pin {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: top;
+            transform: rotate(-60deg);
+            width: 10px;
+            height: 150px;
+            background-color: #ccc;
+            border-bottom-left-radius: 100%;
+            border-bottom-right-radius: 100%;
+            transition: all 0.5s linear;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .active {
+            transform: rotate(-30deg);
+        }
+    </style>
+    <title>网易云音乐转盘</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="table"></div>
+        <div class="pin"></div>
+    </div>
+    <button id="btn">播放</button>
+    <script>
+        var oTable = document.getElementsByClassName('table')[0];
+        var oPin = document.getElementsByClassName('pin')[0];
+        var btn = document.getElementById('btn');
+        var flag = true;
+
+        btn.onclick = function () {
+            if (flag) {
+                flag = false;
+                oTable.style.animationPlayState = 'running';
+                oPin.className = 'pin active';
+                btn.innerHTML = '暂停';
+            } else {
+                flag = true;
+                oTable.style.animationPlayState = 'paused';
+                oPin.className = 'pin';
+                btn.innerHTML = '播放';
+            }
+        }
+    </script>
+</body>
+
+</html>

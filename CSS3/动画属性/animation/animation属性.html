@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .demo {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 150px;
+            height: 150px;
+            background-color: #f40;
+            /* animation: move 2s linear 2s backwards; */
+            animation:move 2s linear 1s alternate infinite running forwards;
+        }
+
+        @keyframes move {
+            from {
+                left: 50px
+            }
+
+            to {
+                left: 100px;
+                top: 100px
+            }
+        }
+    </style>
+    <title>animation属性</title>
+</head>
+
+<body>
+
+    <div class="demo"></div>
+
+</body>
+
+</html>

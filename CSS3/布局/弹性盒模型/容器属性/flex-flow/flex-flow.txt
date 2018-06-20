@@ -1,0 +1,2 @@
+是flex-direction和flex-wrap和简写
+默认flex-flow:row nowrap;

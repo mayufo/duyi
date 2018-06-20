@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .wrapper {
+            width: 600px;
+            column-width: 100px;
+            column-count: 3;
+            border: 1px solid #000;
+            font-size: 16px;
+            column-gap: 10px;
+            column-rule: 50px solid red;
+        }
+
+        .wrapper>h1 {
+            column-span: all;
+        }
+    </style>
+    <title>columns多列布局</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>我是标题</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et cum architecto at accusamus aut, alias amet corporis,
+            velit facere esse perspiciatis neque mollitia dolore porro, deleniti perferendis distinctio repellat quaerat!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et cum architecto at accusamus aut, alias amet corporis,
+            velit facere esse perspiciatis neque mollitia dolore porro, deleniti perferendis distinctio repellat quaerat!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et cum architecto at accusamus aut, alias amet corporis,
+            velit facere esse perspiciatis neque mollitia dolore porro, deleniti perferendis distinctio repellat quaerat!</p>
+    </div>
+</body>
+
+</html>

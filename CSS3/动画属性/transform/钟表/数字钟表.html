@@ -33,6 +33,11 @@
             transform-origin: 50% 100px;
         }
 
+        .wrapper span {
+            display: inline-block;
+        }
+
+
         ul>li:nth-of-type(2) {
             transform: rotate(30deg);
         }
@@ -45,7 +50,17 @@
             transform: rotate(90deg);
         }
 
-            
+        ul>li:nth-of-type(2) span {
+            transform: rotate(-30deg);
+        }
+
+        ul>li:nth-of-type(3) span {
+            transform: rotate(-60deg);
+        }
+
+        ul>li:nth-of-type(4) span {
+            transform: rotate(-90deg);
+        }
     </style>
     <title>数字钟表</title>
 </head>
@@ -54,10 +69,18 @@
 
     <div class="wrapper">
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+            <li>
+                <span>12</span>
+            </li>
+            <li>
+                <span>1</span>
+            </li>
+            <li>
+                <span>2</span>
+            </li>
+            <li>
+                <span>3</span>
+            </li>
         </ul>
     </div>
 

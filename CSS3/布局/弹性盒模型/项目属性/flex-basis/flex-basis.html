@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .wrapper {
+            display: flex;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+
+        .wrapper>div {
+            width: 100px;
+            height: 30px;
+            /* flex-grow: 1; */
+            border: 1px solid #000;
+        }
+
+        .wrapper>div:nth-of-type(1) {
+            flex-basis: 50px;
+        }
+
+        .wrapper>div:nth-of-type(2) {
+            flex-basis: 50px;
+        }
+    </style>
+    <title>flex-basis</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div>1</div>
+        <div>2</div>
+    </div>
+</body>
+
+</html>

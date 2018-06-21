@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮子</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <input type="text" id="input">
+    </div>
+
+    <script>
+        var fun = (function () {
+            var Input = function () {}
+            Input.prototype.init = function (config) {
+                this.input = document.getElementById(config.id);
+                _bind(this);
+                return this;
+            }
+            var _bind = function (obj) {
+                obj.input.addEventListener('input', function () {
+                    obj.render();
+                });
+            }
+            Input.prototype.render = function () {
+                var value = _getValue(this);
+                if (!document.getElementById('show')) {
+                    var show = document.createElement('span');
+                    show.setAttribute('id', 'show');
+                    this.input.parentNode.appendChild(show);
+                }
+
+                var show = document.getElementById('show');
+                if (/^[0-9a-zA-Z]+$/.exec(value)) {
+                    show.innerHTML = 'Pass!';
+                } else {
+                    show.innerHTML = 'Failed!'
+                }
+            }
+
+            var _getValue = function (obj) {
+                return obj.input.value;
+            }
+
+            return Input;
+        })();
+
+        var $ = function (id) {
+            return new fun().init({
+                'id': id
+            });
+        }
+
+        $('input');
+    </script>
+</body>
+
+</html>

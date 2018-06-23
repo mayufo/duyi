@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <style>
+        .wrapper {
+            margin: 200px;
+        }
+    </style>
+    <title>验证注册</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <button class="btn btn-default btn-primary" data-toggle="modal" data-target="#myRegister">注册</button>
+
+        <div class="modal fade" id="myRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close cancelValue" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">注册</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancelValue" data-dismiss="modal">关闭</button>
+                        <button type="button" id="submit" data-loading-text="Loading..." class="btn btn-primary">注册</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../bootstrap-3.3.7-dist/js/jquery-3.3.1.min.js"></script>
+    <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        // var password = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
+        // var email = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+        var obj = {
+            email: {
+                value: /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
+                res: false
+            },
+            password: {
+                value: /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/,
+                res: false
+            }
+        }
+
+        var fun = (function ($) {
+            var Input = function () {}
+            Input.prototype.init = function (config) {
+                this.input = $('input[name="' + config.name + '"]');
+                this.type = config.type;
+                _bind(this);
+                return this;
+            }
+
+            var _bind = function (inObj) {
+                inObj.input.on('blur', function () {
+                    obj[inObj.type].res = obj[inObj.type].value.test($(this).val());
+
+                    if (obj[inObj.type].res) {
+                        $(this).closest('.form-group').removeClass('has-error').addClass(
+                            'has-success');
+                    } else {
+                        $(this).closest('.form-group').removeClass('has-success').addClass(
+                            'has-error');
+                    }
+                    // $(this).trigger('valiate');
+                });
+
+                // inObj.input.on('validate', function () {
+                //     obj[inObj.type].res = obj[inObj.type].value.test($(this).val());
+
+                //     if (obj[inObj.type].res) {
+                //         $(this).closest('.form-group').removeClass('has-error').addClass(
+                //             'has-success');
+                //     } else {
+                //         $(this).closest('.form-group').removeClass('has-success').addClass(
+                //             'has-error');
+                //     }
+                // })
+            }
+
+            return Input;
+        })(jQuery);
+
+
+
+        var D = function (obj) {
+            new fun().init(obj);
+        };
+
+        D({
+            type: 'email',
+            name: 'email'
+        });
+
+        D({
+            type: 'password',
+            name: 'password'
+        });
+
+        // $('input[name="email"]').on('blur', function () {
+        //     obj.email = email.test($(this).val());
+        //     if (obj.email) {
+        //         $(this).closest('.form-group').removeClass('has-error').addClass('has-success');
+        //     } else {
+        //         $(this).closest('.form-group').removeClass('has-success').addClass('has-error');
+        //     }
+        // });
+
+        // $('input[name="password"]').on('blur', function () {
+        //     obj.password = password.test($(this).val());
+        //     if (obj.password) {
+        //         $(this).closest('.form-group').removeClass('has-error').addClass('has-success');
+        //     } else {
+        //         $(this).closest('.form-group').removeClass('has-success').addClass('has-error');
+        //     }
+        // });
+
+        $('#submit').on('click', function () {
+            var res = true;
+            for (var prop in obj) {
+                if (!obj[prop].res) {
+                    res = false;
+                }
+            }
+
+            if (res) {
+                var $btn = $(this).button('loading');
+                setTimeout(function () {
+                    $btn.button('reset');
+                }, 2000);
+            }
+
+            // if (obj.email && obj.password) {
+            //     var $btn = $(this).button('loading');
+            //     setTimeout(function () {
+            //         $btn.button('reset');
+            //     }, 2000);
+            //     // $('.form-horizontal').submit();
+            // }
+        });
+
+        $('.cancelValue').on('click', function () {
+            $(this).parents('div').find('form').find('.form-group').removeClass('has-success has-error').find(
+                'input').val('');
+        });
+    </script>
+</body>
+
+</html>

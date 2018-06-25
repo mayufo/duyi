@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装自己的children方法</title>
+</head>
+
+<body>
+
+    <div>
+        <span>1</span>
+        <strong>2</strong>
+    </div>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+
+        Element.prototype.myChildren = function () {
+            var arr = this.childNodes,
+                newObj = {
+                    length: 0,
+                    push: Array.prototype.push,
+                    splice: Array.prototype.splice
+                };
+
+            arr.forEach(function (item, index) {
+                if (item.nodeType == 1) {
+                    newObj.push(item);
+                }
+            });
+
+            return newObj;
+        }
+    </script>
+
+</body>
+
+</html>

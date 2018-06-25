@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元素相对于文档坐标</title>
+</head>
+
+<body>
+
+    <script>
+        function getElementPosition(elem) {
+            if (elem.offsetParent === document.body) {
+                return {
+                    x: elem.offsetLeft,
+                    y: elem.offsetTop
+                }
+            }
+
+            var parentOffset = getElementPosition(elem.offsetParent);
+
+            return {
+                x: elem.offsetLeft + parentOffset.x,
+                y: elem.offsetTop + parentOffset.y
+            }
+
+        }
+    </script>
+</body>
+
+</html>

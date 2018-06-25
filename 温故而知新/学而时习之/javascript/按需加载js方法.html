@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>按需加载js方法</title>
+</head>
+
+<body>
+
+
+    <script>
+        function loadscript(url, callback) {
+            var script = document.createElement('script');
+            script.src = url;
+            script.type = 'text/javascript';
+
+            if (script.readyState) {
+                script.onreadystatechange = function () {
+                    if (script.readyState == 'complete' || script.readyState == 'loaded') {
+                        callback();
+                    }
+                }
+            } else {
+                script.onload = function () {
+                    callback();
+                }
+            }
+
+            document.body.appendChild(script);
+        }
+
+        loadscript('move.js', function () {
+            move();
+        });
+    </script>
+
+</body>
+
+</html>

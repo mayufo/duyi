@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自己写一个NaN方法</title>
+</head>
+
+<body>
+
+    <script>
+        function isMyNaN(num) {
+            num = +num;
+
+            num += '';
+
+            if (num == 'NaN') {
+                return true;
+            } else {
+                return false;
+            }
+
+            // if (num != num) {
+            //     return true;
+            // } else {
+            //     return false;
+            // }
+        }
+
+        var a = 123;
+        console.log(isMyNaN(a));
+    </script>
+</body>
+
+</html>

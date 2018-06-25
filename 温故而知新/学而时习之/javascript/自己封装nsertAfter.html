@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自己封装nsertAfter</title>
+</head>
+
+<body>
+
+    <div>
+        <strong>123</strong>
+    </div>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var oString = document.getElementsByTagName('strong')[0];
+        var oSpan = document.createElement('span');
+        oSpan.innerHTML = 'span';
+
+        Element.prototype.insertAfter = function (a, b) {
+            var node = b.nextSibling;
+            if (node) {
+                this.insertBefore(a, node);
+            } else {
+                this.appendChild(a);
+            }
+        }
+
+        oDiv.insertAfter(oSpan, oString);
+    </script>
+</body>
+
+</html>

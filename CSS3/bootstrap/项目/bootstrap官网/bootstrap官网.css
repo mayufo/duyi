@@ -14,7 +14,7 @@ body {
     margin-bottom: 0;
 }
 
-@media screen and (max-width:748px) {
+@media screen and (max-width:768px) {
     .jumbotron {
         padding: 60px;
     }
@@ -66,4 +66,5 @@ body {
     max-width: 310px;
     margin: 0 auto;
     text-align: center;
+    margin-bottom: 20px;
 }

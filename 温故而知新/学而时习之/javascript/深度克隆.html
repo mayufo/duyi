@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深度克隆</title>
+</head>
+
+<body>
+
+    <script>
+        function deepClone(origin, target) {
+            var strArray = '[object Array]',
+                strObject = '[object Object]',
+                toString = Object.prototype.toString;
+
+            target = target || (toString.call(origin) == strArray ? [] : {});
+
+            for (var prop in origin) {
+                if (origin.hasOwnProperty(prop)) {
+                    if (origin[prop] !== null && typeof origin[prop] == 'object') {
+                        target[prop] = toString.call(origin[prop]) == strArray ? [] : {};
+                        deepClone(origin[prop], target[prop]);
+                    } else {
+                        target[prop] = origin[prop];
+                    }
+                }
+            }
+
+            return target;
+        }
+
+        var obj1 = {
+            oop: {
+                name: 123,
+                age: 10
+            }
+        }
+
+        var obj2 = deepClone(obj1);
+        console.log(obj2);
+    </script>
+
+</body>
+
+</html>
